@@ -36,6 +36,9 @@ const algs = defineCollection({
 		// Prepended to every case's setup-alg, e.g. "Rv T" to put yellow on
 		// top for last-layer cases. Drives both the applet and the thumbnails.
 		setup_prefix: z.string().optional(),
+		// Render thumbnails from a raised top-down camera angle (shows the top
+		// face plus all sides) instead of the default flat face-on view.
+		top_down: z.boolean().optional(),
 		cases: z.array(algCase),
 	}),
 });

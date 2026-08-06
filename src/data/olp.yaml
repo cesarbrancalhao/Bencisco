@@ -2,6 +2,7 @@
 # setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
 # PLACEHOLDER DATA — replace with real cases/algs before launch.
 setup_prefix: "LBLv"
+top_down: true
 cases:
   - id: olp-01
     name: Easy case
