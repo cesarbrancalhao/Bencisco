@@ -1,0 +1,81 @@
+---
+/**
+ * Thumbnail-first FTO viewer.
+ *
+ * - With `thumbnail`: renders a static image + "View interactive" button.
+ *   cubing.js is fetched only on click (singleton - one player at a time).
+ * - Without `thumbnail`: embeds <twisty-player> directly (use only on
+ *   low-density pages: tutorials, example solves).
+ *
+ * `startState`:
+ * - "case" (default): the puzzle starts in the unsolved case state and the
+ *   alg solves it (via `experimental-setup-alg` = inverse of the alg).
+ * - "solved": the puzzle starts solved and the alg is applied to it
+ *   (for notation demos, etc.).
+ */
+import { Alg } from 'cubing/alg';
+
+interface Props {
+	alg: string;
+	puzzle?: string;
+	thumbnail?: string;
+	caption?: string;
+	startState?: 'case' | 'solved';
+	setupPrefix?: string;
+	interactive?: boolean;
+}
+
+const { alg, puzzle = 'fto', thumbnail, caption, startState = 'case', setupPrefix, interactive = true } = Astro.props;
+let setupAlg: string | undefined;
+if (startState === 'case') {
+	try {
+		setupAlg = new Alg(`${setupPrefix ? `${setupPrefix} ` : ''}${new Alg(alg).invert().toString()}`).toString();
+	} catch {
+		setupAlg = undefined;
+	}
+}
+---
+
+{
+	thumbnail ? (
+		<div
+			class="puzzle-viewer not-content flex flex-col items-center gap-2"
+			data-puzzle-viewer
+			data-mode="thumbnail"
+			data-puzzle={puzzle}
+			data-alg={alg}
+			data-setup-alg={setupAlg}
+		>
+			<img
+				src={thumbnail}
+				alt={caption ?? `FTO case`}
+				width="256"
+				height="192"
+				loading="lazy"
+				class="rounded-lg border border-gray-200 dark:border-gray-700"
+			/>
+			{interactive && (
+				<button
+					type="button"
+					data-puzzle-activate
+					class="cursor-pointer rounded-md bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
+				>
+					View interactive
+				</button>
+			)}
+		</div>
+	) : (
+		<div class="puzzle-viewer not-content" data-puzzle-viewer data-mode="direct">
+			<twisty-player
+				puzzle={puzzle}
+				alg={alg}
+				experimental-setup-alg={setupAlg}
+				hint-facelets="none"
+				background="none"
+				style="width: 256px; height: 192px;"
+			/>
+		</div>
+	)
+}
+
+<script src="../scripts/puzzle-viewer.ts"></script>
