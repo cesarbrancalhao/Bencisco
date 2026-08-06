@@ -1,0 +1,16 @@
+---
+title: Notation primer
+description: FTO-specific move notation and slice moves.
+sidebar:
+  order: 3
+---
+
+import PuzzleViewer from '../../../components/PuzzleViewer.astro';
+
+Each letter represents a face, just like a normal 3x3 notation. We have the normal 3x3 faces (R, U, L, D, F, B), as well as two aditional moves for the extra faces (BR, BL)
+
+<PuzzleViewer alg="R U L D F B BR BL BL' BR' B' F' D' L' U' R'" startState="solved" />
+
+And two additional moves for the slices (Rs, Fs, Bs, Ls, Us, Ds, BRs, BLS).
+
+<PuzzleViewer alg="(r R') (f F') (b B') (l L') (u U') (d D') (br BR') (bl BL')" startState="solved" />
