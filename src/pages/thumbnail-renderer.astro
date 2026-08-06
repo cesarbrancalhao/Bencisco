@@ -1,0 +1,54 @@
+---
+/**
+ * Build tooling — NOT a site page (unlinked, no layout).
+ * Renders every alg case at its unsolved case state, one <twisty-player>
+ * per case, so scripts/generate-thumbnails.mjs can screenshot them into
+ * public/thumbnails/<case-id>.webp.
+ */
+import { getCollection } from 'astro:content';
+import { Alg } from 'cubing/alg';
+
+const algs = await getCollection('algs');
+const cases = algs.flatMap((entry) =>
+	entry.data.cases.map((c) => {
+		const setupPrefix = c.preset ?? entry.data.setup_prefix;
+		let setupAlg: string | undefined;
+		try {
+			setupAlg = new Alg(
+				`${setupPrefix ? `${setupPrefix} ` : ''}${new Alg(c.alg).invert().toString()}`,
+			).toString();
+		} catch {
+			// Skip cases whose alg can't be parsed (e.g. community notation with {} rotations)
+			return null;
+		}
+		return { ...c, setupAlg };
+	}),
+).filter((c) => c !== null);
+---
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>thumbnail renderer</title>
+	</head>
+	<body>
+		{
+			cases.map((c) => (
+				<div data-thumb-case={c.id} style="width: 256px; height: 192px; display: inline-block;">
+					<twisty-player
+						puzzle="fto"
+						alg={c.alg}
+						experimental-setup-alg={c.setupAlg}
+						hint-facelets="none"
+						background="none"
+						control-panel="none"
+						style="width: 256px; height: 192px;"
+					/>
+				</div>
+			))
+		}
+		<script>
+			import 'cubing/twisty';
+		</script>
+	</body>
+</html>
