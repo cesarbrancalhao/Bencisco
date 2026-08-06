@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="192" viewBox="0 0 256 192">
+  <rect width="256" height="192" fill="#1e1e2e"/>
+  <polygon points="128,36 208,156 48,156" fill="none" stroke="#585b70" stroke-width="3"/>
+  <line x1="128" y1="36" x2="128" y2="156" stroke="#45475a" stroke-width="2"/>
+  <line x1="88" y1="96" x2="168" y2="96" stroke="#45475a" stroke-width="2"/>
+  <text x="128" y="180" text-anchor="middle" fill="#6c7086" font-family="sans-serif" font-size="12">FTO case preview</text>
+</svg>
