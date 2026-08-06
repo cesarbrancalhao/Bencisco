@@ -21,7 +21,7 @@ const cases = algs.flatMap((entry) =>
 			// Skip cases whose alg can't be parsed (e.g. community notation with {} rotations)
 			return null;
 		}
-		return { ...c, setupAlg };
+		return { ...c, setupAlg, topDown: entry.data.top_down ?? false };
 	}),
 ).filter((c) => c !== null);
 ---
@@ -39,9 +39,12 @@ const cases = algs.flatMap((entry) =>
 						puzzle="fto"
 						alg={c.alg}
 						experimental-setup-alg={c.setupAlg}
-						hint-facelets="none"
+						hint-facelets={c.topDown ? undefined : "none"}
 						background="none"
 						control-panel="none"
+						camera-latitude={c.topDown ? 90 : undefined}
+						camera-latitude-limit={c.topDown ? 180 : undefined}
+						camera-distance={c.topDown ? 6.2 : undefined}
 						style="width: 256px; height: 192px;"
 					/>
 				</div>
