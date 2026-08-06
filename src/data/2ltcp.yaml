@@ -1,0 +1,26 @@
+# 2LTCP — alg: Twizzle notation (drives the applet); showcase_alg: what the user sees.
+# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
+# A case can override it with its own `preset` field.
+# PLACEHOLDER DATA — replace with real cases/algs before launch.
+setup_prefix: "Rv T"
+cases:
+  - id: 2ltcp-01
+    name: 2 Triangle Swap
+    family: TCP
+    alg: "U F' U' (f F') U F U' (f' F)"
+    showcase_alg: "U F' U' Fs U F U' Fs'"
+    eif_alg: "{BL, D} U R' U' Rs' U R U' Rs"
+  - id: 2ltcp-02
+    name: 3 Triangle CW
+    family: TCP
+    alg: "T' U (f F') U F U' (f' F) U F' U"
+    preset: "Rv"
+    showcase_alg: "{R, L} U Fs U F U' Fs' U F' U"
+    eif_alg: "U' R U' Rs U R' U' Rs' U'"
+  - id: 2ltcp-03
+    name: 3 Triangle CCW
+    family: TCP
+    alg: "T' U' F U' (f F') U F' U' (f' F) U'"
+    preset: "Rv"
+    showcase_alg: "{R, L} U' F U' Fs U F' U' Fs' U'"
+    eif_alg: "U Rs U R U' Rs' U R' U"
