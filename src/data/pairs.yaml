@@ -1,7 +1,7 @@
 # Pair formation — optimal pair solutions.
 # setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
 # PLACEHOLDER DATA — replace with real solutions before launch.
-setup_prefix: "Rv T"
+setup_prefix: "LBLv"
 cases:
   - id: pairs-01
     name: Pair insert

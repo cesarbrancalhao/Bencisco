@@ -8,7 +8,7 @@
 # showcase_label: "(EIF)" or "(CIF -> EIF)" styled prefix when the showcase alg isn't pure CIF.
 # eif_alg: optional EIF variant, shown secondary with an "(EIF)" label.
 # setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
-setup_prefix: "Rv T"
+setup_prefix: "LBLv"
 cases:
   - id: "1ll3t-1.E.1"
     name: "1.E.1"
