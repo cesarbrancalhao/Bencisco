@@ -1,18 +1,123 @@
 # TCP (1-look) — alg: Twizzle notation (drives the applet); showcase_alg: what the user sees.
+# Converted from tx/tcp.md with the 1ll3t bracket tables + face map; every case
+# validated 1:1 against a 1ll3t T-family state (see tx/tcp-conversion.md).
 # setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
-# PLACEHOLDER DATA — replace with real cases/algs before launch.
+# Extra variants of a case are shown as showcase_alg1, showcase_alg2, ...
 setup_prefix: "LBLv"
 top_down: true
 cases:
   - id: tcp-01
-    name: Placeholder Alg 1
-    family: A
-    alg: "T' R U R' U' T"
-    showcase_alg: "{U, R} R U R' U' {R, D}"
-    eif_alg: "TODO"
+    name: "Case 1"
+    family: "Even"
+    alg: "R' L R L'"
+    showcase_alg: "{B,U} U' R U R'"
+    showcase_label: "EIF"
+    showcase_alg1: "{R,BR} R' U R U'"
   - id: tcp-02
-    name: Placeholder Alg 2
-    family: B
-    alg: "R U R' U' R U2 R'"
-    showcase_alg: "R U R' U' R U2 R'"
-    eif_alg: "TODO"
+    name: "Case 2"
+    family: "Even"
+    alg: "R' L R L BL L' R' L BL' L' R L'"
+    showcase_alg: "{B,U} (U' R U) (R D R' U' R D') (R' U R')"
+    showcase_label: "EIF"
+    showcase_alg1: "{R,BR} (R' U R U') (R' U R' D' R U' R' D R2)"
+  - id: tcp-03
+    name: "Case 3"
+    family: "Even"
+    alg: "R' L' BL L' R L BL' L"
+    showcase_alg: "{B,U} (U' R' D R') (U R D' R)"
+    showcase_label: "EIF"
+  - id: tcp-04
+    name: "Case 4"
+    family: "Even"
+    alg: "R B' R' B"
+    showcase_alg: "{B,BL} U R' U' R"
+    showcase_label: "EIF"
+    showcase_alg1: "{L,U} R U' R' U"
+  - id: tcp-05
+    name: "Case 5"
+    family: "Even"
+    alg: "R B' R' B' BL' B R B' BL B R' B"
+    showcase_alg: "{B,BL} (U R' U') (R' D' R U R' D) (R U' R)"
+    showcase_label: "EIF"
+    showcase_alg1: "{L,U} (R U' R' U) (R U' R D R' U R D' R2')"
+  - id: tcp-06
+    name: "Case 6"
+    family: "Even"
+    alg: "R B BL' B R' B' BL B'"
+    showcase_alg: "{B,BL} (U R D' R) (U' R' D R')"
+    showcase_label: "EIF"
+  - id: tcp-07
+    name: "Case 7"
+    family: "Odd"
+    alg: "U' R f' U (R B' R' B) U' f R'"
+    showcase_alg: "[U'] {U,BL} L BLw' U S' U' BLw L'"
+  - id: tcp-08
+    name: "Case 8"
+    family: "Odd"
+    alg: "U' L' BL' L R' L' BL' L' R L BL' L"
+    showcase_alg: "U' {B,U} (R' D' R U') (R' D' R' U) (R D' R)"
+    showcase_label: "EIF"
+    showcase_alg1: "U' {B,U} (R' D' R U') (R' D' R' U) (R2' D' R)"
+  - id: tcp-09
+    name: "Case 9"
+    family: "Odd"
+    alg: "U' L' BL' L R' L' BL L' R L'"
+    showcase_alg: "U' {B,U} (R' D' R U') (R' D R' U) R'"
+    showcase_label: "EIF"
+  - id: tcp-10
+    name: "Case 10"
+    family: "Odd"
+    alg: "U B br' U' (L' B L B') U br B'"
+    showcase_alg: "[U] L BLw' U' S U BLw L'"
+  - id: tcp-11
+    name: "Case 11"
+    family: "Odd"
+    alg: "U B BL B' R B BL B R' B' BL B'"
+    showcase_alg: "U {B,BL} (R D R' U) (R D R U') (R' D R')"
+    showcase_label: "EIF"
+  - id: tcp-12
+    name: "Case 12"
+    family: "Odd"
+    alg: "U B BL B' R B BL' B R' B"
+    showcase_alg: "U {R,U} (R BR R' L) (R BR' R2' L') R"
+    showcase_label: "EIF"
+    showcase_alg1: "U {L,U} (R U' R2' D') (R U R' D) R"
+    showcase_alg2: "U {B,BL} (R D R' U) (R D' R U') R"
+  - id: tcp-13
+    name: "Case 13"
+    family: "2-Flip"
+    alg: "R' L' r' R L' R L r R' L"
+    showcase_alg: "{R,BR} (R' U' Rw' R U') (R U Rw R' U)"
+    showcase_label: "EIF"
+  - id: tcp-14
+    name: "Case 14"
+    family: "2-Flip"
+    alg: "R B r R' B R' B' r' R B'"
+    showcase_alg: "{L,U} (R U Rw R' U) (R' U' Rw' R U')"
+    showcase_label: "EIF"
+  - id: tcp-15
+    name: "Case 15"
+    family: "2-Flip"
+    alg: "(L R' L' R) (L' B L B')"
+    showcase_alg: "{B,U} (R U' R' U) {L,D} (R' U R U')"
+    showcase_label: "EIF"
+    showcase_alg1: "{R,U} (U' R U R') {L,D} (U R' U' R)"
+    showcase_alg2: "{R,BR} (R' U' R) {B,BR} (U' R U R') L"
+  - id: tcp-16
+    name: "Case 16"
+    family: "2-Flip"
+    alg: "L r' L' R L r R L' R"
+    showcase_alg: "{R,BR} (U Rw' U' R) (U Rw R2' U') R"
+    showcase_label: "EIF"
+  - id: tcp-17
+    name: "Case 17"
+    family: "2-Flip"
+    alg: "B' r B R' B' r' R' B R'"
+    showcase_alg: "{L,U} (U' Rw U R') (U' Rw2 R' U) R'"
+    showcase_label: "EIF"
+  - id: tcp-18
+    name: "Case 18"
+    family: "2-Flip"
+    alg: "D' R' D BL' D R' D' BL D' R' D"
+    showcase_alg: "{B,BR} (R' U' R D') (R U' R' D) (R' U' R)"
+    showcase_label: "EIF"

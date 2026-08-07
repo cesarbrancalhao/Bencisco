@@ -14,7 +14,7 @@ import { chromium } from 'playwright-core';
 import sharp from 'sharp';
 
 const PORT = 4499;
-const BASE = `http://localhost:${PORT}`;
+const BASE = `http://localhost:${PORT}/Bencisco`; // site base is /Bencisco (astro.config.mjs)
 const OUT_DIR = new URL('../public/thumbnails/', import.meta.url).pathname;
 
 // 1. Build

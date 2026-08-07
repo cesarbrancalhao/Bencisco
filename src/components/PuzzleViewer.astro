@@ -24,6 +24,7 @@ interface Props {
 	setupPrefix?: string;
 	setupSuffix?: string;
 	interactive?: boolean;
+	hintFacelets?: boolean;
 }
 
 const {
@@ -35,6 +36,7 @@ const {
 	setupPrefix,
 	setupSuffix,
 	interactive = true,
+	hintFacelets = false,
 } = Astro.props;
 
 let setupAlg: string | undefined;
@@ -67,6 +69,7 @@ if (setupSuffix) {
 			data-puzzle={puzzle}
 			data-alg={effectiveAlg}
 			data-setup-alg={setupAlg}
+			data-hint-facelets={hintFacelets ? undefined : 'none'}
 		>
 			<img
 				src={thumbnail}
@@ -92,7 +95,7 @@ if (setupSuffix) {
 				puzzle={puzzle}
 				alg={effectiveAlg}
 				experimental-setup-alg={setupAlg}
-				hint-facelets="none"
+				hint-facelets={hintFacelets ? undefined : 'none'}
 				background="none"
 				style="width: 256px; height: 192px;"
 			/>
