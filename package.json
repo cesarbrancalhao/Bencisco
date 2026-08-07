@@ -6,7 +6,6 @@
     "dev": "node scripts/dev.mjs",
     "start": "astro dev",
     "build": "astro build",
-    "build:pages": "astro build --base /Bencisco",
     "preview": "astro preview",
     "imgs": "node scripts/generate-thumbnails.mjs",
     "icons": "node scripts/generate-icons.mjs",
