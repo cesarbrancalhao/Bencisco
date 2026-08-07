@@ -11,17 +11,27 @@ import { Alg } from 'cubing/alg';
 const algs = await getCollection('algs');
 const cases = algs.flatMap((entry) =>
 	entry.data.cases.map((c) => {
-		const setupPrefix = c.preset ?? entry.data.setup_prefix;
+		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
+		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
+
 		let setupAlg: string | undefined;
 		try {
-			setupAlg = new Alg(
-				`${setupPrefix ? `${setupPrefix} ` : ''}${new Alg(c.alg).invert().toString()}`,
-			).toString();
+			const prefix = setupPrefix ? `${setupPrefix} ` : '';
+			const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+			setupAlg = new Alg(`${prefix}${new Alg(c.alg).invert().toString()}${suffix}`).toString();
 		} catch {
-			// Skip cases whose alg can't be parsed (e.g. community notation with {} rotations)
 			return null;
 		}
-		return { ...c, setupAlg, topDown: entry.data.top_down ?? false };
+
+		let effectiveAlg = c.alg;
+		if (setupSuffix) {
+			try {
+				effectiveAlg = new Alg(`${c.alg} ${setupSuffix}`).toString();
+			} catch {
+				// keep original if suffix can't be parsed
+			}
+		}
+		return { ...c, setupAlg, effectiveAlg, topDown: entry.data.top_down ?? false };
 	}),
 ).filter((c) => c !== null);
 ---
@@ -37,7 +47,7 @@ const cases = algs.flatMap((entry) =>
 				<div data-thumb-case={c.id} style="width: 256px; height: 192px; display: inline-block;">
 					<twisty-player
 						puzzle="fto"
-						alg={c.alg}
+						alg={c.effectiveAlg}
 						experimental-setup-alg={c.setupAlg}
 						hint-facelets={c.topDown ? undefined : "none"}
 						background="none"

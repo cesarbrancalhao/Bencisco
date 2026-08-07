@@ -22,16 +22,38 @@ interface Props {
 	caption?: string;
 	startState?: 'case' | 'solved';
 	setupPrefix?: string;
+	setupSuffix?: string;
 	interactive?: boolean;
 }
 
-const { alg, puzzle = 'fto', thumbnail, caption, startState = 'case', setupPrefix, interactive = true } = Astro.props;
+const {
+	alg,
+	puzzle = 'fto',
+	thumbnail,
+	caption,
+	startState = 'case',
+	setupPrefix,
+	setupSuffix,
+	interactive = true,
+} = Astro.props;
+
 let setupAlg: string | undefined;
 if (startState === 'case') {
 	try {
-		setupAlg = new Alg(`${setupPrefix ? `${setupPrefix} ` : ''}${new Alg(alg).invert().toString()}`).toString();
+		const prefix = setupPrefix ? `${setupPrefix} ` : '';
+		const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+		setupAlg = new Alg(`${prefix}${new Alg(alg).invert().toString()}${suffix}`).toString();
 	} catch {
 		setupAlg = undefined;
+	}
+}
+
+let effectiveAlg = alg;
+if (setupSuffix) {
+	try {
+		effectiveAlg = new Alg(`${alg} ${setupSuffix}`).toString();
+	} catch {
+		// keep original alg if suffix can't be parsed
 	}
 }
 ---
@@ -43,7 +65,7 @@ if (startState === 'case') {
 			data-puzzle-viewer
 			data-mode="thumbnail"
 			data-puzzle={puzzle}
-			data-alg={alg}
+			data-alg={effectiveAlg}
 			data-setup-alg={setupAlg}
 		>
 			<img
@@ -68,7 +90,7 @@ if (startState === 'case') {
 		<div class="puzzle-viewer not-content" data-puzzle-viewer data-mode="direct">
 			<twisty-player
 				puzzle={puzzle}
-				alg={alg}
+				alg={effectiveAlg}
 				experimental-setup-alg={setupAlg}
 				hint-facelets="none"
 				background="none"

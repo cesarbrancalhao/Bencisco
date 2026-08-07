@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# thumbnail cache (regenerated on demand)
+.thumbnail-cache.json
+
 # dependencies
 node_modules/
 
