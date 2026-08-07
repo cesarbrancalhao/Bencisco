@@ -54,16 +54,16 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Introduction', items: [{ autogenerate: { directory: 'introduction' } }] },
-				{ label: 'First Block', items: [{ autogenerate: { directory: 'first-block' } }] },
-				{ label: 'Remaining 3 Centers', slug: 'remaining-3-centers' },
+				{ label: 'First Block', collapsed: true, items: [{ autogenerate: { directory: 'first-block' } }] },
+				{ label: 'Remaining 3 Centers', slug: 'remaining-3-centers', badge: { text: 'In Progress', variant: 'default' } },
 				{
 					label: 'Last 3 Triples',
 					items: [
 						{ label: 'Overview', slug: 'last-3-triples' },
-						{ label: 'Pair Formation', slug: 'last-3-triples/pair-formation' },
+						{ label: 'Pair Formation', slug: 'last-3-triples/pair-formation', badge: { text: 'In Progress', variant: 'default' } },
 						{ label: '2LTCP', slug: 'last-3-triples/2ltcp' },
-						{ label: 'TCP', slug: 'last-3-triples/tcp', badge: { text: 'Advanced', variant: 'caution' } },
-						{ label: 'OLP', slug: 'last-3-triples/olp', badge: { text: 'Advanced', variant: 'caution' } },
+						{ label: 'TCP', slug: 'last-3-triples/tcp', badge: { text: 'In Progress', variant: 'default' } },
+						{ label: 'OLP', slug: 'last-3-triples/olp', badge: { text: 'In Progress', variant: 'default' } },
 						{ label: '1LL3T', slug: 'last-3-triples/1ll3t', badge: { text: 'Advanced', variant: 'caution' } },
 					],
 				},

@@ -10,3 +10,9 @@
 	background: var(--sl-color-text-accent);
 	color: var(--sl-color-black);
 }
+
+/* Disable clicking on WIP sidebar entries (badge variant: default = In Progress) */
+li:has(.sl-badge.default) > a {
+	pointer-events: none;
+	opacity: 0.5;
+}
