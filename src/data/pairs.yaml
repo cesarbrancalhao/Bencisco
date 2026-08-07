@@ -1,0 +1,15 @@
+# Pair formation — optimal pair solutions.
+# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
+# PLACEHOLDER DATA — replace with real solutions before launch.
+setup_prefix: "LBLv"
+cases:
+  - id: pairs-01
+    name: Pair insert
+    alg: "U R U' R'"
+    showcase_alg: "U R U' R'"
+    eif_alg: "TODO"
+  - id: pairs-02
+    name: 2FLIP-style bad case
+    alg: "U' L' U L"
+    showcase_alg: "U' L' U L"
+    eif_alg: "TODO"

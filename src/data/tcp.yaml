@@ -1,0 +1,18 @@
+# TCP (1-look) — alg: Twizzle notation (drives the applet); showcase_alg: what the user sees.
+# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
+# PLACEHOLDER DATA — replace with real cases/algs before launch.
+setup_prefix: "LBLv"
+top_down: true
+cases:
+  - id: tcp-01
+    name: Placeholder Alg 1
+    family: A
+    alg: "T' R U R' U' T"
+    showcase_alg: "{U, R} R U R' U' {R, D}"
+    eif_alg: "TODO"
+  - id: tcp-02
+    name: Placeholder Alg 2
+    family: B
+    alg: "R U R' U' R U2 R'"
+    showcase_alg: "R U R' U' R U2 R'"
+    eif_alg: "TODO"

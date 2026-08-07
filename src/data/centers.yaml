@@ -1,0 +1,13 @@
+# Remaining 3 centers — optimal solutions.
+# PLACEHOLDER DATA — replace with real solutions before launch.
+cases:
+  - id: centers-01
+    name: Center insert
+    alg: "R U R'"
+    showcase_alg: "R U R'"
+    eif_alg: "TODO"
+  - id: centers-02
+    name: Back-left insert
+    alg: "BL U' BL'"
+    showcase_alg: "BL U' BL'"
+    eif_alg: "TODO"

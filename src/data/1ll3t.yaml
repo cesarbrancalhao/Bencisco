@@ -1,0 +1,990 @@
+setup_prefix: LBLv
+top_down: true
+family_suffixes:
+  V: U'
+  Q: U'
+  J: U'
+  L: U'
+  W: U'
+  B: U'
+  Z: U'
+  S: U'
+  T: U'
+  X: U
+cases:
+- id: 1ll3t-O
+  name: O
+  family: O
+  alg: ''
+  showcase_alg: solved
+- id: 1ll3t-O+
+  name: O+
+  family: O
+  alg: L' B L' F' L B' L' F L'
+  showcase_alg: '{L,F} R'' U R'' D'' R U'' R'' D R'''
+  showcase_label: EIF
+- id: 1ll3t-O-
+  name: O-
+  family: O
+  alg: L F' L B L' F L B' L
+  showcase_alg: '{L,F} R D'' R U R'' D R U'' R'
+  showcase_label: EIF
+- id: 1ll3t-OC
+  name: OC
+  family: O
+  alg: B' (l' L) B' L' B (l L') B' L B'
+  showcase_alg: '{L,F} U'' Rs'' U'' R'' U Rs U'' R U'''
+  showcase_label: EIF
+- id: 1ll3t-OC+
+  name: OC+
+  family: O
+  alg: B L' B' L' R' L' R
+  showcase_alg: L R' L' R' B' R' B
+- id: 1ll3t-OC-
+  name: OC-
+  family: O
+  alg: U R' D (R' L R L') R U' R' B R D B' D
+  showcase_alg: '[U] {U,BR} R'' D S R U'' R'' B R D B'' D'
+  eif_alg: '[U] {B,BL} U R Rw U'' R U Rw'' U'' R BR'' R'' U R U'''
+- id: 1ll3t-OA
+  name: OA
+  family: O
+  alg: B L' B (l' L) B' L B (l L') B
+  showcase_alg: '{L,F} U R'' U Rs'' U'' R U Rs U'
+  showcase_label: EIF
+- id: 1ll3t-OA+
+  name: OA+
+  family: O
+  alg: B' R B R L' BL L' R L BL' L
+  showcase_alg: L' B L B {B,U} R' D R' U R D' R
+  showcase_label: CIF -> EIF
+- id: 1ll3t-OA-
+  name: OA-
+  family: O
+  alg: R' L R L B L B'
+  showcase_alg: B' R B R L R L'
+- id: 1ll3t-OB
+  name: OB
+  family: O
+  alg: d R D' R' (d' D) R D R' D'
+  showcase_alg: '{B,BR} Rw U R'' U'' Rs'' U R U'' R'''
+  showcase_label: EIF
+- id: 1ll3t-OB+
+  name: OB+
+  family: O
+  alg: f' U L' R B' R' B L U' f
+  showcase_alg: BRw' U R' B L' B' L R U' BRw
+- id: 1ll3t-OB-
+  name: OB-
+  family: O
+  alg: U R (D B' D' B) R' U' R (D B' D' B) R'
+  showcase_alg: '[U] {BL,F} B S'' B'' BR'' B S'' B'''
+- id: 1ll3t-V
+  name: V
+  family: V
+  alg: BR' F' L' (F U' F' U) (F' BL F BL') L F BR
+  showcase_alg: '{R,D} D'' R'' U'' H S U R D'
+- id: 1ll3t-V+
+  name: V+
+  family: V
+  alg: U (L' B L B') U (L' B L B') U (L' B L B') U (L' B L B')
+  showcase_alg: '[U] S U S U S U S'
+- id: 1ll3t-V-
+  name: V-
+  family: V
+  alg: U' (B L' B' L) U' (B L' B' L) U' (B L' B' L) U' (B L' B' L)
+  showcase_alg: '[U''] S'' U'' S'' U'' S'' U'' S'''
+- id: 1ll3t-VC
+  name: VC
+  family: V
+  alg: U (B L' B' L) U (L' B L B') U' (L' B L B') U (B L' B' L)
+  showcase_alg: '[U] S'' U S U'' S U S'''
+- id: 1ll3t-VC+
+  name: VC+
+  family: V
+  alg: L' U' L' B L B' U L B L' B' R' L R
+  showcase_alg: R' U' R' L R L' U R L R' L' B' R B
+- id: 1ll3t-VC-
+  name: VC-
+  family: V
+  alg: U R' br U (L' B L B') U (L' B L B') U B br'
+  showcase_alg: '[U] B'' BLw U S U S U L BLw'''
+- id: 1ll3t-VA
+  name: VA
+  family: V
+  alg: U' (L' B L B') U' (B L' B' L) U (B L' B' L) U' (L' B L B')
+  showcase_alg: '[U''] S U'' S'' U S'' U'' S'
+- id: 1ll3t-VA+
+  name: VA+
+  family: V
+  alg: br B' U' (B L' B' L) U' (B L' B' L) U' br' R
+  showcase_alg: BLw L' U' S' U' S' U' BLw' B
+- id: 1ll3t-VA-
+  name: VA-
+  family: V
+  alg: B U B L' B' L U' B' L' B L R B' R'
+  showcase_alg: L U L R' L' R U' L' R' L R B L' B'
+- id: 1ll3t-VB
+  name: VB
+  family: V
+  alg: U r' L R L' r R' U (L R' L' R)
+  showcase_alg: '[U] {U,BR} Rw'' L R L'' Rw R'' U S'''
+- id: 1ll3t-VB+
+  name: VB+
+  family: V
+  alg: U' br B' U (R' L R L') U' br' R
+  showcase_alg: '[U''] BLw L'' U H'' U'' BLw'' B'
+- id: 1ll3t-VB-
+  name: VB-
+  family: V
+  alg: R' br U (L R' L' R) U' B br'
+  showcase_alg: B' BLw U H U' L BLw'
+- id: 1ll3t-Q
+  name: Q
+  family: Q
+  alg: U L B L' B' l L' B L B' l'
+  showcase_alg: '[U] {L,F} R U R'' U'' Rw R'' U R U'' Rw'''
+  showcase_label: EIF
+- id: 1ll3t-Q+
+  name: Q+
+  family: Q
+  alg: U' (R B' R' B) U' (L R' L' R)
+  showcase_alg: '[U''] {U,BR} H U'' S'''
+- id: 1ll3t-Q-
+  name: Q-
+  family: Q
+  alg: U (R' L R L') U (B' R B R')
+  showcase_alg: '[U] {U,BR} S U H'''
+- id: 1ll3t-QC
+  name: QC
+  family: Q
+  alg: U (R' L R L') U (B L' B' L)
+  showcase_alg: '[U] H'' U S'''
+- id: 1ll3t-QC+
+  name: QC+
+  family: Q
+  alg: U' R' L' BL L' R L BL' L R' L R L'
+  showcase_alg: '[U''] {B,U} U'' R'' D R'' U R D'' R U'' R U R'''
+  showcase_label: EIF
+- id: 1ll3t-QC-
+  name: QC-
+  family: Q
+  alg: U' (R' L R L') U' (R' L R L')
+  showcase_alg: '[U''] {U,BR} S U'' S'
+- id: 1ll3t-QA
+  name: QA
+  family: Q
+  alg: U' (R' L R L') U' (R B' R' B)
+  showcase_alg: '[U''] {U,BR}S U'' H'
+- id: 1ll3t-QA+
+  name: QA+
+  family: Q
+  alg: U (R B' R' B) U (R B' R' B)
+  showcase_alg: '[U] {U,BL} S'' U S'''
+- id: 1ll3t-QA-
+  name: QA-
+  family: Q
+  alg: U R B' R' B R' F R' B' R F' R B
+  showcase_alg: '[U] {L,U} R U'' R'' U R'' D R'' U'' R D'' R U'
+  showcase_label: EIF
+- id: 1ll3t-QB
+  name: QB
+  family: Q
+  alg: U L' B BL' L B' L' B BL' L B' L' B BL' L B'
+  showcase_alg: '[U] {R,U} U'' R BR'' U R'' U'' R BR'' U R'' U'' R BR'' U R'''
+  showcase_label: EIF
+- id: 1ll3t-QB+
+  name: QB+
+  family: Q
+  alg: R L F' L' R' L R F L' R'
+  showcase_alg: '{B,U} U R BR'' R'' U'' R U BR R'' U'''
+  showcase_label: EIF
+- id: 1ll3t-QB-
+  name: QB-
+  family: Q
+  alg: F L F' L f R f' L F L' F'
+  showcase_alg: '{R,D} R U R'' U Rw BR Rw'' U R U'' R'''
+- id: 1ll3t-QR
+  name: QR
+  family: Q
+  alg: U L B b' L' B L B' b L' B'
+  showcase_alg: '[U] {R,U} U R Rw'' U'' R U R'' Rw U'' R'''
+  showcase_label: EIF
+- id: 1ll3t-QR+
+  name: QR+
+  family: Q
+  alg: (B' R B R') U (R B' R' B) U (B' R B R')
+  showcase_alg: '{U,BL} S U S'' U S'
+- id: 1ll3t-QR-
+  name: QR-
+  family: Q
+  alg: (L' B L B') U' B l' L B' L' B l B'
+  showcase_alg: S U' L Rw' R L' R' L Rw L'
+- id: 1ll3t-QL
+  name: QL
+  family: Q
+  alg: U' R B r' R B' R' B r R' B'
+  showcase_alg: '[U''] {L,U} R U Rw'' R U'' R'' U Rw R'' U'''
+  showcase_label: EIF
+- id: 1ll3t-QL+
+  name: QL+
+  family: Q
+  alg: U R b' R' B R B' b R' U R B' R' B
+  showcase_alg: '[U] {B,BL} U Rw'' U'' R U R'' Rw U'' BR U R'' U'' R'
+  showcase_label: EIF
+- id: 1ll3t-QL-
+  name: QL-
+  family: Q
+  alg: (L R' L' R) U' (R' L R L') U' (L R' L' R)
+  showcase_alg: '{U,BR} S'' U'' S U'' S'''
+- id: 1ll3t-J
+  name: J
+  family: J
+  alg: D' F' D L' D' L D' B D B' F D
+  showcase_alg: '{F,BL} R'' BR'' R B'' R'' B R'' L R L'' BR R'
+  eif_alg: '[U''] {L,U} R U'' BR Rw'' R U R'' U'' Rw BR'' R'' U'
+- id: 1ll3t-J+
+  name: J+
+  family: J
+  alg: U u R' u' U L U' u R u' U L'
+  showcase_alg: '[U] {B,L} Rw U'' Rw'' R BR R'' Rw U Rw'' R BR'''
+- id: 1ll3t-J-
+  name: J-
+  family: J
+  alg: U R' F' R B' R' F R B
+  showcase_alg: '[U] {L,U} R'' D'' R U'' R'' D R U'
+  showcase_label: EIF
+- id: 1ll3t-JC
+  name: JC
+  family: J
+  alg: (L R' L' R) U (L R' L' R) U (L R' L' R)
+  showcase_alg: '{U,BR} S'' U S'' U S'''
+  eif_alg: '{R,U} Rw'' R U'' R'' D R'' U R D'' Rw'
+- id: 1ll3t-JC+
+  name: JC+
+  family: J
+  alg: U R B' BR B' D B D' BR' R' B
+  showcase_alg: '[U] {BL,F} B R'' U R'' L R L'' U'' B'' R'
+- id: 1ll3t-JC-
+  name: JC-
+  family: J
+  alg: (L R' L' R) U' (L R' L' R) U' (B' R B R')
+  showcase_alg: '{U,BR} S'' U'' S'' U'' H'''
+- id: 1ll3t-JA
+  name: JA
+  family: J
+  alg: (L R' L' R) U' (L R' L' R) U' (B L' B' L)
+  showcase_alg: H U' H U' S'
+  eif_alg: '[U''] {L,F} Rw D R'' U R D'' R U'' Rw'' R'''
+- id: 1ll3t-JA+
+  name: JA+
+  family: J
+  alg: U' (B L' B' L) U (B' R B R') U (B' R B R')
+  showcase_alg: '[U''] {U,BL} H U S U S'
+  eif_alg: '{L,F} U R D R'' U'' R D'' R'' BR U R'' U'' R'
+- id: 1ll3t-JA-
+  name: JA-
+  family: J
+  alg: U L' B BL D L' D' L BL' L B'
+  showcase_alg: '[U] {F,BR} R'' B U L R'' L'' R U'' R B'''
+- id: 1ll3t-JB
+  name: JB
+  family: J
+  alg: L' U L R' L R L' B L' B' U' L
+  showcase_alg: R' U R B' R B R' L R' L' U' R
+- id: 1ll3t-JB+
+  name: JB+
+  family: J
+  alg: U (L R' L' R) U (R B' R' B)
+  showcase_alg: '[U] {U,BR} S'' U H'
+- id: 1ll3t-JB-
+  name: JB-
+  family: J
+  alg: U' (l' L) U' (B L' B' L) U (l L')
+  showcase_alg: '[U''] Rs'' U'' S'' U Rs'
+  eif_alg: '[U] {R,U} U'' Rs U R U'' Rw'' U'
+- id: 1ll3t-JR
+  name: JR
+  family: J
+  alg: U (L' B L B') U (B L' B' L)
+  showcase_alg: '[U] S U S'''
+- id: 1ll3t-JR+
+  name: JR+
+  family: J
+  alg: U B D' F D B D' F' D B
+  showcase_alg: '[U] {L,BL} U R'' D R U R'' D'' R U'
+  showcase_label: EIF
+- id: 1ll3t-JR-
+  name: JR-
+  family: J
+  alg: U' R' L F' R L' R' L F R L'
+  showcase_alg: '[U''] {B,U} U'' R BR'' U R'' U'' R BR U R'''
+  showcase_label: EIF
+- id: 1ll3t-JL
+  name: JL
+  family: J
+  alg: U L' U' B u' L' U L' u B L
+  showcase_alg: '[U] {R,B} U'' R'' BR Rw'' U'' R U'' Rw BR U'
+  eif_alg: '[U] {R,BR} L R'' U R D'' R U'' R'' D L'''
+- id: 1ll3t-JL+
+  name: JL+
+  family: J
+  alg: U' B L' BL' B' L B L' BL B' L
+  showcase_alg: '[U''] {R,U} R U'' BR'' R'' U R U'' BR R'' U'
+  showcase_label: EIF
+- id: 1ll3t-JL-
+  name: JL-
+  family: J
+  alg: U (L' B L B') U (B' R B R')
+  showcase_alg: '[U] {U,BL} H'' U S'
+- id: 1ll3t-L
+  name: L
+  family: L
+  alg: L' U' B' L R' L R L' B L' U L
+  showcase_alg: R' U' L' R B' R B R' L R' U R
+  eif_alg: '[U] {L,U} U'' R BR Rw'' U R U'' Rw R'' BR'' U R'''
+- id: 1ll3t-L+
+  name: L+
+  family: L
+  alg: U' B' R' F' R B R' F R
+  showcase_alg: '[U''] {L,U} U'' R'' D'' R U R'' D R'
+  showcase_label: EIF
+- id: 1ll3t-L-
+  name: L-
+  family: L
+  alg: (B' R B R') U (B L' B' L) U (B L' B' L)
+  showcase_alg: '{U,BL} S U H U H'
+- id: 1ll3t-LC
+  name: LC
+  family: L
+  alg: U b' BR' B L' B' BR B' L B b
+  showcase_alg: '[U] {R,U} Rw'' D'' R U'' R'' D R'' U R Rw'
+  showcase_label: EIF
+- id: 1ll3t-LC+
+  name: LC+
+  family: L
+  alg: U' f R' U' (L' B L B') U f' L
+  showcase_alg: '[U''] {U,BL} BLw L'' U'' H'' U BLw'' B'
+- id: 1ll3t-LC-
+  name: LC-
+  family: L
+  alg: U (L' B L B') U' (L R' L' R) U' (L R' L' R)
+  showcase_alg: '[U] S U'' H U'' H'
+- id: 1ll3t-LA
+  name: LA
+  family: L
+  alg: l L' B L F' L B' L' F l'
+  showcase_alg: '{L,F} Rw R'' U R D'' R U'' R'' D Rw'''
+  showcase_label: EIF
+- id: 1ll3t-LA+
+  name: LA+
+  family: L
+  alg: L' B L b' L' B' BR B' L B BR' b
+  showcase_alg: '{R,U} U'' R U Rw'' U'' R'' D R'' U R D'' Rw'
+  showcase_label: EIF
+- id: 1ll3t-LA-
+  name: LA-
+  family: L
+  alg: U' R' br U' (L R' L' R) U B br'
+  showcase_alg: '[U''] B'' BLw U'' H U L BLw'''
+- id: 1ll3t-LB
+  name: LB
+  family: L
+  alg: B U' B' R B' R' B L' B L U B'
+  showcase_alg: '{U,BL} R U'' R'' L R'' L'' R B'' R B U R'''
+- id: 1ll3t-LB+
+  name: LB+
+  family: L
+  alg: U' B l' L B' L' B l B'
+  showcase_alg: '[U''] {L,F} U Rw'' R U'' R'' U Rw U'''
+  showcase_label: EIF
+- id: 1ll3t-LB-
+  name: LB-
+  family: L
+  alg: U' (B' R B R') U' (R' L R L')
+  showcase_alg: '[U''] {U,BR} H'' U'' S'
+- id: 1ll3t-LR
+  name: LR
+  family: L
+  alg: U' B U L' D L U' L D' L' B'
+  showcase_alg: '[U''] L U R'' D R U'' R D'' R'' L'''
+  eif_alg: '[U''] {B,BL} L'' D'' R U R'' D R'' U'' R L'
+- id: 1ll3t-LR+
+  name: LR+
+  family: L
+  alg: U' (B L' B' L) U' (L R' L' R)
+  showcase_alg: '[U''] S'' U'' H'
+- id: 1ll3t-LR-
+  name: LR-
+  family: L
+  alg: U L' B BL L B' L' B BL' L B'
+  showcase_alg: '[U] {R,U} U'' R BR U R'' U'' R BR'' U R'''
+  showcase_label: EIF
+- id: 1ll3t-LL
+  name: LL
+  family: L
+  alg: U' (B L' B' L) U' (L' B L B')
+  showcase_alg: '[U''] S'' U'' S'
+- id: 1ll3t-LL+
+  name: LL+
+  family: L
+  alg: U R B' BR R' B R B' BR' R' B
+  showcase_alg: '[U] {L,U} R U'' BR R'' U R U'' BR'' R'' U'
+  showcase_label: EIF
+- id: 1ll3t-LL-
+  name: LL-
+  family: L
+  alg: U' L' D BR' D' L' D BR D' L'
+  showcase_alg: '[U''] {R,F} U'' R D'' R'' U'' R D R'' U'''
+  showcase_label: EIF
+- id: 1ll3t-W
+  name: W
+  family: W
+  alg: U (B L' B' L) U (L R' L' R) U' (R B' R' B)
+  showcase_alg: '[U] S'' U H U'' {U,BL} S'''
+- id: 1ll3t-W+
+  name: W+
+  family: W
+  alg: U F' L' F' L B L' F L B' F
+  showcase_alg: '[U] {BR,U} U'' R'' U'' R D R'' U R D'' U'
+  eif_alg: '[U] {B,U} BR'' R'' U'' R D R'' U R D'' BR'
+- id: 1ll3t-W-
+  name: W-
+  family: W
+  alg: U' BR B BR B' L' B BR' B' BR' L
+  showcase_alg: '[U''] {BL,F} U R U R'' D'' R U'' R'' U'' D'
+- id: 1ll3t-WC
+  name: WC
+  family: W
+  alg: U' L R' L' R L R' F' L' R L R' F L' R
+  showcase_alg: '[U''] {B,U} R U'' R'' U R U'' BR'' R'' U R U'' BR R'' U'
+  showcase_label: EIF
+- id: 1ll3t-WC+
+  name: WC+
+  family: W
+  alg: U' (L' B L B') U' (B L' B' L) U (L' B L B')
+  showcase_alg: '[U''] S U'' S'' U S'
+- id: 1ll3t-WC-
+  name: WC-
+  family: W
+  alg: U' l' B L B' U' R' L R L' U l L'
+  showcase_alg: '[U''] Rw'' L R L'' U'' B'' R B R'' U Rw R'''
+  eif_alg: '[U''] {L,U} R U'' BR R'' U R U'' BR'' Rw'' R U R'' U'' Rw R'' U'
+- id: 1ll3t-WA
+  name: WA
+  family: W
+  alg: U B L' B' L B L' BL B' L B L' BL' B' L
+  showcase_alg: '[U] {R,U} R U'' R'' U R U'' BR R'' U R U'' BR'' R'' U'
+  showcase_label: EIF
+- id: 1ll3t-WA+
+  name: WA+
+  family: W
+  alg: U b L' B' L U (R B' R' B) U' (b' B)
+  showcase_alg: '[U] {U,BL} Rw B'' R'' B U S'' U'' Rs'''
+- id: 1ll3t-WA-
+  name: WA-
+  family: W
+  alg: U (B L' B' L) U (L' B L B') U' (B L' B' L)
+  showcase_alg: '[U] S'' U S U'' S'''
+- id: 1ll3t-WB
+  name: WB
+  family: W
+  alg: U' (R' L R L') U (L' B L B') U (L' B L B')
+  showcase_alg: '[U''] H'' U S U S'
+- id: 1ll3t-WB+
+  name: WB+
+  family: W
+  alg: U' BR' R U' (L R' L' R) U R' BR
+  showcase_alg: '[U''] {U,BR} BR'' R U'' S'' U R'' BR'
+  eif_alg: '[U''] {R,BR} D'' R BR'' U R'' U'' R BR R'' D'
+- id: 1ll3t-WB-
+  name: WB-
+  family: W
+  alg: U F R' U (B' R B R') U' R F'
+  showcase_alg: '[U] {U,BL} BL L'' U S U'' L BL'''
+  eif_alg: '[U] {R,U} Rw U'' BR R'' U R U'' BR'' U Rw'''
+- id: 1ll3t-WR
+  name: WR
+  family: W
+  alg: U R' l' L' R L BL' L R' L' BL l R
+  showcase_alg: '[U] {B,U} U'' Rw'' R'' U R D'' R U'' R'' D Rw U'
+  showcase_label: EIF
+- id: 1ll3t-WR+
+  name: WR+
+  family: W
+  alg: (b' B) U (R B' R' B) U' R B' R' b
+  showcase_alg: '{U,BL} Rs'' U S'' U'' L R'' L'' Rw'
+  eif_alg: '[U] {L,BL} U R'' U R U Rw'' D'' U R'' U'' R D'
+- id: 1ll3t-WR-
+  name: WR-
+  family: W
+  alg: U (R' L R L') U' (L R' L' R) U' (L R' L' R)
+  showcase_alg: '[U] {U,BR} S U'' S'' U'' S'''
+- id: 1ll3t-WL
+  name: WL
+  family: W
+  alg: U (l' L) B L' B' l U' l' B L B' (l L')
+  showcase_alg: '[U] Rs'' L R'' L'' Rw U'' Rw'' L R L'' Rs'
+  eif_alg: '[U] {L,F} Rw'' R U R'' U'' Rw BR'' Rw'' U R U'' Rw R'''
+- id: 1ll3t-WL+
+  name: WL+
+  family: W
+  alg: U' (R B' R' B) U (B' R B R') U (B' R B R')
+  showcase_alg: '[U''] {U,BL} S'' U S U S'
+- id: 1ll3t-WL-
+  name: WL-
+  family: W
+  alg: (l L') U' (R' L R L') U R' L R l'
+  showcase_alg: Rs U' H' U B' R B Rw'
+- id: 1ll3t-B
+  name: B
+  family: B
+  alg: U (L R' L' R) U (L R' L' R) U' (L' B L B') U' (L' B L B')
+  showcase_alg: '[U] H U H U'' S U'' S'
+- id: 1ll3t-B+
+  name: B+
+  family: B
+  alg: U (B' R B R') U (B' R B R') U (B L' B' L)
+  showcase_alg: '[U] {U,BL} S U S U H'
+- id: 1ll3t-B-
+  name: B-
+  family: B
+  alg: U' (L R' L' R) U' (L R' L' R) U' (L' B L B')
+  showcase_alg: '[U''] H U'' H U'' S'
+- id: 1ll3t-BC
+  name: BC
+  family: B
+  alg: U' (L R' L' R) U' (L R' L' R) U' (L R' L' R)
+  showcase_alg: '[U''] {U,BR} S'' U'' S'' U'' S'''
+- id: 1ll3t-BC+
+  name: BC+
+  family: B
+  alg: U BL' f' BL' B L B' L' BL f BL
+  showcase_alg: '[U] {F,U} U'' BLw'' U'' R L R'' L'' U BLw U'
+- id: 1ll3t-BC-
+  name: BC-
+  family: B
+  alg: U (B' R B R') U (B L' B' L) U (R B' R' B)
+  showcase_alg: '[U] {U,BL} S U H U S'''
+- id: 1ll3t-BA
+  name: BA
+  family: B
+  alg: U (B' R B R') U (B' R B R') U (B' R B R')
+  showcase_alg: '[U] {U,BL} S U S U S'
+- id: 1ll3t-BA+
+  name: BA+
+  family: B
+  alg: U (B L' B' L) U l L' B L' B' l' L'
+  showcase_alg: '[U] S'' U Rw R'' L R'' L'' Rw'' R'''
+- id: 1ll3t-BA-
+  name: BA-
+  family: B
+  alg: U F' br' F' R L R' L' F br F
+  showcase_alg: '[U] {BR,U} U'' BLw'' U'' L R L'' R'' U BLw U'
+- id: 1ll3t-BB
+  name: BB
+  family: B
+  alg: (B L' B' L) U' (L R' L' R) U (B L' B' L)
+  showcase_alg: S' U' H U S'
+- id: 1ll3t-BB+
+  name: BB+
+  family: B
+  alg: U BL' B' U' b R B' R' B b' U B BL
+  showcase_alg: '[U] {U,BL} BR'' R'' U'' Rw L R'' L'' R Rw'' U R BR'
+- id: 1ll3t-BB-
+  name: BB-
+  family: B
+  alg: (L' B L B') U l' L R' L R l L
+  showcase_alg: S U Rw' R B' R B Rw R
+- id: 1ll3t-BR
+  name: BR
+  family: B
+  alg: U' br B' U R B' R' B U' br' R
+  showcase_alg: '[U''] BLw L'' U B L'' B'' L U'' BLw'' B'
+- id: 1ll3t-BR+
+  name: BR+
+  family: B
+  alg: L' f U (R B' R' B) U' f' L
+  showcase_alg: '{U,BL} B'' BLw U S'' U'' BLw'' B'
+- id: 1ll3t-BR-
+  name: BR-
+  family: B
+  alg: U (L R' L' R) U' (L R' L' R) U (R' L R L')
+  showcase_alg: '[U] {U,BR} S'' U'' S'' U S'
+- id: 1ll3t-BL
+  name: BL
+  family: B
+  alg: br' R U (L' B L B') U' br B'
+  showcase_alg: BLw' B U S U' BLw L'
+- id: 1ll3t-BL+
+  name: BL+
+  family: B
+  alg: (B L' B' L) U' (L' B L B') U (L' B L B')
+  showcase_alg: S' U' S U S
+- id: 1ll3t-BL-
+  name: BL-
+  family: B
+  alg: U' B' bl U (R' L R L') U' bl' B
+  showcase_alg: '[U''] {U,BR} B'' BLw U S U'' BLw'' B'
+- id: 1ll3t-Z
+  name: Z
+  family: Z
+  alg: U' B' R B R F' R B' R' F R B
+  showcase_alg: '[U''] {L,U} U'' R U R D'' R U'' R'' D R U'
+  showcase_label: EIF
+- id: 1ll3t-Z+
+  name: Z+
+  family: Z
+  alg: U L R F L F' R F L' F' L' R
+  showcase_alg: '[U] {B,U} R U BR R BR'' U BR R'' BR'' R'' U'
+  showcase_label: EIF
+- id: 1ll3t-Z-
+  name: Z-
+  family: Z
+  alg: U (R B' R' B) U' (L R' L' R) U (R' L R L')
+  showcase_alg: '[U] {U,BR} H U'' S'' U S'
+  eif_alg: '[U''] {L,BL} U'' D R U R Rw'' U R'' U'' R'' Rw D'''
+- id: 1ll3t-ZC
+  name: ZC
+  family: Z
+  alg: R' L F R L' U' L R' F R L'
+  showcase_alg: '{B,U} U'' R BR U R'' F'' R U'' BR U R'''
+  showcase_label: EIF
+- id: 1ll3t-ZC+
+  name: ZC+
+  family: Z
+  alg: U R F' U (R B' R' B) U' F R'
+  showcase_alg: '[U] {U,BL} L BL'' U S'' U'' BL L'''
+- id: 1ll3t-ZC-
+  name: ZC-
+  family: Z
+  alg: U' L R' F L' R L R' F' R L'
+  showcase_alg: '[U''] {B,U} R U'' BR R'' U R U'' BR'' U R'''
+  showcase_label: EIF
+- id: 1ll3t-ZA
+  name: ZA
+  family: Z
+  alg: U B L' BL' (D L' D' L) BL B' L
+  showcase_alg: '[U] {F,BR} B R'' U'' S'' U B'' R'
+  eif_alg: '[U] {B,BL} U'' R'' BR'' U'' BR U R'' U'' R BR'' R'' U R BR R U'
+- id: 1ll3t-ZA+
+  name: ZA+
+  family: Z
+  alg: U' R' U' L u' R' U' R' u L U' R
+  showcase_alg: '[U''] {B,L} U'' R'' BR Rw'' U'' R'' U'' Rw BR R'' U'
+- id: 1ll3t-ZA-
+  name: ZA-
+  family: Z
+  alg: U' R B' BR' R' BR B R' U R
+  showcase_alg: '[U''] {U,BR} R B'' BR'' R'' BR B R'' U R'
+- id: 1ll3t-ZB
+  name: ZB
+  family: Z
+  alg: L' B BL' B' L B L' BL L B'
+  showcase_alg: '{R,U} U'' R BR'' R'' U R U'' BR U R'''
+  showcase_label: EIF
+- id: 1ll3t-ZB+
+  name: ZB+
+  family: Z
+  alg: U' B' D' BR' R' D' R D BR D B
+  showcase_alg: '[U''] {BL,BR} B'' R'' U'' L'' R'' L R U R B'
+  eif_alg: '[U''] {B,U} R U'' R'' U'' Rw'' U'' R'' U'' R U'' Rw U'''
+- id: 1ll3t-ZB-
+  name: ZB-
+  family: Z
+  alg: U' (L' B L B') U (L' B L B')
+  showcase_alg: '[U''] S U S'
+- id: 1ll3t-ZR
+  name: ZR
+  family: Z
+  alg: U' (R' L R L') U (R' L R L') U' (R' L R L')
+  showcase_alg: '[U''] {U,BR} S U S U'' S'
+  eif_alg: '[U''] {L,U} L'' U L Rw'' U'' R'' U'' R U'' Rw U'''
+- id: 1ll3t-ZR+
+  name: ZR+
+  family: Z
+  alg: U' (L R' L' R) U (B L' B' L)
+  showcase_alg: '[U''] H U S'''
+- id: 1ll3t-ZR-
+  name: ZR-
+  family: Z
+  alg: U' (b B') R B' R' b2 B'
+  showcase_alg: '[U''] {U,BL} Rs L R'' L'' Rw2 R'''
+- id: 1ll3t-ZL
+  name: ZL
+  family: Z
+  alg: U' (L' B L B') U (L R' L' R)
+  showcase_alg: '[U''] S U H'
+- id: 1ll3t-ZL+
+  name: ZL+
+  family: Z
+  alg: R f' U' (R B' R' B) U f R'
+  showcase_alg: '{U,BL} L BLw'' U'' S'' U BLw L'''
+- id: 1ll3t-ZL-
+  name: ZL-
+  family: Z
+  alg: U' F L F' L' R' L R F L' F'
+  showcase_alg: '[U''] {BR,U} U R U'' R'' L'' R L U R'' U'''
+- id: 1ll3t-S
+  name: S
+  family: S
+  alg: U L R' L' R' BR R' L R BR' R' L'
+  showcase_alg: '[U] {R,BR} U R'' U'' R'' D R'' U R D'' R'' U'''
+  showcase_label: EIF
+- id: 1ll3t-S+
+  name: S+
+  family: S
+  alg: U' (R' L R L') U (B L' B' L) U' (L' B L B')
+  showcase_alg: '[U''] H'' U S'' U'' S'
+  eif_alg: '{R,F} D'' U R'' U'' R'' Rw U'' R U R Rw'' D'
+- id: 1ll3t-S-
+  name: S-
+  family: S
+  alg: l' D L' F L' R' L R F' L D' l
+  showcase_alg: '{BR,U} Rw'' B R'' U R'' L'' R L U'' R B'' Rw'
+- id: 1ll3t-SC
+  name: SC
+  family: S
+  alg: U f' L U' (B' R B R') U f R'
+  showcase_alg: '[U] {U,BL} BLw'' B U'' S U BLw L'''
+- id: 1ll3t-SC+
+  name: SC+
+  family: S
+  alg: U bl' B U R U' B' bl U' R'
+  showcase_alg: '[U] {U,BR} BLw'' B U R U'' B'' BLw U'' R'''
+- id: 1ll3t-SC-
+  name: SC-
+  family: S
+  alg: U BR' R' B' BR (B R' B' R) BR' B R BR
+  showcase_alg: '[U] {BL,U} U'' R'' L'' U S'' U'' L R U'
+- id: 1ll3t-SA
+  name: SA
+  family: S
+  alg: R B' BR' R' B U B' R BR' R' B
+  showcase_alg: '{L,U} R U'' BR'' R'' U F U'' R BR'' R'' U'
+  showcase_label: EIF
+- id: 1ll3t-SA+
+  name: SA+
+  family: S
+  alg: U B' R BR' B R' B' R BR R' B
+  showcase_alg: '[U] {L,U} U'' R BR'' U R'' U'' R BR R'' U'
+  showcase_label: EIF
+- id: 1ll3t-SA-
+  name: SA-
+  family: S
+  alg: U' R' BR U' (R' L R L') U BR' R
+  showcase_alg: '[U''] {U,BR} R'' BR U'' S U BR'' R'
+- id: 1ll3t-SB
+  name: SB
+  family: S
+  alg: f R' U (R B' R' B) U' f' L
+  showcase_alg: '{U,BL} BLw L'' U S'' U'' BLw'' B'
+- id: 1ll3t-SB+
+  name: SB+
+  family: S
+  alg: U (B L' B' L) U' (B L' B' L)
+  showcase_alg: '[U] S'' U'' S'''
+- id: 1ll3t-SB-
+  name: SB-
+  family: S
+  alg: U L D F R D R' D' F' D' L'
+  showcase_alg: '[U] {BR,F} L R U B R B'' R'' U'' R'' L'''
+  eif_alg: '[U] {L,F} U R'' U'' R BR'' U R D'' R U'' R'' D R'''
+- id: 1ll3t-SR
+  name: SR
+  family: S
+  alg: (B' R B R') U' (L R' L' R)
+  showcase_alg: '{U,BR} H'' U'' S'''
+- id: 1ll3t-SR+
+  name: SR+
+  family: S
+  alg: U BR' B' BR B R B' R' BR' B BR
+  showcase_alg: '[U] {BL,F} U'' R'' U R B R'' B'' U'' R U'
+- id: 1ll3t-SR-
+  name: SR-
+  family: S
+  alg: R' br U (R' L R L') U' br' R
+  showcase_alg: B' BLw U H' U' BLw' B
+- id: 1ll3t-SL
+  name: SL
+  family: S
+  alg: U (R B' R' B) U' (R B' R' B) U (R B' R' B)
+  showcase_alg: '[U] {U,BL} S'' U'' S'' U S'''
+- id: 1ll3t-SL+
+  name: SL+
+  family: S
+  alg: U l' L R' L R l L2'
+  showcase_alg: '[U] {B,U} Rw'' R U'' R U Rw R2'''
+  showcase_label: EIF
+- id: 1ll3t-SL-
+  name: SL-
+  family: S
+  alg: U (B' R B R') U' (L' B L B')
+  showcase_alg: '[U] {U,BL} S U'' H'''
+- id: 1ll3t-T
+  name: T
+  family: T
+  alg: (L R' L' R) (L' B L B')
+  showcase_alg: H S
+- id: 1ll3t-T+
+  name: T+
+  family: T
+  alg: R' L' r' R L' R L r R' L
+  showcase_alg: '{R,BR} R'' U'' Rw'' R U'' R U Rw R'' U'
+  showcase_label: EIF
+- id: 1ll3t-T-
+  name: T-
+  family: T
+  alg: R B r R' B R' B' r' R B'
+  showcase_alg: '{L,U} R U Rw R'' U R'' U'' Rw'' R U'''
+  showcase_label: EIF
+- id: 1ll3t-TC
+  name: TC
+  family: T
+  alg: R' L' BL L' R L BL' L
+  showcase_alg: '{B,U} U'' R'' D R'' U R D'' R'
+  showcase_label: EIF
+- id: 1ll3t-TC+
+  name: TC+
+  family: T
+  alg: (R' L R L')
+  showcase_alg: H'
+- id: 1ll3t-TC-
+  name: TC-
+  family: T
+  alg: R' L R L BL L' R' L BL' L' R L'
+  showcase_alg: '{B,U} U'' R U R D R'' U'' R D'' R'' U R'''
+  showcase_label: EIF
+- id: 1ll3t-TA
+  name: TA
+  family: T
+  alg: R B BL' B R' B' BL B'
+  showcase_alg: '{B,BL} U R D'' R U'' R'' D R'''
+  showcase_label: EIF
+- id: 1ll3t-TA+
+  name: TA+
+  family: T
+  alg: R B' R' B' BL' B R B' BL B R' B
+  showcase_alg: '{B,BL} U R'' U'' R'' D'' R U R'' D R U'' R'
+  showcase_label: EIF
+- id: 1ll3t-TA-
+  name: TA-
+  family: T
+  alg: (R B' R' B)
+  showcase_alg: '{U,BL} S'''
+- id: 1ll3t-TB
+  name: TB
+  family: T
+  alg: D' R' D BL' D R' D' BL D' R' D
+  showcase_alg: '{B,BR} R'' U'' R D'' R U'' R'' D R'' U'' R'
+  showcase_label: EIF
+- id: 1ll3t-TB+
+  name: TB+
+  family: T
+  alg: L r' L' R L r R2' L' R
+  showcase_alg: '{R,BR} U Rw'' U'' R U Rw R2'' U'' R'
+  showcase_label: EIF
+- id: 1ll3t-TB-
+  name: TB-
+  family: T
+  alg: B' r B R' B' r' R' B R'
+  showcase_alg: '{L,U} U'' Rw U R'' U'' Rw'' R'' U R'''
+  showcase_label: EIF
+- id: 1ll3t-TR
+  name: TR
+  family: T
+  alg: U B BL B' R B BL' B R' B
+  showcase_alg: '[U] {B,BL} R D R'' U R D'' R U'' R'
+  showcase_label: EIF
+- id: 1ll3t-TR+
+  name: TR+
+  family: T
+  alg: U B BL B' R B BL B R' B' BL B2
+  showcase_alg: '[U] {B,BL} R D R'' U R D R U'' R'' D R2'
+  showcase_label: EIF
+- id: 1ll3t-TR-
+  name: TR-
+  family: T
+  alg: U B br' U' (L' B L B') U br B'
+  showcase_alg: '[U] L BLw'' U'' S U BLw L'''
+  eif_alg: '{L,U} U'' D R'' U R D'' {L,D} R'' U R U'''
+  eif_label: EIF
+- id: 1ll3t-TL
+  name: TL
+  family: T
+  alg: U' L' BL' L R' L' BL L2 R L'
+  showcase_alg: '[U''] {B,U} R'' D'' R U'' R'' D R2 U R'''
+  showcase_label: EIF
+- id: 1ll3t-TL+
+  name: TL+
+  family: T
+  alg: U' R f' U (R B' R' B) U' f R'
+  showcase_alg: '[U''] {U,BL} L BLw'' U S'' U'' BLw L'''
+  eif_alg: '{R,BR} U D'' R U'' R'' D {BR,F} R B'' R'' B'
+  eif_label: EIF
+- id: 1ll3t-TL-
+  name: TL-
+  family: T
+  alg: U' L' BL' L R' L' BL' L' R L BL' L
+  showcase_alg: '[U''] {B,U} R'' D'' R U'' R'' D'' R'' U R D'' R'
+  showcase_label: EIF
+- id: 1ll3t-X
+  name: X
+  family: X
+  alg: (L' B L B') U (L' B L B') U (B L' B' L) U' (L R' L' R)
+  showcase_alg: S U S U S' U' H
+- id: 1ll3t-X+
+  name: X+
+  family: X
+  alg: U' (B L' B' L) U' (B L' B' L) U' (L' B L B') U (B L' B' L)
+  showcase_alg: '[U''] S'' U'' S'' U'' S U S'''
+- id: 1ll3t-X-
+  name: X-
+  family: X
+  alg: U (L' B L B') U (L' B L B') U (B L' B' L) U' (L' B L B')
+  showcase_alg: '[U] S U S U S'' U'' S'
+- id: 1ll3t-XB
+  name: XB
+  family: X
+  alg: (R' L R L') U (L' B L B') U' (B L' B' L) U' (B L' B' L)
+  showcase_alg: H' U S U' S' U' S'
+- id: 1ll3t-XB+
+  name: XB+
+  family: X
+  alg: U' (B L' B' L) U (L' B L B') U' (B L' B' L) U' (B L' B' L)
+  showcase_alg: '[U''] S'' U S U'' S'' U'' S'''
+- id: 1ll3t-XB-
+  name: XB-
+  family: X
+  alg: (L' B L B') U' (B L' B' L) U (L' B L B') U (L' B L B')
+  showcase_alg: '[U] S U'' S'' U S U S'
+- id: 1ll3t-Y
+  name: Y
+  family: Y
+  alg: U' (B L' B' L) U (L R' L' R) U (L R' L' R)
+  showcase_alg: '[U''] S'' U H U H'
+- id: 1ll3t-Y+
+  name: Y+
+  family: Y
+  alg: (R B' R' B) U' (B' R B R') U' (B' R B R')
+  showcase_alg: '{U,BL} S'' U'' S U'' S'
+- id: 1ll3t-Y-
+  name: Y-
+  family: Y
+  alg: (R' L R L') U (L R' L' R) U (L R' L' R)
+  showcase_alg: '{U,BR} S U S'' U S'''
+- id: 1ll3t-YB
+  name: YB
+  family: Y
+  alg: U' (R B' R' B) U (R B' R' B) U (B L' B' L)
+  showcase_alg: '[U''] {U,BL} S'' U S'' U H'
+- id: 1ll3t-YB+
+  name: YB+
+  family: Y
+  alg: (B' R B R') U' (B' R B R') U' (R B' R' B)
+  showcase_alg: '{U,BL} S U'' S U'' S'''
+- id: 1ll3t-YB-
+  name: YB-
+  family: Y
+  alg: (L R' L' R) U (L R' L' R) U (R' L R L')
+  showcase_alg: '{U,BR} S'' U S'' U S'

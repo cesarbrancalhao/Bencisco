@@ -1,0 +1,50 @@
+---
+import { getEntry } from 'astro:content';
+import CaseCard from './CaseCard.astro';
+
+/**
+ * Renders a grid of cases from a YAML data file in src/data/.
+ * Each case shows its `showcase_alg` (community notation) when present;
+ * `alg` (Twizzle notation) is only used to drive the interactive applet.
+ */
+interface Props {
+	src: string;
+	showViewer?: boolean;
+	sections?: boolean;
+}
+
+const { src, showViewer = true, sections = false } = Astro.props;
+const entry = await getEntry('algs', src);
+if (!entry) throw new Error(`AlgTable: no data file found at src/data/${src}.yaml`);
+
+const familyPrefixes = entry.data.family_prefixes;
+const setupPrefix = entry.data.setup_prefix;
+const familySuffixes = entry.data.family_suffixes;
+const setupSuffix = entry.data.setup_suffix;
+
+const grouped = sections
+	? entry.data.cases.reduce<Record<string, typeof entry.data.cases>>((acc, c) => {
+			const family = c.family ?? '';
+			if (!acc[family]) acc[family] = [];
+			acc[family].push(c);
+			return acc;
+		}, {})
+	: null;
+---
+
+{
+	grouped ? (
+		Object.entries(grouped).map(([family, cases]) => (
+			<section>
+				<h2 class="not-content text-lg font-semibold">{family}</h2>
+				<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} showViewer={showViewer} />)}
+				</div>
+			</section>
+		))
+	) : (
+		<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			{entry.data.cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} showViewer={showViewer} />)}
+		</div>
+	)
+}

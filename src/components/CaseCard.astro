@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PuzzleViewer from './PuzzleViewer.astro';
+
+type AlgCase = CollectionEntry<'algs'>['data']['cases'][number];
+
+interface Props {
+	case: AlgCase;
+	setupPrefix?: string;
+	setupSuffix?: string;
+	showViewer?: boolean;
+}
+
+const { case: c, setupPrefix, setupSuffix, showViewer = true } = Astro.props;
+// Per-case thumbnails are generated into public/thumbnails/<id>.webp by
+// `npm run thumbnails`. Fall back to the placeholder if missing.
+import { existsSync } from 'node:fs';
+const generated = `/thumbnails/${c.id}.webp`;
+const thumbnail =
+	c.thumbnail ?? (existsSync(`${process.cwd()}/public${generated}`) ? generated : '/thumbnails/placeholder.svg');
+// Collect all showcase_alg* fields (showcase_alg, showcase_alg1, showcase_alg2, ...)
+const showcaseAlgs: string[] = [];
+if (c.showcase_alg) showcaseAlgs.push(c.showcase_alg);
+for (let i = 1; ; i++) {
+	const key = `showcase_alg${i}` as keyof typeof c;
+	if (typeof c[key] === 'string') showcaseAlgs.push(c[key] as string);
+	else break;
+}
+// Optional orientation labels, rendered as colored "(...)" prefixes.
+const showcaseLabel = c.showcase_label ? `(${c.showcase_label})` : null;
+const eifLabel = `(${c.eif_label ?? 'EIF'})`;
+---
+
+<div class="case-card flex flex-col items-center gap-1 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
+	<PuzzleViewer alg={c.alg} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} interactive={showViewer} />
+	<div class="flex flex-col items-center gap-1 text-center">
+		{c.name && <span class="font-semibold">{c.name}</span>}
+		{c.family && <span class="text-sm text-gray-500">{c.family}</span>}
+		{showcaseAlgs.map((alg) => (
+			<code class="text-sm font-bold">
+				{showcaseLabel && <span class="font-normal text-indigo-500 dark:text-indigo-400">{showcaseLabel} </span>}
+				{alg}
+			</code>
+		))}
+		{c.eif_alg && (
+			<code class="text-sm text-gray-500 dark:text-gray-400">
+				<span class="text-indigo-500 dark:text-indigo-400">{eifLabel}</span> {c.eif_alg}
+			</code>
+		)}
+	</div>
+</div>

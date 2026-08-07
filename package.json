@@ -1,0 +1,29 @@
+{
+  "name": "bencisco",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "imgs": "node scripts/generate-thumbnails.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.41.6",
+    "@astrojs/starlight-tailwind": "^5.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.0.2",
+    "cubing": "^0.63.3",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "playwright-core": "^1.62.1",
+    "typescript": "^6.0.3",
+    "yaml": "^2.9.0"
+  }
+}

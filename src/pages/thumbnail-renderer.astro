@@ -1,0 +1,67 @@
+---
+/**
+ * Build tooling — NOT a site page (unlinked, no layout).
+ * Renders every alg case at its unsolved case state, one <twisty-player>
+ * per case, so scripts/generate-thumbnails.mjs can screenshot them into
+ * public/thumbnails/<case-id>.webp.
+ */
+import { getCollection } from 'astro:content';
+import { Alg } from 'cubing/alg';
+
+const algs = await getCollection('algs');
+const cases = algs.flatMap((entry) =>
+	entry.data.cases.map((c) => {
+		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
+		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
+
+		let setupAlg: string | undefined;
+		try {
+			const prefix = setupPrefix ? `${setupPrefix} ` : '';
+			const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+			setupAlg = new Alg(`${prefix}${new Alg(c.alg).invert().toString()}${suffix}`).toString();
+		} catch {
+			return null;
+		}
+
+		let effectiveAlg = c.alg;
+		if (setupSuffix) {
+			try {
+				effectiveAlg = new Alg(`${c.alg} ${setupSuffix}`).toString();
+			} catch {
+				// keep original if suffix can't be parsed
+			}
+		}
+		return { ...c, setupAlg, effectiveAlg, topDown: entry.data.top_down ?? false };
+	}),
+).filter((c) => c !== null);
+---
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>thumbnail renderer</title>
+	</head>
+	<body>
+		{
+			cases.map((c) => (
+				<div data-thumb-case={c.id} style="width: 256px; height: 192px; display: inline-block;">
+					<twisty-player
+						puzzle="fto"
+						alg={c.effectiveAlg}
+						experimental-setup-alg={c.setupAlg}
+						hint-facelets={c.topDown ? undefined : "none"}
+						background="none"
+						control-panel="none"
+						camera-latitude={c.topDown ? 90 : undefined}
+						camera-latitude-limit={c.topDown ? 180 : undefined}
+						camera-distance={c.topDown ? 6.2 : undefined}
+						style="width: 256px; height: 192px;"
+					/>
+				</div>
+			))
+		}
+		<script>
+			import 'cubing/twisty';
+		</script>
+	</body>
+</html>

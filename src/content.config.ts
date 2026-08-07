@@ -1,0 +1,63 @@
+import { defineCollection } from 'astro:content';
+import { z } from 'astro:schema';
+import { glob } from 'astro/loaders';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
+
+/**
+ * A single alg case.
+ *
+ * - `alg` - Twizzle notation; what <twisty-player> animates.
+ * - `showcase_alg` - the written alg shown to the user (community notation;
+ *   not always Twizzle-compatible, hence stored separately).
+ * - `showcase_label` - optional styled prefix for the showcase alg, e.g.
+ *   "EIF" or "CIF -> EIF" (rendered in parentheses, indigo).
+ * - `eif_alg` - optional EIF variant, shown secondary; `eif_label` overrides
+ *   its "(EIF)" prefix label.
+ * - `name` - prominent label on the card; `family` - small secondary label.
+ * - `preset` - per-case setup-alg prefix; overrides file/family-level prefixes.
+ * - `postset` - per-case move/rotation appended after the alg; overrides
+ *   file/family-level suffixes.
+ */
+const algCase = z.object({
+	id: z.string(),
+	name: z.string().optional(),
+	family: z.string().optional(),
+	alg: z.string(),
+	showcase_alg: z.string().optional(),
+	showcase_label: z.string().optional(),
+	eif_alg: z.string().optional(),
+	eif_label: z.string().optional(),
+	preset: z.string().optional(),
+	postset: z.string().optional(),
+	thumbnail: z.string().optional(),
+}).passthrough(); // allows showcase_alg1, showcase_alg2, ... for multi-alg cases
+
+const algs = defineCollection({
+	loader: glob({ pattern: '*.yaml', base: './src/data' }),
+	schema: z.object({
+		// Prepended to every case's setup-alg, e.g. "Rv T" to put yellow on
+		// top for last-layer cases. Drives both the applet and the thumbnails.
+		setup_prefix: z.string().optional(),
+		// Appended to every case's alg (post-solve rotation), e.g. "Rv" to
+		// align or change the final view. Drives both the applet and thumbnails.
+		setup_suffix: z.string().optional(),
+		// Per-family setup-alg prefixes (family name -> prefix).
+		// Overrides `setup_prefix` for cases in that family.
+		// A case-level `preset` still takes precedence over both.
+		family_prefixes: z.record(z.string(), z.string()).optional(),
+		// Per-family post-alg suffixes (family name -> suffix).
+		// Overrides `setup_suffix` for cases in that family.
+		// A case-level `postset` still takes precedence over both.
+		family_suffixes: z.record(z.string(), z.string()).optional(),
+		// Render thumbnails from a raised top-down camera angle (shows the top
+		// face plus all sides) instead of the default flat face-on view.
+		top_down: z.boolean().optional(),
+		cases: z.array(algCase),
+	}),
+});
+
+export const collections = {
+	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+	algs,
+};
