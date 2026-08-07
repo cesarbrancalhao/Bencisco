@@ -6,8 +6,6 @@ import { parse as parseYaml } from 'yaml';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 
-const BASE = '/Bencisco';
-
 function read1LL3TCaseIds() {
 	const yamlPath = fileURLToPath(new URL('./src/data/1ll3t.yaml', import.meta.url));
 	if (!existsSync(yamlPath)) return [];
@@ -19,13 +17,11 @@ function randomIconScript() {
 	const ids = read1LL3TCaseIds();
 	if (ids.length === 0) return '';
 	const json = JSON.stringify(ids.map(/** @type {(id: string) => string} */ (id) => `${id}.webp`));
-	return `(function(){var i=${json};var p=i[Math.floor(Math.random()*i.length)];var h='${BASE}/icons/'+p;(new MutationObserver(function(m,o){var e=document.querySelector('.site-icon');if(e){e.src=h;o.disconnect()}})).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('link[rel="icon"],link[rel="shortcut icon"]').forEach(function(e){e.remove()});var l=document.createElement('link');l.rel='icon';l.href=h;document.head.appendChild(l)})})()`;
+	return `(function(){var i=${json};var p=i[Math.floor(Math.random()*i.length)];var h='/icons/'+p;(new MutationObserver(function(m,o){var e=document.querySelector('.site-icon');if(e){e.src=h;o.disconnect()}})).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('link[rel="icon"],link[rel="shortcut icon"]').forEach(function(e){e.remove()});var l=document.createElement('link');l.rel='icon';l.href=h;document.head.appendChild(l)})})()`;
 }
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://cesarbrancalhao.github.io',
-	base: BASE,
 	output: 'static',
 	vite: {
 		plugins: [tailwindcss()],
