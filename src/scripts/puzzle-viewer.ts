@@ -47,8 +47,7 @@ function activate(host: HTMLElement): void {
 			player.setAttribute('puzzle', puzzle);
 			player.setAttribute('alg', alg);
 			if (setupAlg) player.setAttribute('experimental-setup-alg', setupAlg);
-			// data-hint-facelets omitted => twisty default (hints shown)
-			if (host.dataset.hintFacelets) player.setAttribute('hint-facelets', host.dataset.hintFacelets);
+			player.setAttribute('hint-facelets', 'none');
 			player.setAttribute('background', 'none');
 			player.style.width = '256px';
 			player.style.height = '192px';
