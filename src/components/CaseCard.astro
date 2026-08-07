@@ -15,9 +15,9 @@ const { case: c, setupPrefix, setupSuffix, showViewer = true } = Astro.props;
 // Per-case thumbnails are generated into public/thumbnails/<id>.webp by
 // `npm run thumbnails`. Fall back to the placeholder if missing.
 import { existsSync } from 'node:fs';
-const generated = `/thumbnails/${c.id}.webp`;
+const generated = `/Bencisco/thumbnails/${c.id}.webp`;
 const thumbnail =
-	c.thumbnail ?? (existsSync(`${process.cwd()}/public${generated}`) ? generated : '/thumbnails/placeholder.svg');
+	c.thumbnail ?? (existsSync(`${process.cwd()}/public/thumbnails/${c.id}.webp`) ? generated : '/Bencisco/thumbnails/placeholder.svg');
 // Collect all showcase_alg* fields (showcase_alg, showcase_alg1, showcase_alg2, ...)
 const showcaseAlgs: string[] = [];
 if (c.showcase_alg) showcaseAlgs.push(c.showcase_alg);
