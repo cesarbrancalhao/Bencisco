@@ -1,0 +1,68 @@
+---
+/**
+ * Build tooling — NOT a site page (unlinked, no layout).
+ * Renders every 1LL3T case as a square twisty-player without hint facelets,
+ * so scripts/generate-icons.mjs can screenshot them into public/icons/<id>.webp.
+ */
+import { getCollection } from 'astro:content';
+import { Alg } from 'cubing/alg';
+
+const algs = await getCollection('algs');
+const cases = algs.flatMap((entry) => {
+	// Only 1LL3T cases
+	if (!entry.id.endsWith('1ll3t')) return [];
+	return entry.data.cases.map((c) => {
+		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
+		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
+
+		let setupAlg: string | undefined;
+		try {
+			const prefix = setupPrefix ? `${setupPrefix} ` : '';
+			const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+			setupAlg = new Alg(`${prefix}${new Alg(c.alg).invert().toString()}${suffix}`).toString();
+		} catch {
+			return null;
+		}
+
+		let effectiveAlg = c.alg;
+		if (setupSuffix) {
+			try {
+				effectiveAlg = new Alg(`${c.alg} ${setupSuffix}`).toString();
+			} catch {
+				// keep original
+			}
+		}
+		return { ...c, setupAlg, effectiveAlg };
+	});
+}).filter((c) => c !== null);
+---
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>icon renderer</title>
+	</head>
+	<body>
+		{
+			cases.map((c) => (
+				<div data-icon-case={c.id} style="width: 256px; height: 256px; display: inline-block;">
+					<twisty-player
+						puzzle="fto"
+						alg={c.effectiveAlg}
+						experimental-setup-alg={c.setupAlg}
+						hint-facelets="none"
+						background="none"
+						control-panel="none"
+						camera-latitude={90}
+						camera-latitude-limit={180}
+						camera-distance={6.2}
+						style="width: 256px; height: 256px;"
+					/>
+				</div>
+			))
+		}
+		<script>
+			import 'cubing/twisty';
+		</script>
+	</body>
+</html>

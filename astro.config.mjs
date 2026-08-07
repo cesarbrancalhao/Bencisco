@@ -1,7 +1,24 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { readFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { parse as parseYaml } from 'yaml';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
+
+function read1LL3TCaseIds() {
+	const yamlPath = fileURLToPath(new URL('./src/data/1ll3t.yaml', import.meta.url));
+	if (!existsSync(yamlPath)) return [];
+	const doc = parseYaml(readFileSync(yamlPath, 'utf-8'));
+	return (/** @type {Array<{id: string}>} */ (doc.cases || [])).map((c) => c.id).filter(Boolean);
+}
+
+function randomIconScript() {
+	const ids = read1LL3TCaseIds();
+	if (ids.length === 0) return '';
+	const json = JSON.stringify(ids.map(/** @type {(id: string) => string} */ (id) => `${id}.webp`));
+	return `(function(){var i=${json};var p=i[Math.floor(Math.random()*i.length)];var h='/icons/'+p;(new MutationObserver(function(m,o){var e=document.querySelector('.site-icon');if(e){e.src=h;o.disconnect()}})).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('link[rel="icon"],link[rel="shortcut icon"]').forEach(function(e){e.remove()});var l=document.createElement('link');l.rel='icon';l.href=h;document.head.appendChild(l)})})()`;
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +38,15 @@ export default defineConfig({
 			// Set to true to re-enable Starlight's built-in Pagefind search.
 			tableOfContents: false,
 			pagefind: false,
+			head: [
+				{
+					tag: 'script',
+					content: randomIconScript(),
+				},
+			],
+			components: {
+				SiteTitle: './src/components/SiteTitle.astro',
+			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/cesarbrancalhao/Bencisco' },
 				{ icon: 'discord', label: 'Discord', href: 'https://discord.com/invite/NK53NGmDB6' },
