@@ -20,6 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: withastro/action@v6
+        with:
+          build-cmd: npm run build:pages
 
   deploy:
     needs: build

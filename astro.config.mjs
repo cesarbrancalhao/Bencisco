@@ -23,7 +23,6 @@ function randomIconScript() {
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://cesarbrancalhao.github.io',
-	base: 'Bencisco',
 	output: 'static',
 	vite: {
 		plugins: [tailwindcss()],
