@@ -5,13 +5,13 @@ setup_prefix: "LBLv"
 top_down: true
 cases:
   - id: tcp-01
-    name: Placeholder A1
+    name: Placeholder Alg 1
     family: A
     alg: "T' R U R' U' T"
     showcase_alg: "{U, R} R U R' U' {R, D}"
     eif_alg: "TODO"
   - id: tcp-02
-    name: Placeholder B1
+    name: Placeholder Alg 2
     family: B
     alg: "R U R' U' R U2 R'"
     showcase_alg: "R U R' U' R U2 R'"

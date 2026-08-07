@@ -5,12 +5,12 @@ setup_prefix: "LBLv"
 top_down: true
 cases:
   - id: olp-01
-    name: Easy case
+    name: Placeholder Alg 1
     alg: "R U R'"
     showcase_alg: "R U R'"
     eif_alg: "TODO"
   - id: olp-02
-    name: Hard case
+    name: Placeholder Alg 2
     alg: "L' U' L"
     showcase_alg: "L' U' L"
     eif_alg: "TODO"

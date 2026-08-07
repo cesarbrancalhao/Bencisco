@@ -1,2 +1,12 @@
 @import 'tailwindcss';
 @import '@astrojs/starlight-tailwind';
+
+.sl-link-button.minimal {
+	border-color: var(--sl-color-text-accent);
+	padding-inline: 1.125rem;
+}
+
+.sl-link-button.minimal:hover {
+	background: var(--sl-color-text-accent);
+	color: var(--sl-color-black);
+}
