@@ -16,3 +16,9 @@ li:has(.sl-badge.default) > a {
 	pointer-events: none;
 	opacity: 0.5;
 }
+
+.sl-badge.default {
+	background: #4a4a4a;
+	color: #fff;
+	border-color: #666;
+}
