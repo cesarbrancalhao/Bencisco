@@ -16,11 +16,11 @@ cases:
     alg: "T' U (f F') U F U' (f' F) U F' U"
     preset: "Rv"
     showcase_alg: "{R, L} U Fs U F U' Fs' U F' U"
-    eif_alg: "U' R U' Rs U R' U' Rs' U'"
+    eif_alg: "U Rs U R U' Rs' U R' U"
   - id: 2ltcp-03
     name: 3 Triangle CCW
     family: TCP
     alg: "T' U' F U' (f F') U F' U' (f' F) U'"
     preset: "Rv"
     showcase_alg: "{R, L} U' F U' Fs U F' U' Fs' U'"
-    eif_alg: "U Rs U R U' Rs' U R' U"
+    eif_alg: "U' R U' Rs U R' U' Rs' U'"
