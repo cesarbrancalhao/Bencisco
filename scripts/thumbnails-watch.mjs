@@ -25,7 +25,9 @@ const CACHE_FILE = join(__dirname, '..', '.thumbnail-cache.json');
 const args = process.argv.slice(2);
 const portIdx = args.indexOf('--port');
 const PORT = portIdx >= 0 ? Number(args[portIdx + 1]) : 4321;
-const BASE = `http://localhost:${PORT}`;
+const baseIdx = args.indexOf('--base');
+const PATH = baseIdx >= 0 ? args[baseIdx + 1] : '/';
+const BASE = `http://localhost:${PORT}${PATH}`;
 
 await mkdir(OUT_DIR, { recursive: true });
 
