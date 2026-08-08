@@ -91,21 +91,21 @@ cases:
 - id: 1ll3t-V+
   name: V+
   family: V
-  alg: U (R' L R L') U (R' L R L') U (R' L R L') U (R' L R L')
+  alg: U (R' L R L') U (R' L R L') U (R' L R L') U (R' L R L') U'
   scramble: U R' U' F' U F R' F' U' F' U F' R' F U' F'
-  showcase_alg: '[U] S U S U S U S'
+  showcase_alg: '[U] S U S U S U S U'''
 - id: 1ll3t-V-
   name: V-
   family: V
-  alg: U' (L R' L' R) U' (L R' L' R) U' (L R' L' R) U' (L R' L' R)
+  alg: U' (L R' L' R) U' (L R' L' R) U' (L R' L' R) U' (L R' L' R) U
   scramble: U' Uv' F' U F R' BR' F BR F' R F' BL' U BL U' F Uv
-  showcase_alg: '[U''] S'' U'' S'' U'' S'' U'' S'''
+  showcase_alg: '[U''] S'' U'' S'' U'' S'' U'' S'' U'
 - id: 1ll3t-VC
   name: VC
   family: V
-  alg: U (L R' L' R) U (R' L R L') U' (R' L R L') U (L R' L' R)
+  alg: U (L R' L' R) U (R' L R L') U' (R' L R L') U (L R' L' R) U
   scramble: B' F BR' BL' F D R D' R' F' BL BR R B R' F'
-  showcase_alg: '[U] S'' U S U'' S U S'''
+  showcase_alg: '[U] S'' U S U'' S U S'' U'
 - id: 1ll3t-VC+
   name: VC+
   family: V
@@ -115,15 +115,15 @@ cases:
 - id: 1ll3t-VC-
   name: VC-
   family: V
-  alg: U B' BLw U (R' L R L') U (R' L R L') U L BLw'
+  alg: U B' BLw U (R' L R L') U (R' L R L') U L BLw' U'
   scramble: U R U L D' L D L U' R' U' F L' D' L D F'
   showcase_alg: '[U] B'' BLw U S U S U L BLw'''
 - id: 1ll3t-VA
   name: VA
   family: V
-  alg: U' (R' L R L') U' (L R' L' R) U (L R' L' R) U' (R' L R L')
+  alg: U' (R' L R L') U' (L R' L' R) U (L R' L' R) U' (R' L R L') U'
   scramble: F' BR BL D L' D' L R BL' L' D L D' R' BR' F
-  showcase_alg: '[U''] S U'' S'' U S'' U'' S'
+  showcase_alg: '[U''] S U'' S'' U S'' U'' S U'''
 - id: 1ll3t-VA+
   name: VA+
   family: V
@@ -139,15 +139,15 @@ cases:
 - id: 1ll3t-VB
   name: VB
   family: V
-  alg: U Bw' R B R' Bw B' U (R B' R' B)
+  alg: U Bw' R B R' Bw B' U (R B' R' B) U
   scramble: F' U B L' B' L U B' F R' B R F' U F
-  showcase_alg: '[U] {U,BR} Rw'' L R L'' Rw R'' U S'''
+  showcase_alg: '[U] {U,BR} Rw'' L R L'' Rw R'' U S'' U'
 - id: 1ll3t-VB+
   name: VB+
   family: V
-  alg: U' BLw L' U (B' R B R') U' BLw' B
+  alg: U' BLw L' U (B' R B R') U' BLw' B U
   scramble: U F' L' F L' B L F' L' B' L' F U'
-  showcase_alg: '[U''] BLw L'' U H'' U'' BLw'' B'
+  showcase_alg: '[U''] BLw L'' U H'' U'' BLw'' B U'
 - id: 1ll3t-VB-
   name: VB-
   family: V
