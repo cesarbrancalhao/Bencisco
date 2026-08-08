@@ -27,6 +27,7 @@ const algCase = z.object({
 	id: z.string(),
 	name: z.string().optional(),
 	family: z.string().optional(),
+	pairs: z.string().optional(),
 	alg: z.string(),
 	scramble: z.string().optional(),
 	showcase_alg: z.string().optional(),

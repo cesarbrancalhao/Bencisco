@@ -85,7 +85,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 	<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} interactive={showViewer} hintFacelets={hintFacelets} />
 	<div class="flex flex-1 flex-col items-center gap-2 text-center">
 		{c.name && <span class="font-semibold">{c.name}</span>}
-		{c.family && <span class="text-sm text-gray-500">{c.family}</span>}
+		{(c.pairs ?? c.family) && <span class="text-sm text-gray-500">{c.pairs ?? c.family}</span>}
 		{visibleAlgs.map(({ alg, label }) => (
 			<code class="text-sm font-bold">
 				{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
