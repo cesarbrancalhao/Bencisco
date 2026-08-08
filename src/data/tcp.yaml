@@ -1,10 +1,8 @@
-# TCP (1-look) — alg: CIF community notation (drives the applet); showcase_alg: what the user sees.
-# Converted from tx/tcp.md with the 1ll3t bracket tables + face map; every case
-# validated 1:1 against a 1ll3t T-family state (see tx/tcp-conversion.md).
-# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
-# Extra variants of a case are shown as showcase_alg1, showcase_alg2, ...
-setup_prefix: "LBLv"
+setup_prefix: LBLv
 top_down: true
+alg_prefix: Uv
+camera_longitude: -120
+
 cases:
   - id: tcp-01
     name: "TC+"

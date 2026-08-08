@@ -37,6 +37,7 @@ function activate(host: HTMLElement): void {
 	const puzzle = host.dataset.puzzle ?? 'fto';
 	const alg = host.dataset.alg ?? '';
 	const setupAlg = host.dataset.setupAlg;
+	const cameraLongitude = host.dataset.cameraLongitude;
 
 	void loadTwisty()
 		.then(() => {
@@ -47,6 +48,7 @@ function activate(host: HTMLElement): void {
 			player.setAttribute('puzzle', puzzle);
 			player.setAttribute('alg', alg);
 			if (setupAlg) player.setAttribute('experimental-setup-alg', setupAlg);
+			if (cameraLongitude) player.setAttribute('camera-longitude', cameraLongitude);
 			player.setAttribute('hint-facelets', 'none');
 			player.setAttribute('background', 'none');
 			player.style.width = '256px';

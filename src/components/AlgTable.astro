@@ -22,6 +22,9 @@ const familyPrefixes = entry.data.family_prefixes;
 const setupPrefix = entry.data.setup_prefix;
 const familySuffixes = entry.data.family_suffixes;
 const setupSuffix = entry.data.setup_suffix;
+const familyAlgPrefixes = entry.data.family_alg_prefixes;
+const algPrefix = entry.data.alg_prefix;
+const cameraLongitude = entry.data.camera_longitude;
 
 const grouped = sections
 	? entry.data.cases.reduce<Record<string, typeof entry.data.cases>>((acc, c) => {
@@ -39,13 +42,13 @@ const grouped = sections
 			<section>
 				<h2 class="not-content text-lg font-semibold">{family}</h2>
 				<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} showViewer={showViewer} hintFacelets={hintFacelets} />)}
+					{cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} showViewer={showViewer} hintFacelets={hintFacelets} />)}
 				</div>
 			</section>
 		))
 	) : (
 		<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{entry.data.cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} showViewer={showViewer} hintFacelets={hintFacelets} />)}
+			{entry.data.cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} showViewer={showViewer} hintFacelets={hintFacelets} />)}
 		</div>
 	)
 }

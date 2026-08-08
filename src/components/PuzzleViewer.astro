@@ -25,6 +25,8 @@ interface Props {
 	startState?: 'case' | 'solved';
 	setupPrefix?: string;
 	setupSuffix?: string;
+	algPrefix?: string;
+	cameraLongitude?: number;
 	interactive?: boolean;
 	hintFacelets?: boolean;
 }
@@ -38,6 +40,8 @@ const {
 	startState = 'case',
 	setupPrefix,
 	setupSuffix,
+	algPrefix,
+	cameraLongitude,
 	interactive = true,
 	hintFacelets = false,
 } = Astro.props;
@@ -51,8 +55,9 @@ if (startState === 'case') {
 	try {
 		const prefix = setupPrefix ? `${setupPrefix} ` : '';
 		const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+		const postfix = algPrefix ? ` ${algPrefix}` : '';
 		const scrambleAlg = scramble ?? new Alg(twizzleAlg).invert().toString();
-		setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
+		setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}${postfix}`).toString();
 	} catch {
 		setupAlg = undefined;
 	}
@@ -61,7 +66,7 @@ if (startState === 'case') {
 let effectiveAlg = twizzleAlg;
 if (setupSuffix) {
 	try {
-		effectiveAlg = new Alg(`${twizzleAlg} ${setupSuffix}`).toString();
+		effectiveAlg = new Alg(`${effectiveAlg} ${setupSuffix}`).toString();
 	} catch {
 		// keep original alg if suffix can't be parsed
 	}
@@ -77,6 +82,7 @@ if (setupSuffix) {
 			data-puzzle={puzzle}
 			data-alg={effectiveAlg}
 			data-setup-alg={setupAlg}
+			data-camera-longitude={cameraLongitude}
 			data-hint-facelets={hintFacelets ? undefined : 'none'}
 		>
 			<img
@@ -103,6 +109,7 @@ if (setupSuffix) {
 				puzzle={puzzle}
 				alg={effectiveAlg}
 				experimental-setup-alg={setupAlg}
+				camera-longitude={cameraLongitude}
 				hint-facelets={hintFacelets ? undefined : 'none'}
 				background="none"
 				style="width: 256px; height: 192px;"

@@ -1,21 +1,18 @@
-# 2LTCP — alg: CIF community notation (drives the applet); showcase_alg: what the user sees.
-# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
-# A case can override it with its own `preset` field.
-# PLACEHOLDER DATA — replace with real cases/algs before launch.
-setup_prefix: "LBLv"
+setup_prefix: LBLv
+
 cases:
   - id: 2ltcp-01
     name: 2 Triangle Swap
     family: TCP
     alg: "U BR' U' (BRw BR') U BR U' (BRw' BR)"
-    scramble: "BR' BRw U BR' U' BR BRw' U BR U'"
+    scramble: "F' f U F' U' F f' U F U'"
     showcase_alg: "U F' U' Fs U F U' Fs'"
     eif_alg: "{BL, D} U R' U' Rs' U R U' Rs"
   - id: 2ltcp-02
     name: 3 Triangle CW
     family: TCP
     alg: "T' U (BRw BR') U BR U' (BRw' BR) U BR' U"
-    scramble: "U' BR U' BR' BRw U BR' U' BR BRw' U' T"
+    scramble: "U' F U' F' f U F' U' F f' U' T"
     preset: "Rv"
     showcase_alg: "{R, L} U Fs U F U' Fs' U F' U"
     eif_alg: "U Rs U R U' Rs' U R' U"
@@ -23,7 +20,7 @@ cases:
     name: 3 Triangle CCW
     family: TCP
     alg: "T' U' BR U' (BRw BR') U BR' U' (BRw' BR) U'"
-    scramble: "U BR' BRw U BR U' BR BRw' U BR' U T"
+    scramble: "U F' f U F U' F f' U F' U T"
     preset: "Rv"
     showcase_alg: "{R, L} U' F U' Fs U F' U' Fs' U'"
     eif_alg: "U' R U' Rs U R' U' Rs' U'"

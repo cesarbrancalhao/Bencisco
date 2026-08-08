@@ -21,6 +21,7 @@ import { docsSchema } from '@astrojs/starlight/schema';
  * - `preset` - per-case setup-alg prefix; overrides file/family-level prefixes.
  * - `postset` - per-case move/rotation appended after the alg; overrides
  *   file/family-level suffixes.
+ * - `alg_prefix` - per-case override for the file-level `alg_prefix` (use `""` to opt out).
  */
 const algCase = z.object({
 	id: z.string(),
@@ -34,6 +35,7 @@ const algCase = z.object({
 	eif_label: z.string().optional(),
 	preset: z.string().optional(),
 	postset: z.string().optional(),
+	alg_prefix: z.string().optional(),
 	thumbnail: z.string().optional(),
 }).passthrough(); // allows showcase_alg1, showcase_alg2, ... for multi-alg cases
 
@@ -54,6 +56,16 @@ const algs = defineCollection({
 		// Overrides `setup_suffix` for cases in that family.
 		// A case-level `postset` still takes precedence over both.
 		family_suffixes: z.record(z.string(), z.string()).optional(),
+		// Prepended to the interactive solving alg only (not the setup-alg).
+		// Use when algs assume a different base orientation than the setup provides.
+		// NOT applied in the thumbnail renderer — safe to change without
+		// regenerating webp thumbnails.
+		alg_prefix: z.string().optional(),
+		// Per-family alg_prefix overrides (family name -> prefix).
+		family_alg_prefixes: z.record(z.string(), z.string()).optional(),
+		// Camera longitude in degrees for the interactive twisty-player.
+		// Compensates for alg_prefix rotation applied to the setup.
+		camera_longitude: z.number().optional(),
 		// Render thumbnails from a raised top-down camera angle (shows the top
 		// face plus all sides) instead of the default flat face-on view.
 		top_down: z.boolean().optional(),
