@@ -1,18 +1,103 @@
 # OLP — alg: CIF community notation (drives the applet); showcase_alg: what the user sees.
-# setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
-# PLACEHOLDER DATA — replace with real cases/algs before launch.
-setup_prefix: "LBLv"
+setup_prefix: LBLv
 top_down: true
+alg_prefix: Uv
+camera_longitude: -120
+stickering_mask: "C4RNER:-I-I-I,CENTERS:IIIIII-I--I-I-III-IIIIII,EDGES:IIIIIIIIIIII"
 cases:
   - id: olp-01
-    name: Placeholder Alg 1
-    alg: "R U R'"
-    scramble: "R U' R'"
-    showcase_alg: "R U R'"
-    eif_alg: "TODO"
+    name: "Case 1"
+    alg: "(R B' R' B)"
+    scramble: "B' R B R'"
+    showcase_alg: "H*"
+    showcase_label: "Even"
+    showcase_alg1: "H U' S U' S U' H* U"
+    showcase_label1: "Odd"
   - id: olp-02
-    name: Placeholder Alg 2
-    alg: "L' U' L"
-    scramble: "L' U L"
-    showcase_alg: "L' U' L"
-    eif_alg: "TODO"
+    name: "Case 2"
+    alg: "(L R' L' R) U' (R B' R' B) U (R B' R' B) U'"
+    scramble: "U B' R B R' U' B' R B R' U R' L R L'"
+    showcase_alg: "S' U' H U H* U'"
+    showcase_label: "Even"
+    showcase_alg1: "U' S U S* U'"
+    showcase_label1: "Odd"
+  - id: olp-03
+    name: "Case 3"
+    alg: "Uv U (R' L R L') U"
+    scramble: "U' L R' L' R U'"
+    showcase_alg: "(Uv) U S* U"
+    showcase_label: "Even"
+    showcase_alg1: "(Uv) S' U' H* U'"
+    showcase_label1: "Odd"
+  - id: olp-04a
+    name: "Case 4a"
+    alg: "Uv' U' (R B' R' B) U (R B' R' B) U Uv"
+    scramble: "U' B' R B R' U' B' R B R' U"
+    showcase_alg: "(Uv') U' H U H* U (Uv)"
+    showcase_label: "Even"
+    showcase_alg1: "U H* U"
+    showcase_label1: "Odd"
+  - id: olp-04b
+    name: "Case 4b"
+    alg: "U (R' L R L') U' (R' L R L') U'"
+    scramble: "U L R' L' R U L R' L' R U'"
+    showcase_alg: "U S U' S* U'"
+    showcase_label: "Even"
+    showcase_alg1: "(Uv') U' H* U'"
+    showcase_label1: "Odd"
+  - id: olp-04c
+    name: "Case 4c"
+    alg: "Uv U' (L R' L' R) U' (R B' R' B) U"
+    scramble: "U' B' R B R' U R' L R L' U"
+    showcase_alg: "(Uv) U' S' U' H* U"
+    showcase_label: "Even"
+    showcase_alg1: "(Uv') U S' U' S* U'"
+    showcase_label1: "Odd"
+  - id: olp-05
+    name: "Case 5"
+    alg: "U' (R B' R' B) U' (R' L R L') U'"
+    scramble: "U L R' L' R U B' R B R' U"
+    showcase_alg: "U' H U' S* U'"
+    showcase_label: "Even"
+    showcase_alg1: "U H U' H* U"
+    showcase_label1: "Odd"
+  - id: olp-06a
+    name: "Case 6a"
+    alg: "Uv U (R' L R L') U' (R B' R' B) U"
+    scramble: "U' B' R B R' U L R' L' R U'"
+    showcase_alg: "(Uv) U S U' H* U"
+    showcase_label: "Even"
+    showcase_alg1: "U' H* U (Uv)"
+    showcase_label1: "Odd"
+  - id: olp-06b
+    name: "Case 6b"
+    alg: "Uv U' (R B' R' B) U (R B' R' B) U'"
+    scramble: "U B' R B R' U' B' R B R' U"
+    showcase_alg: "(Uv) U' H U H* U'"
+    showcase_label: "Even"
+    showcase_alg1: "(Uv') U S* U'"
+    showcase_label1: "Odd"
+  - id: olp-06c
+    name: "Case 6c"
+    alg: "U (R B' R' B) U (L R' L' R) U (R B' R' B) U"
+    scramble: "U' B' R B R' U' R' L R L' U' B' R B R' U'"
+    showcase_alg: "solved"
+    showcase_label: "Even"
+    showcase_alg1: "U H U S' U H* U"
+    showcase_label1: "Odd"
+  - id: olp-07
+    name: "Case 7"
+    alg: "(R B' R' B) U (L R' L' R) U (R B' R' B) U'"
+    scramble: "U B' R B R' U' R' L R L' U' B' R B R'"
+    showcase_alg: "H U S' U H* U'"
+    showcase_label: "Even"
+    showcase_alg1: "S U S' U' S* U'"
+    showcase_label1: "Odd"
+  - id: olp-08
+    name: "Case 8"
+    alg: "U' (L R' L' R) U (R' L R L') U"
+    scramble: "U' L R' L' R U' R' L R L' U"
+    showcase_alg: "U' S' U S* U"
+    showcase_label: "Even"
+    showcase_alg1: "H U H* U"
+    showcase_label1: "Odd"

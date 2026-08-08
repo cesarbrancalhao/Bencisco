@@ -27,6 +27,7 @@ interface Props {
 	setupSuffix?: string;
 	algPrefix?: string;
 	cameraLongitude?: number;
+	stickeringMask?: string;
 	interactive?: boolean;
 	hintFacelets?: boolean;
 }
@@ -42,6 +43,7 @@ const {
 	setupSuffix,
 	algPrefix,
 	cameraLongitude,
+	stickeringMask,
 	interactive = true,
 	hintFacelets = false,
 } = Astro.props;
@@ -83,6 +85,7 @@ if (setupSuffix) {
 			data-alg={effectiveAlg}
 			data-setup-alg={setupAlg}
 			data-camera-longitude={cameraLongitude}
+			data-stickering-mask={stickeringMask}
 			data-hint-facelets={hintFacelets ? undefined : 'none'}
 		>
 			<img
@@ -110,6 +113,7 @@ if (setupSuffix) {
 				alg={effectiveAlg}
 				experimental-setup-alg={setupAlg}
 				camera-longitude={cameraLongitude}
+				experimental-stickering-mask-orbits={stickeringMask}
 				hint-facelets={hintFacelets ? undefined : 'none'}
 				background="none"
 				style="width: 256px; height: 192px;"

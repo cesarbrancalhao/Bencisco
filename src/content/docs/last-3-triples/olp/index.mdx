@@ -9,10 +9,25 @@ sidebar:
 
 import AlgTable from '../../../../components/AlgTable.astro';
 
-### WIP
+**OLP (One-Look Pair Formation)** completes pair formation in a single look, setting up [TCP](../tcp/). In these cases the triangles have symmetry about the vertical. The diagrams mask everything but the recognition stickers.
 
-**OLP = One Look Pair Formation**
+Two solutions are given per case, for even and odd permutation states respectively. For full TCP, choose the shortest. A `*` marks the last flip and indicates where 2-flip avoidance can be used (simply swap between H and S).
 
-{/* TODO: recognition, easy vs hard cases, prediction (anticipating OLP from the last L3T step), fingertricks. */}
+Specific notation: H = right hedge `(R B' R' B)`, S = right sledge `(R' L R L')`, S' = left sledge `(L R' L' R)`, and `(Uv)` is a whole-puzzle rotation in the U direction. All algs are CIF.
 
 <AlgTable src="olp" />
+
+### Case notes
+
+- **Case 1** — You can cancel into a TCP for even permutations very easily here. For odd TCP solutions, be sure to flip the two unsolved triangles to force the 9-mover.
+- **Case 2** — This is a case that can be forced into a TCP skip every time, which is recommended.
+- **Case 3** — Another case that can sometimes be forced into a TCP skip, but still important to know.
+- **Case 4a** — This is the pure 1-flip case for even permutation states. Full TCP is recommended.
+- **Case 4b** — The mirror image of the previous 4a case.
+- **Case 4c** — Both solutions are equal in length, so for full TCP choose the one that suits you the best.
+- **Case 5** — Easy to recognize and both solutions are great.
+- **Case 6a** — This is one flip away from PF for odd permutation states. Full TCP will speed this one up.
+- **Case 6b** — The mirror image of the previous 6a case.
+- **Case 6c** — The dreaded odd-permutation PF for basic TCP users. This is a hedge into case 3.
+- **Case 7** — This is three flips away from a completed PF. However you can go straight into the solutions without rotating which is nice.
+- **Case 8** — Both the even/odd cases can be forced into a TCP skip, but the even permutation is the only case really worth learning.

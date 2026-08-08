@@ -10,11 +10,12 @@ interface Props {
 	setupSuffix?: string;
 	algPrefix?: string;
 	cameraLongitude?: number;
+	stickeringMask?: string;
 	showViewer?: boolean;
 	hintFacelets?: boolean;
 }
 
-const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, showViewer = true, hintFacelets = false } = Astro.props;
+const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false } = Astro.props;
 // Per-case thumbnails are generated into public/thumbnails/<id>.webp by
 // `npm run thumbnails`. Fall back to the placeholder if missing.
 import { existsSync } from 'node:fs';
@@ -82,7 +83,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 ---
 
 <div class="case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
-	<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} interactive={showViewer} hintFacelets={hintFacelets} />
+	<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
 	<div class="flex flex-1 flex-col items-center gap-2 text-center">
 		{c.name && <span class="font-semibold">{c.name}</span>}
 		{(c.pairs ?? c.family) && <span class="text-sm text-gray-500">{c.pairs ?? c.family}</span>}

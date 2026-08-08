@@ -38,6 +38,7 @@ function activate(host: HTMLElement): void {
 	const alg = host.dataset.alg ?? '';
 	const setupAlg = host.dataset.setupAlg;
 	const cameraLongitude = host.dataset.cameraLongitude;
+	const stickeringMask = host.dataset.stickeringMask;
 
 	void loadTwisty()
 		.then(() => {
@@ -47,8 +48,9 @@ function activate(host: HTMLElement): void {
 			const player = document.createElement('twisty-player');
 			player.setAttribute('puzzle', puzzle);
 			player.setAttribute('alg', alg);
-			if (setupAlg) player.setAttribute('experimental-setup-alg', setupAlg);
-			if (cameraLongitude) player.setAttribute('camera-longitude', cameraLongitude);
+		if (setupAlg) player.setAttribute('experimental-setup-alg', setupAlg);
+		if (cameraLongitude) player.setAttribute('camera-longitude', cameraLongitude);
+		if (stickeringMask) player.setAttribute('experimental-stickering-mask-orbits', stickeringMask);
 			player.setAttribute('hint-facelets', 'none');
 			player.setAttribute('background', 'none');
 			player.style.width = '256px';

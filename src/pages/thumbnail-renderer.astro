@@ -34,7 +34,7 @@ const cases = algs.flatMap((entry) =>
 				// keep original if suffix can't be parsed
 			}
 		}
-		return { ...c, setupAlg, effectiveAlg, topDown: entry.data.top_down ?? false };
+		return { ...c, setupAlg, effectiveAlg, topDown: entry.data.top_down ?? false, stickeringMask: entry.data.stickering_mask };
 	}),
 ).filter((c) => c !== null);
 ---
@@ -52,6 +52,7 @@ const cases = algs.flatMap((entry) =>
 						puzzle="fto"
 						alg={c.effectiveAlg}
 						experimental-setup-alg={c.setupAlg}
+						experimental-stickering-mask-orbits={c.stickeringMask}
 						hint-facelets={c.topDown ? undefined : "none"}
 						background="none"
 						control-panel="none"
