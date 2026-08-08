@@ -8,9 +8,14 @@ sidebar:
 ---
 
 import AlgTable from '../../../../components/AlgTable.astro';
+import InteractiveToggle from '../../../../components/InteractiveToggle.astro';
 
 **1LL3T = 1-Look Last 3 Triples.** Similar to 1LLL, finishes last layer with only one algorithm.
 
+<InteractiveToggle />
+
 Specific notation: S = sledge, H = hedge.
 
-<AlgTable src="1ll3t" showViewer={false} sections />
+<div id="alg-container">
+  <AlgTable src="1ll3t" showViewer sections />
+</div>

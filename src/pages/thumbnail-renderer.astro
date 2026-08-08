@@ -15,7 +15,7 @@ const cases = algs.flatMap((entry) =>
 		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
 		const twizzleAlg = cifToTwizzle(c.alg); // data algs are CIF; cubing.js needs π applied
-		const scrambleAlg = c.scramble ? cifToTwizzle(c.scramble) : new Alg(twizzleAlg).invert().toString();
+		const scrambleAlg = c.scramble ?? new Alg(twizzleAlg).invert().toString();
 
 		let setupAlg: string | undefined;
 		try {

@@ -10,15 +10,15 @@ Oa-,B' L' B' L D L B L' B' D' B'
 Ob,U' D B D' B' L' D L U B' L' D' L B
 Ob+,U D' R' D BR' L' B L B' BR D' R U' D
 Ob-,R' D L D' R BR D' L D BR' D L D'
-V,U' Uo R B' R' B U B BR' U B L' B' L U' BR B' Uo'
+V,U' Uv R B' R' B U B BR' U B L' B' L U' BR B' Uv'
 V+,U R' U' F' U F R' F' U' F' U F' R' F U' F'
-V-,U' Uo' F' U F R' BR' F BR F' R F' BL' U BL U' F Uo
+V-,U' Uv' F' U F R' BR' F BR F' R F' BL' U BL U' F Uv
 Vc,B' F BR' BL' F D R D' R' F' BL BR R B R' F'
 Vc+,L B R BL D L' D' L BL' L B L' B' R' L' B'
 Vc-,U R U L D' L D L U' R' U' F L' D' L D F'
 Va,F' BR BL D L' D' L R BL' L' D L D' R' BR' F
-Va+,Uo F D' BR D L' F' D' L D L' F D' BR' L D F' Uo'
-Va-,Uo B' F D R D' F L D' L' D R' B R F' R' F' Uo'
+Va+,Uv F D' BR D L' F' D' L D L' F D' BR' L D F' Uv'
+Va-,Uv B' F D R D' F L D' L' D R' B R F' R' F' Uv'
 Vb,F' U B L' B' L U B' F R' B R F' U F
 Vb+,U F' L' F L' B L F' L' B' L' F U'
 Vb-,U' F R F' R B' R' F R B R F' U
@@ -169,8 +169,8 @@ Sl-,U' D' B D F BR' B D' R' D R B' BR D B' D' F' U
 X,U R' L F BL L' BL L R L' BL' L R' BL' F' R L' U'
 X+,BR L' D' L R' L' B' D B BR' L B' BR R BR' B
 X-,BL' BR' D' L D BR' D' L' D BR' BL U' L R' L' R U
-Xb,Uo' L R' F L' R L R' F' R F L' B L F' L' B' Uo
-Xb+,Uo BL' B U B' R B R' U' R B' R' BL L R' L' R Uo'
+Xb,Uv' L R' F L' R L R' F' R F L' B L F' L' B' Uv
+Xb+,Uv BL' B U B' R B R' U' R B' R' BL L R' L' R Uv'
 Xb-,R' U' F D' B D' B' D' F L' B L B' F U R
 Y,U' L' B L D L' D' BL' B' F' L B L' F BL L B' U
 Y+,U R' L F' L F' R' F L' F' R F' R L' U'

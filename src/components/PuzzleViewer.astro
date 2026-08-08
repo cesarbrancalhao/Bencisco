@@ -42,8 +42,8 @@ const {
 	hintFacelets = false,
 } = Astro.props;
 
-// `alg` and `scramble` are CIF community notation (as stored in the data files);
-// cubing.js needs the π face map applied — setup prefix/suffix are already cubing-frame.
+// `alg` is CIF community notation; cubing.js needs the π face map applied.
+// `scramble` is already cubing-frame — used as-is.
 const twizzleAlg = cifToTwizzle(alg);
 
 let setupAlg: string | undefined;
@@ -51,7 +51,7 @@ if (startState === 'case') {
 	try {
 		const prefix = setupPrefix ? `${setupPrefix} ` : '';
 		const suffix = setupSuffix ? ` ${setupSuffix}` : '';
-		const scrambleAlg = scramble ? cifToTwizzle(scramble) : new Alg(twizzleAlg).invert().toString();
+		const scrambleAlg = scramble ?? new Alg(twizzleAlg).invert().toString();
 		setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
 	} catch {
 		setupAlg = undefined;
