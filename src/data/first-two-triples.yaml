@@ -1,13 +1,15 @@
-# First two triples — alg: Twizzle notation (drives the applet); showcase_alg: what the user sees.
+# First two triples — alg: CIF community notation (drives the applet); showcase_alg: what the user sees.
 # PLACEHOLDER DATA — replace with real solutions before launch.
 cases:
   - id: f2t-01
     name: Basic insert
     alg: "R U R' U'"
+    scramble: "U R U' R'"
     showcase_alg: "R U R' U'"
     eif_alg: "TODO"
   - id: f2t-02
     name: Mirror insert
     alg: "L' U' L U"
+    scramble: "U' L' U L"
     showcase_alg: "L' U' L U"
     eif_alg: "TODO"

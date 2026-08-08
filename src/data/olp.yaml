@@ -1,4 +1,4 @@
-# OLP — alg: Twizzle notation (drives the applet); showcase_alg: what the user sees.
+# OLP — alg: CIF community notation (drives the applet); showcase_alg: what the user sees.
 # setup_prefix is prepended to each case's setup-alg (yellow on top for last layer).
 # PLACEHOLDER DATA — replace with real cases/algs before launch.
 setup_prefix: "LBLv"
@@ -7,10 +7,12 @@ cases:
   - id: olp-01
     name: Placeholder Alg 1
     alg: "R U R'"
+    scramble: "R U' R'"
     showcase_alg: "R U R'"
     eif_alg: "TODO"
   - id: olp-02
     name: Placeholder Alg 2
     alg: "L' U' L"
+    scramble: "L' U L"
     showcase_alg: "L' U' L"
     eif_alg: "TODO"

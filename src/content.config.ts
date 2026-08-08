@@ -7,7 +7,10 @@ import { docsSchema } from '@astrojs/starlight/schema';
 /**
  * A single alg case.
  *
- * - `alg` - Twizzle notation; what <twisty-player> animates.
+ * - `alg` - CIF community notation (brackets/slices resolved); what <twisty-player> animates
+ *   after applying the π face map at render time.
+ * - `scramble` - inverse of `alg` in CIF community notation; precomputed so the
+ *   user can inspect/correct it. Used as the twisty-player's setup-alg.
  * - `showcase_alg` - the written alg shown to the user (community notation;
  *   not always Twizzle-compatible, hence stored separately).
  * - `showcase_label` - optional styled prefix for the showcase alg, e.g.
@@ -24,6 +27,7 @@ const algCase = z.object({
 	name: z.string().optional(),
 	family: z.string().optional(),
 	alg: z.string(),
+	scramble: z.string().optional(),
 	showcase_alg: z.string().optional(),
 	showcase_label: z.string().optional(),
 	eif_alg: z.string().optional(),

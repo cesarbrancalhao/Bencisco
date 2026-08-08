@@ -7,26 +7,29 @@
  */
 import { getCollection } from 'astro:content';
 import { Alg } from 'cubing/alg';
+import { cifToTwizzle } from '../scripts/fto-notation';
 
 const algs = await getCollection('algs');
 const cases = algs.flatMap((entry) =>
 	entry.data.cases.map((c) => {
 		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
+		const twizzleAlg = cifToTwizzle(c.alg); // data algs are CIF; cubing.js needs π applied
+		const scrambleAlg = c.scramble ? cifToTwizzle(c.scramble) : new Alg(twizzleAlg).invert().toString();
 
 		let setupAlg: string | undefined;
 		try {
 			const prefix = setupPrefix ? `${setupPrefix} ` : '';
 			const suffix = setupSuffix ? ` ${setupSuffix}` : '';
-			setupAlg = new Alg(`${prefix}${new Alg(c.alg).invert().toString()}${suffix}`).toString();
+			setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
 		} catch {
 			return null;
 		}
 
-		let effectiveAlg = c.alg;
+		let effectiveAlg = twizzleAlg;
 		if (setupSuffix) {
 			try {
-				effectiveAlg = new Alg(`${c.alg} ${setupSuffix}`).toString();
+				effectiveAlg = new Alg(`${twizzleAlg} ${setupSuffix}`).toString();
 			} catch {
 				// keep original if suffix can't be parsed
 			}

@@ -80,7 +80,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 ---
 
 <div class="case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
-	<PuzzleViewer alg={c.alg} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} interactive={showViewer} hintFacelets={hintFacelets} />
+	<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} interactive={showViewer} hintFacelets={hintFacelets} />
 	<div class="flex flex-1 flex-col items-center gap-2 text-center">
 		{c.name && <span class="font-semibold">{c.name}</span>}
 		{c.family && <span class="text-sm text-gray-500">{c.family}</span>}
