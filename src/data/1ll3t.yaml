@@ -3,21 +3,21 @@ top_down: true
 alg_prefix: Uv
 camera_longitude: -120
 cases:
-- id: 1ll3t-O
-  name: O
+- id: 1ll3t-OS
+  name: OS
   family: O
   alg: ''
   scramble: ''
   showcase_alg: solved
-- id: 1ll3t-O+
-  name: O+
+- id: 1ll3t-OS+
+  name: OS+
   family: O
   alg: R' L R' BR' R L' R' BR R'
   scramble: U' B D' L' B BR B' L B BR' B U B D B'
   showcase_alg: '{L,F} R'' U R'' D'' R U'' R'' D R'''
   showcase_label: EIF
-- id: 1ll3t-O-
-  name: O-
+- id: 1ll3t-OS-
+  name: OS-
   family: O
   alg: R BR' R L R' BR R L' R
   scramble: U' L' B' D' B D' L U D B D' L' D' L B'

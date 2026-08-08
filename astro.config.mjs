@@ -47,6 +47,7 @@ export default defineConfig({
 			],
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
+				Footer: './src/components/Footer.astro',
 			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/cesarbrancalhao/Bencisco' },
@@ -69,6 +70,7 @@ export default defineConfig({
 				},
 				{ label: 'Example Solves', items: [{ autogenerate: { directory: 'example-solves' } }] },
 				{ label: 'Training', slug: 'training' },
+				{ label: 'Credits', slug: 'credits' },
 			],
 		}),
 	],

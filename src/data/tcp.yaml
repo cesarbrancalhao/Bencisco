@@ -9,9 +9,9 @@ cases:
     family: "Even"
     alg: "B' R B R'"
     scramble: "D L' B' D' B' D L B' U D' U'"
-    showcase_alg: "{B,U} U' R U R'"
-    showcase_label: "EIF"
-    showcase_alg1: "{R,BR} R' U R U'"
+    showcase_alg: "B' R B R'"
+    showcase_alg1: "{B,U} U' R U R'"
+    showcase_label1: "EIF"
   - id: tcp-02
     name: "TC-"
     family: "Even"
