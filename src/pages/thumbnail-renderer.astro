@@ -29,26 +29,25 @@ for (const entry of algs) {
 	for (const c of entry.data.cases) {
 		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
-		const twizzleAlg = cifToTwizzle(c.alg);
 		const topDown = entry.data.top_down ?? false;
 		const stickeringMask = entry.data.stickering_mask;
 
-		function buildSetupAlg(scramble: string | undefined): string | undefined {
+		function buildSetupAlg(scramble: string | undefined, fallbackAlg: string): string | undefined {
 			try {
 				const prefix = setupPrefix ? `${setupPrefix} ` : '';
 				const suffix = setupSuffix ? ` ${setupSuffix}` : '';
-				const scrambleAlg = scramble !== undefined ? scramble : new Alg(twizzleAlg).invert().toString();
+				const scrambleAlg = scramble !== undefined ? scramble : new Alg(cifToTwizzle(fallbackAlg)).invert().toString();
 				return new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
 			} catch {
 				return undefined;
 			}
 		}
 
-		function buildEffectiveAlg(): string {
-			let effectiveAlg = twizzleAlg;
+		function buildEffectiveAlg(cifAlg: string): string {
+			let effectiveAlg = cifToTwizzle(cifAlg);
 			if (setupSuffix) {
 				try {
-					effectiveAlg = new Alg(`${twizzleAlg} ${setupSuffix}`).toString();
+					effectiveAlg = new Alg(`${effectiveAlg} ${setupSuffix}`).toString();
 				} catch {
 					// keep original
 				}
@@ -57,12 +56,12 @@ for (const entry of algs) {
 		}
 
 		// Main thumbnail (id = case.id)
-		const mainSetup = buildSetupAlg(c.scramble);
+		const mainSetup = buildSetupAlg(c.scramble, c.alg);
 		if (mainSetup) {
 			entries.push({
 				id: c.id,
 				setupAlg: mainSetup,
-				effectiveAlg: buildEffectiveAlg(),
+				effectiveAlg: buildEffectiveAlg(c.alg),
 				topDown,
 				stickeringMask,
 			});
@@ -70,22 +69,24 @@ for (const entry of algs) {
 
 		// Even / odd variants for OLP
 		if (c.even_scramble !== undefined && c.odd_scramble !== undefined) {
-			const evenSetup = buildSetupAlg(c.even_scramble);
+			const evenAlg = c.even_alg ?? c.alg;
+			const evenSetup = buildSetupAlg(c.even_scramble, evenAlg);
 			if (evenSetup) {
 				entries.push({
 					id: `${c.id}-even`,
 					setupAlg: evenSetup,
-					effectiveAlg: buildEffectiveAlg(),
+					effectiveAlg: buildEffectiveAlg(evenAlg),
 					topDown,
 					stickeringMask,
 				});
 			}
-			const oddSetup = buildSetupAlg(c.odd_scramble);
+			const oddAlg = c.odd_alg ?? c.alg;
+			const oddSetup = buildSetupAlg(c.odd_scramble, oddAlg);
 			if (oddSetup) {
 				entries.push({
 					id: `${c.id}-odd`,
 					setupAlg: oddSetup,
-					effectiveAlg: buildEffectiveAlg(),
+					effectiveAlg: buildEffectiveAlg(oddAlg),
 					topDown,
 					stickeringMask,
 				});

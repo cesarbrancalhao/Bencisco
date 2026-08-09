@@ -38,6 +38,8 @@ const oddThumbnail = hasOlpParity
 
 const evenScramble = (c.even_scramble !== undefined ? c.even_scramble : undefined) ?? c.scramble;
 const oddScramble = c.odd_scramble;
+const evenAlg = c.even_alg ?? c.alg;
+const oddAlg = c.odd_alg ?? c.alg;
 
 // Collect showcase algs with per-alg orientation labels.
 // showcase_label applies to showcase_alg; variants without their own label
@@ -114,10 +116,10 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 		hasOlpParity ? (
 			<>
 				<div class="puzzle-parity-panel" data-parity="even">
-					<PuzzleViewer alg={c.alg} scramble={evenScramble} thumbnail={evenThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
+					<PuzzleViewer alg={evenAlg} scramble={evenScramble} thumbnail={evenThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
 				</div>
 				<div class="puzzle-parity-panel hidden" data-parity="odd">
-					<PuzzleViewer alg={c.alg} scramble={oddScramble} thumbnail={oddThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
+					<PuzzleViewer alg={oddAlg} scramble={oddScramble} thumbnail={oddThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
 				</div>
 			</>
 		) : (

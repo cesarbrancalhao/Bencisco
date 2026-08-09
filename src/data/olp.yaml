@@ -13,6 +13,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "H U' S U' S U' H* U"
     showcase_label1: "Odd"
+    odd_alg: "(R B' R' B) U' (R' L R L') U' (R' L R L') U' (R B' R' B) U"
   - id: olp-02
     name: "Case 2"
     alg: "(L R' L' R) U' (R B' R' B) U (R B' R' B) U'"
@@ -23,6 +24,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "U' S U S* U'"
     showcase_label1: "Odd"
+    odd_alg: "U' (R' L R L') U (R' L R L') U'"
   - id: olp-03
     name: "Case 3"
     alg: "Uv U (R' L R L') U"
@@ -33,6 +35,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "(Uo) S' U' H* U'"
     showcase_label1: "Odd"
+    odd_alg: "(Uo) (L R' L' R) U' (R B' R' B) U'"
   - id: olp-04a
     name: "Case 4a"
     alg: "Uv' U' (R B' R' B) U (R B' R' B) U Uv"
@@ -43,6 +46,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "U H* U"
     showcase_label1: "Odd"
+    odd_alg: "U (R B' R' B) U"
   - id: olp-04b
     name: "Case 4b"
     alg: "U (R' L R L') U' (R' L R L') U'"
@@ -53,6 +57,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "(Uo') U' H* U'"
     showcase_label1: "Odd"
+    odd_alg: "(Uo') U' (R B' R' B) U'"
   - id: olp-04c
     name: "Case 4c"
     alg: "Uv U' (L R' L' R) U' (R B' R' B) U"
@@ -63,6 +68,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "(Uo') U S' U' S* U'"
     showcase_label1: "Odd"
+    odd_alg: "(Uo') U (L R' L' R) U' (R' L R L') U'"
   - id: olp-05
     name: "Case 5"
     alg: "U' (R B' R' B) U' (R' L R L') U'"
@@ -73,6 +79,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "U H U' H* U"
     showcase_label1: "Odd"
+    odd_alg: "U (R B' R' B) U' (R B' R' B) U"
   - id: olp-06a
     name: "Case 6a"
     alg: "Uv U (R' L R L') U  ' (R B' R' B) U"
@@ -83,6 +90,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "U' H* U (Uo)"
     showcase_label1: "Odd"
+    odd_alg: "U' (R B' R' B) U (Uo)"
   - id: olp-06b
     name: "Case 6b"
     alg: "Uv U' (R B' R' B) U (R B' R' B) U'"
@@ -93,6 +101,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "(Uo') U S* U'"
     showcase_label1: "Odd"
+    odd_alg: "(Uo') U (R' L R L') U'"
   - id: olp-06c
     name: "Case 6c"
     alg: "U (R B' R' B) U (L R' L' R) U (R B' R' B) U"
@@ -101,8 +110,10 @@ cases:
     odd_scramble: "U L' B L D' B' L' D' L U L' D L B D B' U"
     showcase_alg: "solved"
     showcase_label: "Even"
+    even_alg: ""
     showcase_alg1: "U H U S' U H* U"
     showcase_label1: "Odd"
+    odd_alg: "U (R B' R' B) U (L R' L' R) U (R B' R' B) U"
   - id: olp-07
     name: "Case 7"
     alg: "(R B' R' B) U (L R' L' R) U (R B' R' B) U'"
@@ -113,6 +124,7 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "S U S' U' S* U'"
     showcase_label1: "Odd"
+    odd_alg: "(R' L R L') U (L R' L' R) U' (R' L R L') U'"
   - id: olp-08
     name: "Case 8"
     alg: "U' (L R' L' R) U (R' L R L') U"
@@ -123,3 +135,4 @@ cases:
     showcase_label: "Even"
     showcase_alg1: "H U H* U"
     showcase_label1: "Odd"
+    odd_alg: "(R B' R' B) U (R B' R' B) U"
