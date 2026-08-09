@@ -606,6 +606,7 @@ cases:
   alg: U' BL L BL L' R' L BL' L' BL' R
   scramble: U' L U D R' D' BL D R D' BL' U' L' U
   showcase_alg: '[U''] {BL,F} U R U R'' D'' R U'' R'' U'' D'
+  eif_alg: '[U''] {B,BL} F R U R'' D'' R U'' R'' D F'''
 - id: 1ll3t-WC
   name: WC
   family: W
