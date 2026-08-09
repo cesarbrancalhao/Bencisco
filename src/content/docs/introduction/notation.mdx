@@ -10,14 +10,12 @@ import PuzzleViewer from '../../../components/PuzzleViewer.astro';
 Each letter represents a face, just like a normal 3x3 notation. We have the normal 3x3 face moves (R, U, L, D, F, B), as well as two additional moves for the extra faces (BR, BL) on the back:
 
 <PuzzleViewer alg="R U L D F B BR BL BL' BR' B' F' D' L' U' R'" startState="solved" />
-
 And two additional moves for the slices (Rs, Fs, Bs, Ls, Us, Ds, BRs, BLs), a slice is like an M move on a 3x3, or a wide move followed by a counter move (Fs = f F'):
-
 <PuzzleViewer alg="(r R') (f F') (b B') (l L') (u U') (d D') (br BR') (bl BL')" startState="solved" />
 
-### Specific Notation
+## Specific Notation
 
-##  Sledge and Hedge
+####  Sledge and Hedge
 
 The algs pages use shorthand for the two common three-move triggers:
 
@@ -28,7 +26,7 @@ The algs pages use shorthand for the two common three-move triggers:
 | **S'** = inverse sledge | `(L R' L' R)` |
 | **H'** = inverse hedge | `(B R B' R')` |
 
-## Whole-puzzle rotations
+#### Whole-puzzle rotations
 
 These are deprecated and currently only used in OLP algs. I kept them because they are a bit more intuitive than brackets notation in this specific context
 
@@ -38,3 +36,18 @@ These are deprecated and currently only used in OLP algs. I kept them because th
 | **Uo'** | `{U, BL}`; Equivalent to doing a U' rotation with the entire cube |
 
 <PuzzleViewer alg="Uv Uv'" startState="solved" setupPrefix="LBLv" />
+
+#### Marks
+
+Throughout this document, the following marks were to indicate specific cases or concepts:
+
+| Mark | Meaning |
+|------|---------|
+| <span class="text-indigo-500 dark:text-indigo-400">(CIF)</span> | Corner-in-Front alg |
+| <span class="text-indigo-500 dark:text-indigo-400">(EIF)</span> | Edge-in-Front alg |
+| <span class="text-indigo-500 dark:text-indigo-400">(CIF → EIF)</span> | Alg starts CIF and transitions to EIF |
+| <span class="text-indigo-500 dark:text-indigo-400">(EIF → CIF)</span> | Alg starts EIF and transitions to CIF |
+| <span class="text-black dark:text-white">(Even)</span> | Pair parity state |
+| <span class="text-black dark:text-white">(Odd)</span> | Pair parity state |
+| <span class="text-red-500 dark:text-red-400">(U)</span> | AUF/Setup |
+| <span class="text-red-500 dark:text-red-400">(Uo)</span> | AUF/Setup |

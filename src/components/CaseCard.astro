@@ -109,6 +109,13 @@ const olpOddAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Odd') : u
 
 const eifLabel = `(${c.eif_label ?? 'EIF'})`;
 const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
+
+function renderAlg(alg: string): string {
+	return alg.replace(
+		/\(([^)]+)\)/g,
+		'<span class="text-red-500 dark:text-red-400">$1</span>',
+	);
+}
 ---
 
 <div class="case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
@@ -134,19 +141,19 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 		{hasOlpParity && olpEvenAlg && olpOddAlg ? (
 			<div class="flex flex-col gap-1.5">
 				<button type="button" class="olp-parity-btn cursor-pointer rounded-md border-2 border-indigo-500 bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300" data-parity="even">
-					{olpEvenAlg.label && <span class="olp-parity-label font-normal text-white">({olpEvenAlg.label}) </span>}
-					{olpEvenAlg.alg}
+					{olpEvenAlg.label && <span class="olp-parity-label font-normal text-indigo-700 dark:text-indigo-300">({olpEvenAlg.label}) </span>}
+					<Fragment set:html={renderAlg(olpEvenAlg.alg)} />
 				</button>
 				<button type="button" class="olp-parity-btn cursor-pointer rounded-md border border-gray-300 px-2.5 py-1 text-xs font-bold text-gray-500 hover:border-indigo-300 dark:border-gray-600 dark:text-gray-400 dark:hover:border-indigo-500" data-parity="odd">
 					{olpOddAlg.label && <span class="olp-parity-label font-normal text-indigo-500 dark:text-indigo-400">({olpOddAlg.label}) </span>}
-					{olpOddAlg.alg}
+					<Fragment set:html={renderAlg(olpOddAlg.alg)} />
 				</button>
 			</div>
 		) : (
 			visibleAlgs.map(({ alg, label }) => (
 				<code class="text-sm font-bold">
 					{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
-					{alg}
+					<Fragment set:html={renderAlg(alg)} />
 				</code>
 			))
 		)}
@@ -156,7 +163,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 			nonParityVisibleAlgs.length > 0 && nonParityVisibleAlgs.map(({ alg, label }) => (
 				<code class="text-sm font-bold">
 					{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
-					{alg}
+					<Fragment set:html={renderAlg(alg)} />
 				</code>
 			))
 		) : (
@@ -173,7 +180,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 							{hiddenAlgs.map(({ alg, label }) => (
 								<code class="text-sm font-bold">
 									{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
-									{alg}
+									<Fragment set:html={renderAlg(alg)} />
 								</code>
 							))}
 						</div>
@@ -183,7 +190,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 		)}
 		{c.eif_alg && (
 			<code class="text-sm text-gray-500 dark:text-gray-400">
-				<span class="text-indigo-500 dark:text-indigo-400">{eifLabel}</span> {c.eif_alg}
+				<span class="text-indigo-500 dark:text-indigo-400">{eifLabel}</span> <Fragment set:html={renderAlg(c.eif_alg)} />
 			</code>
 		)}
 		{note && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{note}</div>}
@@ -216,7 +223,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 			const label = el.querySelector<HTMLElement>('.olp-parity-label');
 			if (isActive) {
 				el.className = 'olp-parity-btn cursor-pointer rounded-md border-2 border-indigo-500 bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300';
-				if (label) label.className = 'olp-parity-label font-normal text-white';
+				if (label) label.className = 'olp-parity-label font-normal text-indigo-700 dark:text-indigo-300';
 			} else {
 				el.className = 'olp-parity-btn cursor-pointer rounded-md border border-gray-300 px-2.5 py-1 text-xs font-bold text-gray-500 hover:border-indigo-300 dark:border-gray-600 dark:text-gray-400 dark:hover:border-indigo-500';
 				if (label) label.className = 'olp-parity-label font-normal text-indigo-500 dark:text-indigo-400';
