@@ -182,7 +182,7 @@ cases:
   name: QS
   family: Q
   pairs: "Even"
-  alg: U R L R' L' Rw R' L R L' Rw'
+  alg: U R L R' L' Rw R' L R L' Rw U''
   scramble: B F BR' D L D' BR L' R L' R' L B' F'
   showcase_alg: '[U] {L,F} R U R'' U'' Rw R'' U R U'' Rw'''
   showcase_label: EIF
@@ -190,14 +190,14 @@ cases:
   name: QS+
   family: Q
   pairs: "Even"
-  alg: U' (B L' B' L) U' (R B' R' B)
+  alg: U' (B L' B' L) U' (R B' R' B) U'
   scramble: U' B' R B R' B' D B R' U B U' R U D' B'
   showcase_alg: '[U''] {U,BR} H U'' S'''
 - id: 1ll3t-QS-
   name: QS-
   family: Q
   pairs: "Even"
-  alg: U (B' R B R') U (L' B L B')
+  alg: U (B' R B R') U (L' B L B') U
   scramble: B L' D' L B' L B L' B' U' L' B L D B' U
   showcase_alg: '[U] {U,BR} S U H'''
 - id: 1ll3t-QC
@@ -606,6 +606,7 @@ cases:
   alg: U' BL L BL L' R' L BL' L' BL' R
   scramble: U' L U D R' D' BL D R D' BL' U' L' U
   showcase_alg: '[U''] {BL,F} U R U R'' D'' R U'' R'' U'' D'
+  eif_alg: '[U''] {B,BL} F R U R'' D'' R U'' R'' D F'''
 - id: 1ll3t-WC
   name: WC
   family: W

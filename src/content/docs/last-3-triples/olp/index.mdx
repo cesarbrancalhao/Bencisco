@@ -4,15 +4,32 @@ description: One Look Pair Formation - recognition, cases, prediction, fingertri
 sidebar:
   badge:
     text: Advanced
-    variant: caution
+    variant: tip
 ---
 
 import AlgTable from '../../../../components/AlgTable.astro';
 
-### WIP
+**OLP (One-Look Pair Formation)** completes pair formation in a single look, setting up [TCP](../tcp/). In these cases the triangles have symmetry about the vertical.
 
-**OLP = One Look Pair Formation**
+Two solutions are given per case, for even and odd permutation states respectively. For full TCP, choose the shortest. <strong class="text-yellow-500">Click the Even or Odd solution to swap the scramble preview.</strong>
 
-{/* TODO: recognition, easy vs hard cases, prediction (anticipating OLP from the last L3T step), fingertricks. */}
+The * marks the last flip and indicates where 2-flip avoidance can be used (simply swap between H and S). All algs are CIF.
 
-<AlgTable src="olp" />
+Specific notation on [Notation](../../introduction/notation).
+
+<AlgTable
+  src="olp"
+  textAlign="left"
+  columns={2}
+  caseNotes={{
+    'olp-01': 'Flip the two unsolved triangles to force the 9-mover on Odd.',
+    'olp-02': 'This can be forced into a TCP skip every time (recommended).',
+    'olp-03': 'Can sometimes be forced into a TCP skip.',
+    'olp-04a': 'This is the pure 1-flip case for even permutation states.',
+    'olp-04c': 'Both solutions are equal in length, choose the one that suits you the best.',
+    'olp-05': 'Easy to recognize, both solutions are great.',
+    'olp-06a': 'This is one flip away from PF for odd permutation states.',
+    'olp-06c': 'This is a hedge into case 3.',
+    'olp-08': 'Both cases can be forced into a TCP skip, but only the even case is really worth learning.',
+  }}
+/>

@@ -64,7 +64,7 @@ export default defineConfig({
 						{ label: 'Pair Formation', slug: 'last-3-triples/pair-formation', badge: { text: 'In Progress', variant: 'default' } },
 						{ label: '2LTCP', slug: 'last-3-triples/2ltcp' },
 						{ label: 'TCP', slug: 'last-3-triples/tcp', badge: { text: 'Medium', variant: 'caution' } },
-						{ label: 'OLP', slug: 'last-3-triples/olp', badge: { text: 'In Progress', variant: 'default' } },
+						{ label: 'OLP', slug: 'last-3-triples/olp', badge: { text: 'Advanced', variant: 'tip' } },
 						{ label: '1LL3T', slug: 'last-3-triples/1ll3t', badge: { text: 'Advanced', variant: 'tip' } },
 					],
 				},

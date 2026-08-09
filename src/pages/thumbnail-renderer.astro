@@ -4,39 +4,96 @@
  * Renders every alg case at its unsolved case state, one <twisty-player>
  * per case, so scripts/generate-thumbnails.mjs can screenshot them into
  * public/thumbnails/<case-id>.webp.
+ *
+ * When a case has even_scramble / odd_scramble (OLP), separate even/odd
+ * players are rendered under <case-id>-even / <case-id>-odd data attributes
+ * so the screenshot script produces paired thumbnails.
  */
 import { getCollection } from 'astro:content';
 import { Alg } from 'cubing/alg';
 import { cifToTwizzle } from '../scripts/fto-notation';
 
 const algs = await getCollection('algs');
-const cases = algs.flatMap((entry) =>
-	entry.data.cases.map((c) => {
+
+interface ThumbEntry {
+	id: string;
+	setupAlg: string;
+	effectiveAlg: string;
+	topDown: boolean;
+	stickeringMask: string | undefined;
+}
+
+const entries: ThumbEntry[] = [];
+
+for (const entry of algs) {
+	for (const c of entry.data.cases) {
 		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
-		const twizzleAlg = cifToTwizzle(c.alg); // data algs are CIF; cubing.js needs π applied
-		const scrambleAlg = c.scramble ?? new Alg(twizzleAlg).invert().toString();
+		const topDown = entry.data.top_down ?? false;
+		const stickeringMask = entry.data.stickering_mask;
 
-		let setupAlg: string | undefined;
-		try {
-			const prefix = setupPrefix ? `${setupPrefix} ` : '';
-			const suffix = setupSuffix ? ` ${setupSuffix}` : '';
-			setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
-		} catch {
-			return null;
-		}
-
-		let effectiveAlg = twizzleAlg;
-		if (setupSuffix) {
+		function buildSetupAlg(scramble: string | undefined, fallbackAlg: string): string | undefined {
 			try {
-				effectiveAlg = new Alg(`${twizzleAlg} ${setupSuffix}`).toString();
+				const prefix = setupPrefix ? `${setupPrefix} ` : '';
+				const suffix = setupSuffix ? ` ${setupSuffix}` : '';
+				const scrambleAlg = scramble !== undefined ? scramble : new Alg(cifToTwizzle(fallbackAlg)).invert().toString();
+				return new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
 			} catch {
-				// keep original if suffix can't be parsed
+				return undefined;
 			}
 		}
-		return { ...c, setupAlg, effectiveAlg, topDown: entry.data.top_down ?? false };
-	}),
-).filter((c) => c !== null);
+
+		function buildEffectiveAlg(cifAlg: string): string {
+			let effectiveAlg = cifToTwizzle(cifAlg);
+			if (setupSuffix) {
+				try {
+					effectiveAlg = new Alg(`${effectiveAlg} ${setupSuffix}`).toString();
+				} catch {
+					// keep original
+				}
+			}
+			return effectiveAlg;
+		}
+
+		// Main thumbnail (id = case.id)
+		const mainSetup = buildSetupAlg(c.scramble, c.alg);
+		if (mainSetup) {
+			entries.push({
+				id: c.id,
+				setupAlg: mainSetup,
+				effectiveAlg: buildEffectiveAlg(c.alg),
+				topDown,
+				stickeringMask,
+			});
+		}
+
+		// Even / odd variants for OLP
+		if (c.even_scramble !== undefined && c.odd_scramble !== undefined) {
+			const evenAlg = c.even_alg ?? c.alg;
+			const evenSetup = buildSetupAlg(c.even_scramble, evenAlg);
+			if (evenSetup) {
+				entries.push({
+					id: `${c.id}-even`,
+					setupAlg: evenSetup,
+					effectiveAlg: buildEffectiveAlg(evenAlg),
+					topDown,
+					stickeringMask,
+				});
+			}
+			const oddAlg = c.odd_alg ?? c.alg;
+			const oddSetup = buildSetupAlg(c.odd_scramble, oddAlg);
+			if (oddSetup) {
+				entries.push({
+					id: `${c.id}-odd`,
+					setupAlg: oddSetup,
+					effectiveAlg: buildEffectiveAlg(oddAlg),
+					topDown,
+					stickeringMask,
+				});
+			}
+		}
+	}
+}
 ---
 
 <html>
@@ -46,18 +103,19 @@ const cases = algs.flatMap((entry) =>
 	</head>
 	<body>
 		{
-			cases.map((c) => (
-				<div data-thumb-case={c.id} style="width: 256px; height: 192px; display: inline-block;">
+			entries.map((e) => (
+				<div data-thumb-case={e.id} style="width: 256px; height: 192px; display: inline-block;">
 					<twisty-player
 						puzzle="fto"
-						alg={c.effectiveAlg}
-						experimental-setup-alg={c.setupAlg}
-						hint-facelets={c.topDown ? undefined : "none"}
+						alg={e.effectiveAlg}
+						experimental-setup-alg={e.setupAlg}
+						experimental-stickering-mask-orbits={e.stickeringMask}
+						hint-facelets={e.topDown ? undefined : "none"}
 						background="none"
 						control-panel="none"
-						camera-latitude={c.topDown ? 90 : undefined}
-						camera-latitude-limit={c.topDown ? 180 : undefined}
-						camera-distance={c.topDown ? 6.2 : undefined}
+						camera-latitude={e.topDown ? 90 : undefined}
+						camera-latitude-limit={e.topDown ? 180 : undefined}
+						camera-distance={e.topDown ? 6.2 : undefined}
 						style="width: 256px; height: 192px;"
 					/>
 				</div>
