@@ -11,7 +11,7 @@ import AlgTable from '../../../../components/AlgTable.astro';
 
 **OLP (One-Look Pair Formation)** completes pair formation in a single look, setting up [TCP](../tcp/). In these cases the triangles have symmetry about the vertical.
 
-Two solutions are given per case, for even and odd permutation states respectively, it is recommended to choose the shortest, there is indication if the pair parity stays the same or flips on each case. <strong class="text-yellow-500">Click the Even or Odd solution to swap views.</strong>
+Two solutions are given per case, for even and odd permutation states, it is recommended to choose the shortest. <strong class="text-yellow-500">Click the Even or Odd solution to swap views.</strong> Odd solutions will always flip the pair parity, while even solutions will preserve it.
 
 All algs are CIF. Specific notation on [Notation](../../introduction/notation).
 
@@ -20,14 +20,7 @@ All algs are CIF. Specific notation on [Notation](../../introduction/notation).
   textAlign="left"
   columns={2}
   caseNotes={{
-    'olp-01': 'Flip the two unsolved triangles to force the 9-mover on Odd.',
-    'olp-02': 'This can be forced into a TCP skip every time (recommended).',
-    'olp-03': 'Can sometimes be forced into a TCP skip.',
-    'olp-04a': 'This is the pure 1-flip case for even permutation states.',
-    'olp-04c': 'Both solutions are equal in length, choose the one that suits you the best.',
-    'olp-05': 'Easy to recognize, both solutions are great.',
-    'olp-06a': 'This is one flip away from PF for odd permutation states.',
-    'olp-06c': 'This is a hedge into case 3.',
-    'olp-08': 'Both cases can be forced into a TCP skip, but only the even case is really worth learning.',
+    'olp-01': 'The Even alg is recommended every time.',
+    'olp-04a': 'The Odd alg is recommended every time.',
   }}
 />
