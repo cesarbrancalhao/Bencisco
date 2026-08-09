@@ -14,7 +14,7 @@ import { chromium } from 'playwright-core';
 import sharp from 'sharp';
 
 const PORT = 4499;
-const BASE = `http://localhost:${PORT}`;
+const BASE = `http://localhost:${PORT}/Bencisco`;
 const OUT_DIR = new URL('../public/icons/', import.meta.url).pathname;
 
 // 1. Build
