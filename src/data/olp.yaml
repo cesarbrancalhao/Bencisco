@@ -2,7 +2,6 @@ setup_prefix: LBLv
 top_down: true
 alg_prefix: Uv
 camera_longitude: -120
-stickering_mask: "C4RNER:-I-I-I,CENTERS:I-I--I-I--I-I-----IIIIII,EDGES:I-I-I-IIIIII"
 cases:
   - id: olp-01
     name: "Case 1"
