@@ -14,9 +14,10 @@ interface Props {
 	showViewer?: boolean;
 	hintFacelets?: boolean;
 	textAlign?: 'center' | 'left';
+	note?: string;
 }
 
-const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false, textAlign = 'center' } = Astro.props;
+const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false, textAlign = 'center', note } = Astro.props;
 // Per-case thumbnails are generated into public/thumbnails/<id>.webp by
 // `npm run thumbnails`. Fall back to the placeholder if missing.
 import { existsSync } from 'node:fs';
@@ -183,6 +184,7 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 				<span class="text-indigo-500 dark:text-indigo-400">{eifLabel}</span> {c.eif_alg}
 			</code>
 		)}
+		{note && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{note}</div>}
 	</div>
 </div>
 

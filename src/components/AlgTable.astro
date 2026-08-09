@@ -51,10 +51,7 @@ const grouped = sections
 				<h2 class="not-content text-lg font-semibold">{family}</h2>
 				<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 					{cases.map((c) => (
-						<div>
-							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} />
-							{caseNotes?.[c.id] && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{caseNotes[c.id]}</div>}
-						</div>
+						<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
 					))}
 				</div>
 			</section>
@@ -62,10 +59,7 @@ const grouped = sections
 	) : (
 		<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 			{entry.data.cases.map((c) => (
-				<div>
-					<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} />
-					{caseNotes?.[c.id] && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{caseNotes[c.id]}</div>}
-				</div>
+				<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
 			))}
 		</div>
 	)
