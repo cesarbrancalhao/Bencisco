@@ -12,9 +12,12 @@ interface Props {
 	showViewer?: boolean;
 	sections?: boolean;
 	hintFacelets?: boolean;
+	textAlign?: 'center' | 'left';
+	columns?: 2 | 3;
+	caseNotes?: Record<string, string>;
 }
 
-const { src, showViewer = true, sections = false, hintFacelets = false } = Astro.props;
+const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes } = Astro.props;
 const entry = await getEntry('algs', src);
 if (!entry) throw new Error(`AlgTable: no data file found at src/data/${src}.yaml`);
 
@@ -26,6 +29,10 @@ const familyAlgPrefixes = entry.data.family_alg_prefixes;
 const algPrefix = entry.data.alg_prefix;
 const cameraLongitude = entry.data.camera_longitude;
 const stickeringMask = entry.data.stickering_mask;
+
+const gridClass = columns === 2
+	? 'grid-cols-1 sm:grid-cols-2'
+	: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
 const grouped = sections
 	? entry.data.cases.reduce<Record<string, typeof entry.data.cases>>((acc, c) => {
@@ -42,14 +49,24 @@ const grouped = sections
 		Object.entries(grouped).map(([family, cases]) => (
 			<section>
 				<h2 class="not-content text-lg font-semibold">{family}</h2>
-				<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} />)}
+				<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
+					{cases.map((c) => (
+						<div>
+							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} />
+							{caseNotes?.[c.id] && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{caseNotes[c.id]}</div>}
+						</div>
+					))}
 				</div>
 			</section>
 		))
 	) : (
-		<div class="alg-table not-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			{entry.data.cases.map((c) => <CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} />)}
+		<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
+			{entry.data.cases.map((c) => (
+				<div>
+					<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} />
+					{caseNotes?.[c.id] && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{caseNotes[c.id]}</div>}
+				</div>
+			))}
 		</div>
 	)
 }

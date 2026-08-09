@@ -80,6 +80,11 @@ function initPuzzleViewers(): void {
 		} else {
 			bindThumbnail(host);
 		}
+		host.addEventListener('puzzle-viewer:restore', () => {
+			if (activeHost === host) {
+				restoreActive();
+			}
+		});
 	});
 }
 

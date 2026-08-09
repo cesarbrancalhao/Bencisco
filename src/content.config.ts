@@ -30,6 +30,8 @@ const algCase = z.object({
 	pairs: z.string().optional(),
 	alg: z.string(),
 	scramble: z.string().optional(),
+	even_scramble: z.string().optional(),
+	odd_scramble: z.string().optional(),
 	showcase_alg: z.string().optional(),
 	showcase_label: z.string().optional(),
 	eif_alg: z.string().optional(),

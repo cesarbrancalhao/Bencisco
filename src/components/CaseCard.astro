@@ -13,15 +13,30 @@ interface Props {
 	stickeringMask?: string;
 	showViewer?: boolean;
 	hintFacelets?: boolean;
+	textAlign?: 'center' | 'left';
 }
 
-const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false } = Astro.props;
+const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false, textAlign = 'center' } = Astro.props;
 // Per-case thumbnails are generated into public/thumbnails/<id>.webp by
 // `npm run thumbnails`. Fall back to the placeholder if missing.
 import { existsSync } from 'node:fs';
 const generated = `/Bencisco/thumbnails/${c.id}.webp`;
+const placeholder = '/Bencisco/thumbnails/placeholder.svg';
 const thumbnail =
-	c.thumbnail ?? (existsSync(`${process.cwd()}/public/thumbnails/${c.id}.webp`) ? generated : '/Bencisco/thumbnails/placeholder.svg');
+	c.thumbnail ?? (existsSync(`${process.cwd()}/public/thumbnails/${c.id}.webp`) ? generated : placeholder);
+
+const hasOlpParity = !!(c.even_scramble !== undefined && c.odd_scramble !== undefined);
+
+const evenThumbnail = hasOlpParity
+	? (c.thumbnail ?? (existsSync(`${process.cwd()}/public/thumbnails/${c.id}-even.webp`) ? `/Bencisco/thumbnails/${c.id}-even.webp` : placeholder))
+	: thumbnail;
+
+const oddThumbnail = hasOlpParity
+	? (c.thumbnail ?? (existsSync(`${process.cwd()}/public/thumbnails/${c.id}-odd.webp`) ? `/Bencisco/thumbnails/${c.id}-odd.webp` : placeholder))
+	: thumbnail;
+
+const evenScramble = (c.even_scramble !== undefined ? c.even_scramble : undefined) ?? c.scramble;
+const oddScramble = c.odd_scramble;
 
 // Collect showcase algs with per-alg orientation labels.
 // showcase_label applies to showcase_alg; variants without their own label
@@ -77,40 +92,90 @@ if (allSameOrientation && showcaseAlgs.length > 1) {
 	hiddenAlgs = [];
 }
 
-const showOtherVariants = hiddenAlgs.length > 0;
+// In OLP mode, the Even/Odd algs become clickable parity buttons — exclude
+// them from the normal visible/hidden alg rendering.
+const nonParityVisibleAlgs = hasOlpParity
+	? visibleAlgs.filter((a) => a.label !== 'Even' && a.label !== 'Odd')
+	: visibleAlgs;
+
+const showOtherVariants = hiddenAlgs.length > 0 && !hasOlpParity;
+
+// For OLP, even = first alg (label "Even"), odd = second alg (label "Odd")
+const olpEvenAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Even') : undefined;
+const olpOddAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Odd') : undefined;
+
 const eifLabel = `(${c.eif_label ?? 'EIF'})`;
 const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 ---
 
 <div class="case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
-	<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
-	<div class="flex flex-1 flex-col items-center gap-2 text-center">
+	{
+		hasOlpParity ? (
+			<>
+				<div class="puzzle-parity-panel" data-parity="even">
+					<PuzzleViewer alg={c.alg} scramble={evenScramble} thumbnail={evenThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
+				</div>
+				<div class="puzzle-parity-panel hidden" data-parity="odd">
+					<PuzzleViewer alg={c.alg} scramble={oddScramble} thumbnail={oddThumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
+				</div>
+			</>
+		) : (
+			<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} />
+		)
+	}
+	<div class="flex flex-col items-center gap-1 text-center">
 		{c.name && <span class="font-semibold">{c.name}</span>}
 		{(c.pairs ?? c.family) && <span class="text-sm text-gray-500">{c.pairs ?? c.family}</span>}
-		{visibleAlgs.map(({ alg, label }) => (
-			<code class="text-sm font-bold">
-				{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
-				{alg}
-			</code>
-		))}
 	</div>
-	<div class="flex flex-col items-center gap-2 text-center">
-		{showOtherVariants && (
-			<>
-				<button
-					type="button"
-					class="other-variants-toggle cursor-pointer rounded-md px-2 py-0.5 text-sm text-indigo-500 hover:text-indigo-700 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300"
-				>
-					Other variants
+	<div class={`flex flex-1 flex-col gap-2 ${textAlign === 'left' ? 'items-start text-left' : 'items-center text-center'}`}>
+		{hasOlpParity && olpEvenAlg && olpOddAlg ? (
+			<div class="flex flex-col gap-1.5">
+				<button type="button" class="olp-parity-btn cursor-pointer rounded-md border-2 border-indigo-500 bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300" data-parity="even">
+					{olpEvenAlg.label && <span class="olp-parity-label font-normal text-white">({olpEvenAlg.label}) </span>}
+					{olpEvenAlg.alg}
 				</button>
-				<div class={`other-variants-${caseId} hidden flex flex-col items-center gap-2`}>
-					{hiddenAlgs.map(({ alg, label }) => (
-						<code class="text-sm font-bold">
-							{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
-							{alg}
-						</code>
-					))}
-				</div>
+				<button type="button" class="olp-parity-btn cursor-pointer rounded-md border border-gray-300 px-2.5 py-1 text-xs font-bold text-gray-500 hover:border-indigo-300 dark:border-gray-600 dark:text-gray-400 dark:hover:border-indigo-500" data-parity="odd">
+					{olpOddAlg.label && <span class="olp-parity-label font-normal text-indigo-500 dark:text-indigo-400">({olpOddAlg.label}) </span>}
+					{olpOddAlg.alg}
+				</button>
+			</div>
+		) : (
+			visibleAlgs.map(({ alg, label }) => (
+				<code class="text-sm font-bold">
+					{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
+					{alg}
+				</code>
+			))
+		)}
+	</div>
+	<div class={`flex flex-col gap-2 ${textAlign === 'left' ? 'items-start text-left' : 'items-center text-center'}`}>
+		{hasOlpParity ? (
+			nonParityVisibleAlgs.length > 0 && nonParityVisibleAlgs.map(({ alg, label }) => (
+				<code class="text-sm font-bold">
+					{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
+					{alg}
+				</code>
+			))
+		) : (
+			<>
+				{showOtherVariants && (
+					<>
+						<button
+							type="button"
+							class="other-variants-toggle cursor-pointer rounded-md px-2 py-0.5 text-sm text-indigo-500 hover:text-indigo-700 hover:underline dark:text-indigo-400 dark:hover:text-indigo-300"
+						>
+							Other variants
+						</button>
+						<div class={`other-variants-${caseId} hidden flex flex-col gap-2 ${textAlign === 'left' ? 'items-start' : 'items-center'}`}>
+							{hiddenAlgs.map(({ alg, label }) => (
+								<code class="text-sm font-bold">
+									{label && <span class="font-normal text-indigo-500 dark:text-indigo-400">({label}) </span>}
+									{alg}
+								</code>
+							))}
+						</div>
+					</>
+				)}
 			</>
 		)}
 		{c.eif_alg && (
@@ -130,5 +195,36 @@ const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
 			container.classList.toggle('hidden');
 			btn.textContent = container.classList.contains('hidden') ? 'Other variants' : 'Hide variants';
 		}
+	});
+
+	document.addEventListener('click', (e) => {
+		const btn = (e.target as Element).closest('.olp-parity-btn') as HTMLElement | null;
+		if (!btn) return;
+		const parity = btn.dataset.parity;
+		if (!parity) return;
+
+		const card = btn.closest('.case-card') as HTMLElement | null;
+		if (!card) return;
+
+		card.querySelectorAll('.olp-parity-btn').forEach((b) => {
+			const el = b as HTMLElement;
+			const isActive = el.dataset.parity === parity;
+			const label = el.querySelector<HTMLElement>('.olp-parity-label');
+			if (isActive) {
+				el.className = 'olp-parity-btn cursor-pointer rounded-md border-2 border-indigo-500 bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300';
+				if (label) label.className = 'olp-parity-label font-normal text-white';
+			} else {
+				el.className = 'olp-parity-btn cursor-pointer rounded-md border border-gray-300 px-2.5 py-1 text-xs font-bold text-gray-500 hover:border-indigo-300 dark:border-gray-600 dark:text-gray-400 dark:hover:border-indigo-500';
+				if (label) label.className = 'olp-parity-label font-normal text-indigo-500 dark:text-indigo-400';
+			}
+		});
+
+		card.querySelectorAll<HTMLElement>('.puzzle-parity-panel').forEach((panel) => {
+			panel.classList.toggle('hidden', panel.dataset.parity !== parity);
+		});
+
+		card.querySelectorAll<HTMLElement>('[data-puzzle-viewer]').forEach((viewer) => {
+			viewer.dispatchEvent(new CustomEvent('puzzle-viewer:restore', { bubbles: true }));
+		});
 	});
 </script>
