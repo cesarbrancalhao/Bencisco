@@ -7,8 +7,8 @@ cases:
   name: OS
   family: O
   pairs: "Even"
-  alg: ''
-  scramble: ''
+  alg: ""
+  scramble: ""
   showcase_alg: solved
 - id: 1ll3t-OS+
   name: OS+
@@ -16,7 +16,7 @@ cases:
   pairs: "Even"
   alg: R' L R' BR' R L' R' BR R'
   scramble: U' B D' L' B BR B' L B BR' B U B D B'
-  showcase_alg: '{L,F} R'' U R'' D'' R U'' R'' D R'''
+  showcase_alg: "{L,F} R' U R' D' R U' R' D R'"
   showcase_label: EIF
 - id: 1ll3t-OS-
   name: OS-
@@ -24,7 +24,7 @@ cases:
   pairs: "Even"
   alg: R BR' R L R' BR R L' R
   scramble: U' L' B' D' B D' L U D B D' L' D' L B'
-  showcase_alg: '{L,F} R D'' R U R'' D R U'' R'
+  showcase_alg: "{L,F} R D' R U R' D R U' R"
   showcase_label: EIF
 - id: 1ll3t-OC
   name: OC
@@ -32,7 +32,7 @@ cases:
   pairs: "Even"
   alg: L' (Rw' R) L' R' L (Rw R') L' R L'
   scramble: U L D L D L U' R D' R' D' R' D R D'
-  showcase_alg: '{L,F} U'' Rs'' U'' R'' U Rs U'' R U'''
+  showcase_alg: "{L,F} U' Rs' U' R' U Rs U' R U'"
   showcase_label: EIF
 - id: 1ll3t-OC+
   name: OC+
@@ -47,15 +47,15 @@ cases:
   pairs: "Even"
   alg: U B' D (B' R B R') B U' B' L B D L' D
   scramble: B L B' U B D' B' U' B D' L D' L B'
-  showcase_alg: '[U] {U,BR} R'' D S R U'' R'' B R D B'' D'
-  eif_alg: '[U] {B,BL} U R Rw U'' R U Rw'' U'' R BR'' R'' U R U'''
+  showcase_alg: "(U) {U,BR} R' D S R U' R' B R D B' D"
+  eif_alg: "(U) {B,BL} U R Rw U' R U Rw' U' R BR' R' U R U'"
 - id: 1ll3t-OA
   name: OA
   family: O
   pairs: "Even"
   alg: L R' L (Rw' R) L' R L (Rw R') L
   scramble: U' R' D' R' D' R' U L' D L D L D' L' D
-  showcase_alg: '{L,F} U R'' U Rs'' U'' R U Rs U'
+  showcase_alg: "{L,F} U R' U Rs' U' R U Rs U"
   showcase_label: EIF
 - id: 1ll3t-OA+
   name: OA+
@@ -78,7 +78,7 @@ cases:
   pairs: "Odd"
   alg: Dw B D' B' (Dw' D) B D B' D'
   scramble: U' D B D' B' L' D L U B' L' D' L B
-  showcase_alg: '{B,BR} Rw U R'' U'' Rs'' U R U'' R'''
+  showcase_alg: "{B,BR} Rw U R' U' Rs' U R U' R'"
   showcase_label: EIF
 - id: 1ll3t-OB+
   name: OB+
@@ -93,35 +93,35 @@ cases:
   pairs: "Odd"
   alg: U B (D L' D' L) B' U' B (D L' D' L) B'
   scramble: R' D L D' R BR D' L D BR' D L D'
-  showcase_alg: '[U] {BL,F} B S'' B'' BR'' B S'' B'''
+  showcase_alg: "(U) {BL,F} B S' B' BR' B S' B'"
 - id: 1ll3t-VS
   name: VS
   family: V
   pairs: "Even"
   alg: BL' BR' R' (BR U' BR' U) (BR' F BR F') R BR BL
   scramble: U' Uv R B' R' B U B BR' U B L' B' L U' BR B' Uv'
-  showcase_alg: '{R,D} D'' R'' U'' H S U R D'
+  showcase_alg: "{R,D} D' R' U' H S U R D"
 - id: 1ll3t-VS+
   name: VS+
   family: V
   pairs: "Even"
   alg: U (R' L R L') U (R' L R L') U (R' L R L') U (R' L R L') U'
   scramble: U R' U' F' U F R' F' U' F' U F' R' F U' F'
-  showcase_alg: '[U] S U S U S U S U'''
+  showcase_alg: "(U) S U S U S U S U'"
 - id: 1ll3t-VS-
   name: VS-
   family: V
   pairs: "Even"
   alg: U' (L R' L' R) U' (L R' L' R) U' (L R' L' R) U' (L R' L' R) U
   scramble: U' Uv' F' U F R' BR' F BR F' R F' BL' U BL U' F Uv
-  showcase_alg: '[U''] S'' U'' S'' U'' S'' U'' S'' U'
+  showcase_alg: "(U') S' U' S' U' S' U' S' U"
 - id: 1ll3t-VC
   name: VC
   family: V
   pairs: "Even"
   alg: U (L R' L' R) U (R' L R L') U' (R' L R L') U (L R' L' R) U
   scramble: B' F BR' BL' F D R D' R' F' BL BR R B R' F'
-  showcase_alg: '[U] S'' U S U'' S U S'' U'
+  showcase_alg: "(U) S' U S U' S U S' U"
 - id: 1ll3t-VC+
   name: VC+
   family: V
@@ -135,14 +135,14 @@ cases:
   pairs: "Even"
   alg: U B' BLw U (R' L R L') U (R' L R L') U L BLw' U'
   scramble: U R U L D' L D L U' R' U' F L' D' L D F'
-  showcase_alg: '[U] B'' BLw U S U S U L BLw'''
+  showcase_alg: "(U) B' BLw U S U S U L BLw'"
 - id: 1ll3t-VA
   name: VA
   family: V
   pairs: "Even"
   alg: U' (R' L R L') U' (L R' L' R) U (L R' L' R) U' (R' L R L') U'
   scramble: F' BR BL D L' D' L R BL' L' D L D' R' BR' F
-  showcase_alg: '[U''] S U'' S'' U S'' U'' S U'''
+  showcase_alg: "(U') S U' S' U S' U' S U'"
 - id: 1ll3t-VA+
   name: VA+
   family: V
@@ -163,14 +163,14 @@ cases:
   pairs: "Odd"
   alg: U Bw' R B R' Bw B' U (R B' R' B) U
   scramble: F' U B L' B' L U B' F R' B R F' U F
-  showcase_alg: '[U] {U,BR} Rw'' L R L'' Rw R'' U S'' U'
+  showcase_alg: "(U) {U,BR} Rw' L R L' Rw R' U S' U"
 - id: 1ll3t-VB+
   name: VB+
   family: V
   pairs: "Odd"
   alg: U' BLw L' U (B' R B R') U' BLw' B U
   scramble: U F' L' F L' B L F' L' B' L' F U'
-  showcase_alg: '[U''] BLw L'' U H'' U'' BLw'' B U'
+  showcase_alg: "(U') BLw L' U H' U' BLw' B U"
 - id: 1ll3t-VB-
   name: VB-
   family: V
@@ -184,7 +184,7 @@ cases:
   pairs: "Even"
   alg: U R L R' L' Rw R' L R L' Rw U''
   scramble: B F BR' D L D' BR L' R L' R' L B' F'
-  showcase_alg: '[U] {L,F} R U R'' U'' Rw R'' U R U'' Rw'''
+  showcase_alg: "(U) {L,F} R U R' U' Rw R' U R U' Rw'"
   showcase_label: EIF
 - id: 1ll3t-QS+
   name: QS+
@@ -192,28 +192,28 @@ cases:
   pairs: "Even"
   alg: U' (B L' B' L) U' (R B' R' B) U'
   scramble: U' B' R B R' B' D B R' U B U' R U D' B'
-  showcase_alg: '[U''] {U,BR} H U'' S'''
+  showcase_alg: "(U') {U,BR} H U' S'"
 - id: 1ll3t-QS-
   name: QS-
   family: Q
   pairs: "Even"
   alg: U (B' R B R') U (L' B L B') U
   scramble: B L' D' L B' L B L' B' U' L' B L D B' U
-  showcase_alg: '[U] {U,BR} S U H'''
+  showcase_alg: "(U) {U,BR} S U H'"
 - id: 1ll3t-QC
   name: QC
   family: Q
   pairs: "Even"
   alg: U (B' R B R') U (L R' L' R)
   scramble: U' BL' B R B' BR' R D' R' D BR R' BL U
-  showcase_alg: '[U] H'' U S'''
+  showcase_alg: "(U) H' U S'"
 - id: 1ll3t-QC+
   name: QC+
   family: Q
   pairs: "Even"
   alg: U' B' R' F R' B R F' R B' R B R'
   scramble: U R D' R D R' D B' D' BR B' BR' B R' U' B
-  showcase_alg: '[U''] {B,U} U'' R'' D R'' U R D'' R U'' R U R'''
+  showcase_alg: "(U') {B,U} U' R' D R' U R D' R U' R U R'"
   showcase_label: EIF
 - id: 1ll3t-QC-
   name: QC-
@@ -221,28 +221,28 @@ cases:
   pairs: "Even"
   alg: U' (B' R B R') U' (B' R B R')
   scramble: U R' F' R' B F L' B' L' F' R F R B L' B' U'
-  showcase_alg: '[U''] {U,BR} S U'' S'
+  showcase_alg: "(U') {U,BR} S U' S"
 - id: 1ll3t-QA
   name: QA
   family: Q
   pairs: "Even"
   alg: U' (B' R B R') U' (B L' B' L)
   scramble: U' B F' BL' D' B D B' BL L B' L' F U
-  showcase_alg: '[U''] {U,BR}S U'' H'
+  showcase_alg: "(U') {U,BR}S U' H"
 - id: 1ll3t-QA+
   name: QA+
   family: Q
   pairs: "Even"
   alg: U (B L' B' L) U (B L' B' L)
   scramble: D L' F L B L' B' F' D' L U' D' B' D B U
-  showcase_alg: '[U] {U,BL} S'' U S'''
+  showcase_alg: "(U) {U,BL} S' U S'"
 - id: 1ll3t-QA-
   name: QA-
   family: Q
   pairs: "Even"
   alg: U B L' B' L B' BR B' L' B BR' B L
   scramble: D' L R' U' B' D B' D' B' U D R D' L' D
-  showcase_alg: '[U] {L,U} R U'' R'' U R'' D R'' U'' R D'' R U'
+  showcase_alg: "(U) {L,U} R U' R' U R' D R' U' R D' R U"
   showcase_label: EIF
 - id: 1ll3t-QB
   name: QB
@@ -250,7 +250,7 @@ cases:
   pairs: "Odd"
   alg: U R' L F' R L' R' L F' R L' R' L F' R L'
   scramble: U B' L' B L D L B' L' B U L B L' D' B' U
-  showcase_alg: '[U] {R,U} U'' R BR'' U R'' U'' R BR'' U R'' U'' R BR'' U R'''
+  showcase_alg: "(U) {R,U} U' R BR' U R' U' R BR' U R' U' R BR' U R'"
   showcase_label: EIF
 - id: 1ll3t-QB+
   name: QB+
@@ -258,7 +258,7 @@ cases:
   pairs: "Odd"
   alg: B R BR' R' B' R B BR R' B'
   scramble: U' F D' F' BL BR D' R D' R' D' BR' BL' F D F' U
-  showcase_alg: '{B,U} U R BR'' R'' U'' R U BR R'' U'''
+  showcase_alg: "{B,U} U R BR' R' U' R U BR R' U'"
   showcase_label: EIF
 - id: 1ll3t-QB-
   name: QB-
@@ -266,14 +266,14 @@ cases:
   pairs: "Odd"
   alg: BR R BR' R BRw B BRw' R BR R' BR'
   scramble: U B' F BR' F D F R' F' D' F R F BR B F' U'
-  showcase_alg: '{R,D} R U R'' U Rw BR Rw'' U R U'' R'''
+  showcase_alg: "{R,D} R U R' U Rw BR Rw' U R U' R'"
 - id: 1ll3t-QR
   name: QR
   family: Q
   pairs: "Odd"
   alg: U R L Lw' R' L R L' Lw R' L'
   scramble: U R' B' F D B' D' B F' R B U'
-  showcase_alg: '[U] {R,U} U R Rw'' U'' R U R'' Rw U'' R'''
+  showcase_alg: "(U) {R,U} U R Rw' U' R U R' Rw U' R'"
   showcase_label: EIF
 - id: 1ll3t-QR+
   name: QR+
@@ -281,7 +281,7 @@ cases:
   pairs: "Odd"
   alg: (L' B L B') U (B L' B' L) U (L' B L B')
   scramble: B' R BR' R' B R B' BR B R' U R B' R' B U'
-  showcase_alg: '{U,BL} S U S'' U S'
+  showcase_alg: "{U,BL} S U S' U S"
 - id: 1ll3t-QR-
   name: QR-
   family: Q
@@ -295,7 +295,7 @@ cases:
   pairs: "Odd"
   alg: U' B L Bw' B L' B' L Bw B' L'
   scramble: U' R' L' R' BL D R D' R BL' L U
-  showcase_alg: '[U''] {L,U} R U Rw'' R U'' R'' U Rw R'' U'''
+  showcase_alg: "(U') {L,U} R U Rw' R U' R' U Rw R' U'"
   showcase_label: EIF
 - id: 1ll3t-QL+
   name: QL+
@@ -303,7 +303,7 @@ cases:
   pairs: "Odd"
   alg: U B Lw' B' L B L' Lw B' U B L' B' L
   scramble: R B' R' B' L F L' B' L F' L' U L' B L B' U'
-  showcase_alg: '[U] {B,BL} U Rw'' U'' R U R'' Rw U'' BR U R'' U'' R'
+  showcase_alg: "(U) {B,BL} U Rw' U' R U R' Rw U' BR U R' U' R"
   showcase_label: EIF
 - id: 1ll3t-QL-
   name: QL-
@@ -311,29 +311,29 @@ cases:
   pairs: "Odd"
   alg: (R B' R' B) U' (B' R B R') U' (R B' R' B)
   scramble: BR B' R B R' BR' D' R D R' U' R D' R' D U
-  showcase_alg: '{U,BR} S'' U'' S U'' S'''
+  showcase_alg: "{U,BR} S' U' S U' S'"
 - id: 1ll3t-JS
   name: JS
   family: J
   pairs: "Even"
   alg: D' BR' D R' D' R D' L D L' BR D
   scramble: D L U L' R L' B L B' L R' U' L' U' D' U
-  showcase_alg: '{F,BL} R'' BR'' R B'' R'' B R'' L R L'' BR R'
-  eif_alg: '[U''] {L,U} R U'' BR Rw'' R U R'' U'' Rw BR'' R'' U'
+  showcase_alg: "{F,BL} R' BR' R B' R' B R' L R L' BR R"
+  eif_alg: "(U') {L,U} R U' BR Rw' R U R' U' Rw BR' R' U"
 - id: 1ll3t-JS+
   name: JS+
   family: J
   pairs: "Even"
   alg: U Uw B' Uw' U R U' Uw B Uw' U R'
   scramble: D' BR R' BR F' L' B L B' F BR' R BR' U' D U
-  showcase_alg: '[U] {B,L} Rw U'' Rw'' R BR R'' Rw U Rw'' R BR'''
+  showcase_alg: "(U) {B,L} Rw U' Rw' R BR R' Rw U Rw' R BR'"
 - id: 1ll3t-JS-
   name: JS-
   family: J
   pairs: "Even"
   alg: U B' BR' B L' B' BR B L
   scramble: B' R BR R D' F R' L' R' D' B U L U' D' U
-  showcase_alg: '[U] {L,U} R'' D'' R U'' R'' D R U'
+  showcase_alg: "(U) {L,U} R' D' R U' R' D R U"
   showcase_label: EIF
 - id: 1ll3t-JC
   name: JC
@@ -341,22 +341,22 @@ cases:
   pairs: "Even"
   alg: (R B' R' B) U (R B' R' B) U (R B' R' B)
   scramble: U' B' F BR' R BR' D L D' BR D' L' D R' BR B F' U
-  showcase_alg: '{U,BR} S'' U S'' U S'''
-  eif_alg: '{R,U} Rw'' R U'' R'' D R'' U R D'' Rw'
+  showcase_alg: "{U,BR} S' U S' U S'"
+  eif_alg: "{R,U} Rw' R U' R' D R' U R D' Rw"
 - id: 1ll3t-JC+
   name: JC+
   family: J
   pairs: "Even"
   alg: U B L' BL L' D L D' BL' B' L
   scramble: U' B' F R' BR U' BR B R' B' R BR' U BR' B R F' U
-  showcase_alg: '[U] {BL,F} B R'' U R'' L R L'' U'' B'' R'
+  showcase_alg: "(U) {BL,F} B R' U R' L R L' U' B' R"
 - id: 1ll3t-JC-
   name: JC-
   family: J
   pairs: "Even"
   alg: (R B' R' B) U' (R B' R' B) U' (L' B L B')
   scramble: U F L' R' L' B' F' R B R' F R L' F' U'
-  showcase_alg: '{U,BR} S'' U'' S'' U'' H'''
+  showcase_alg: "{U,BR} S' U' S' U' H'"
 - id: 1ll3t-JA
   name: JA
   family: J
@@ -364,22 +364,22 @@ cases:
   alg: (R B' R' B) U' (R B' R' B) U' (L R' L' R)
   scramble: U F R B D' F' L D' B' L' B' D F D R' B F' U'
   showcase_alg: H U' H U' S'
-  eif_alg: '[U''] {L,F} Rw D R'' U R D'' R U'' Rw'' R'''
+  eif_alg: "(U') {L,F} Rw D R' U R D' R U' Rw' R'"
 - id: 1ll3t-JA+
   name: JA+
   family: J
   pairs: "Even"
   alg: U' (L R' L' R) U (L' B L B') U (L' B L B')
   scramble: U' F' BL B' R BL' L' D L D' R' BL D' B D BL' F U
-  showcase_alg: '[U''] {U,BL} H U S U S'
-  eif_alg: '{L,F} U R D R'' U'' R D'' R'' BR U R'' U'' R'
+  showcase_alg: "(U') {U,BL} H U S U S"
+  eif_alg: "{L,F} U R D R' U' R D' R' BR U R' U' R"
 - id: 1ll3t-JA-
   name: JA-
   family: J
   pairs: "Even"
   alg: U R' L F D R' D' R F' R L'
   scramble: U' B L' R BL D' B D B' R' BL' L F' L B' L' F U
-  showcase_alg: '[U] {F,BR} R'' B U L R'' L'' R U'' R B'''
+  showcase_alg: "(U) {F,BR} R' B U L R' L' R U' R B'"
 - id: 1ll3t-JB
   name: JB
   family: J
@@ -393,29 +393,29 @@ cases:
   pairs: "Odd"
   alg: U (R B' R' B) U (B L' B' L)
   scramble: D BL B' D F D R' D' R F' D' B BL' U' D' U
-  showcase_alg: '[U] {U,BR} S'' U H'
+  showcase_alg: "(U) {U,BR} S' U H"
 - id: 1ll3t-JB-
   name: JB-
   family: J
   pairs: "Odd"
   alg: U' (Rw' R) U' (L R' L' R) U (Rw R')
   scramble: U' D' BL' B' F' BL' L B' L' B BL B F BL D U
-  showcase_alg: '[U''] Rs'' U'' S'' U Rs'
-  eif_alg: '[U] {R,U} U'' Rs U R U'' Rw'' U'
+  showcase_alg: "(U') Rs' U' S' U Rs"
+  eif_alg: "(U) {R,U} U' Rs U R U' Rw' U"
 - id: 1ll3t-JR
   name: JR
   family: J
   pairs: "Odd"
   alg: U (R' L R L') U (L R' L' R)
   scramble: U' L' B L B' U B L' BL L' D L D' BL' L B'
-  showcase_alg: '[U] S U S'''
+  showcase_alg: "(U) S U S'"
 - id: 1ll3t-JR+
   name: JR+
   family: J
   pairs: "Odd"
   alg: U L D' BR D L D' BR' D L
   scramble: U' D' B L' BL' L' BL' L B' U' B BL L B' U' D U
-  showcase_alg: '[U] {L,BL} U R'' D R U R'' D'' R U'
+  showcase_alg: "(U) {L,BL} U R' D R U R' D' R U"
   showcase_label: EIF
 - id: 1ll3t-JR-
   name: JR-
@@ -423,7 +423,7 @@ cases:
   pairs: "Odd"
   alg: U' B' R BR' B R' B' R BR B R'
   scramble: U R' L R L' U B BL L' D L D' BL' L B' L' U
-  showcase_alg: '[U''] {B,U} U'' R BR'' U R'' U'' R BR U R'''
+  showcase_alg: "(U') {B,U} U' R BR' U R' U' R BR U R'"
   showcase_label: EIF
 - id: 1ll3t-JL
   name: JL
@@ -431,15 +431,15 @@ cases:
   pairs: "Odd"
   alg: U R' U' L Uw' R' U R' Uw L R
   scramble: U B BR F L' R L R' F' BR' D' B' U B D B' U
-  showcase_alg: '[U] {R,B} U'' R'' BR Rw'' U'' R U'' Rw BR U'
-  eif_alg: '[U] {R,BR} L R'' U R D'' R U'' R'' D L'''
+  showcase_alg: "(U) {R,B} U' R' BR Rw' U' R U' Rw BR U"
+  eif_alg: "(U) {R,BR} L R' U R D' R U' R' D L'"
 - id: 1ll3t-JL+
   name: JL+
   family: J
   pairs: "Odd"
   alg: U' L R' F' L' R L R' F L' R
   scramble: U L R' F L' R U' R' L F R L' U
-  showcase_alg: '[U''] {R,U} R U'' BR'' R'' U R U'' BR R'' U'
+  showcase_alg: "(U') {R,U} R U' BR' R' U R U' BR R' U"
   showcase_label: EIF
 - id: 1ll3t-JL-
   name: JL-
@@ -447,7 +447,7 @@ cases:
   pairs: "Odd"
   alg: U (R' L R L') U (L' B L B')
   scramble: U R B' D' BR D B' R' B U' L' B BL' L' B L' B'
-  showcase_alg: '[U] {U,BL} H'' U S'
+  showcase_alg: "(U) {U,BL} H' U S"
 - id: 1ll3t-LS
   name: LS
   family: L
@@ -455,14 +455,14 @@ cases:
   alg: R' U' L' R B' R B R' L R' U R
   scramble: D R' U' L D' L' D R' D R U D' R U D' U'
   showcase_alg: R' U' L' R B' R B R' L R' U R
-  eif_alg: '[U] {L,U} U'' R BR Rw'' U R U'' Rw R'' BR'' U R'''
+  eif_alg: "(U) {L,U} U' R BR Rw' U R U' Rw R' BR' U R'"
 - id: 1ll3t-LS+
   name: LS+
   family: L
   pairs: "Even"
   alg: U' L' B' BR' B L B' BR B
   scramble: D L F' BL' B F L B' L' F' BL F L' U D' U'
-  showcase_alg: '[U''] {L,U} U'' R'' D'' R U R'' D R'
+  showcase_alg: "(U') {L,U} U' R' D' R U R' D R"
   showcase_label: EIF
 - id: 1ll3t-LS-
   name: LS-
@@ -470,14 +470,14 @@ cases:
   pairs: "Even"
   alg: (L' B L B') U (L R' L' R) U (L R' L' R)
   scramble: U D' R' F L B' BR B L' B' BR' B F' R U' D
-  showcase_alg: '{U,BL} S U H U H'
+  showcase_alg: "{U,BL} S U H U H"
 - id: 1ll3t-LC
   name: LC
   family: L
   pairs: "Even"
   alg: U Lw' BL' L R' L' BL L' R L Lw
   scramble: U' B L' B' L U F L' U' D B D B' U D L F'
-  showcase_alg: '[U] {R,U} Rw'' D'' R U'' R'' D R'' U R Rw'
+  showcase_alg: "(U) {R,U} Rw' D' R U' R' D R' U R Rw"
   showcase_label: EIF
 - id: 1ll3t-LC+
   name: LC+
@@ -485,21 +485,21 @@ cases:
   pairs: "Even"
   alg: U' BRw B' U' (R' L R L') U BRw' R
   scramble: U R' D R' B' R B R U B' F D B D' F' U' D' U'
-  showcase_alg: '[U''] {U,BL} BLw L'' U'' H'' U BLw'' B'
+  showcase_alg: "(U') {U,BL} BLw L' U' H' U BLw' B"
 - id: 1ll3t-LC-
   name: LC-
   family: L
   pairs: "Even"
   alg: U (R' L R L') U' (R B' R' B) U' (R B' R' B)
   scramble: U F R' B' BR' F' L' B' R B R' L F BR R B F' U'
-  showcase_alg: '[U] S U'' H U'' H'
+  showcase_alg: "(U) S U' H U' H"
 - id: 1ll3t-LA
   name: LA
   family: L
   pairs: "Even"
   alg: Rw R' L R BR' R L' R' BR Rw'
   scramble: U B F D BL' D F' D B D' F D' B' BL D' B' F' U'
-  showcase_alg: '{L,F} Rw R'' U R D'' R U'' R'' D Rw'''
+  showcase_alg: "{L,F} Rw R' U R D' R U' R' D Rw'"
   showcase_label: EIF
 - id: 1ll3t-LA+
   name: LA+
@@ -507,7 +507,7 @@ cases:
   pairs: "Even"
   alg: R' L R Lw' R' L' BL L' R L BL' Lw
   scramble: U' F' R L R B F L' B' L F' L' R F U
-  showcase_alg: '{R,U} U'' R U Rw'' U'' R'' D R'' U R D'' Rw'
+  showcase_alg: "{R,U} U' R U Rw' U' R' D R' U R D' Rw"
   showcase_label: EIF
 - id: 1ll3t-LA-
   name: LA-
@@ -515,21 +515,21 @@ cases:
   pairs: "Even"
   alg: U' B' BLw U' (R B' R' B) U L BLw'
   scramble: U R B' R' B U BR' L R L' R' BR U
-  showcase_alg: '[U''] B'' BLw U'' H U L BLw'''
+  showcase_alg: "(U') B' BLw U' H U L BLw'"
 - id: 1ll3t-LB
   name: LB
   family: L
   pairs: "Odd"
   alg: L U' L' B L' B' L R' L R U L'
   scramble: D BR BL' L' D L' D' L B' L B BL BR' U D' U'
-  showcase_alg: '{U,BL} R U'' R'' L R'' L'' R B'' R B U R'''
+  showcase_alg: "{U,BL} R U' R' L R' L' R B' R B U R'"
 - id: 1ll3t-LB+
   name: LB+
   family: L
   pairs: "Odd"
   alg: U' L Rw' R L' R' L Rw L'
   scramble: U B' R' BL L F D R' D' R F' L' R BL' B U'
-  showcase_alg: '[U''] {L,F} U Rw'' R U'' R'' U Rw U'''
+  showcase_alg: "(U') {L,F} U Rw' R U' R' U Rw U'"
   showcase_label: EIF
 - id: 1ll3t-LB-
   name: LB-
@@ -537,29 +537,29 @@ cases:
   pairs: "Odd"
   alg: U' (L' B L B') U' (B' R B R')
   scramble: D BR' D' F BL L' R L R' BL' F' D BR U D' U'
-  showcase_alg: '[U''] {U,BR} H'' U'' S'
+  showcase_alg: "(U') {U,BR} H' U' S"
 - id: 1ll3t-LR
   name: LR
   family: L
   pairs: "Odd"
   alg: U' L U R' D R U' R D' R' L'
   scramble: U D L R BL' B' R' B BL L' U' L R' L' R D'
-  showcase_alg: '[U''] L U R'' D R U'' R D'' R'' L'''
-  eif_alg: '[U''] {B,BL} L'' D'' R U R'' D R'' U'' R L'
+  showcase_alg: "(U') L U R' D R U' R D' R' L'"
+  eif_alg: "(U') {B,BL} L' D' R U R' D R' U' R L"
 - id: 1ll3t-LR+
   name: LR+
   family: L
   pairs: "Odd"
   alg: U' (L R' L' R) U' (R B' R' B)
   scramble: U' BL L' B L B' BL' U R' D' R U R D B R' B' U'
-  showcase_alg: '[U''] S'' U'' H'
+  showcase_alg: "(U') S' U' H"
 - id: 1ll3t-LR-
   name: LR-
   family: L
   pairs: "Odd"
   alg: U R' L F R L' R' L F' R L'
   scramble: U' R' L F' R L' U L R' F' L' R U'
-  showcase_alg: '[U] {R,U} U'' R BR U R'' U'' R BR'' U R'''
+  showcase_alg: "(U) {R,U} U' R BR U R' U' R BR' U R'"
   showcase_label: EIF
 - id: 1ll3t-LL
   name: LL
@@ -567,14 +567,14 @@ cases:
   pairs: "Odd"
   alg: U' (L R' L' R) U' (R' L R L')
   scramble: U B D B D' R B U' R' B' R B U B' R' B U'
-  showcase_alg: '[U''] S'' U'' S'
+  showcase_alg: "(U') S' U' S"
 - id: 1ll3t-LL+
   name: LL+
   family: L
   pairs: "Odd"
   alg: U B L' BL B' L B L' BL' B' L
   scramble: U L' B BL L B' U' B L' BL B' L U
-  showcase_alg: '[U] {L,U} R U'' BR R'' U R U'' BR'' R'' U'
+  showcase_alg: "(U) {L,U} R U' BR R' U R U' BR' R' U"
   showcase_label: EIF
 - id: 1ll3t-LL-
   name: LL-
@@ -582,7 +582,7 @@ cases:
   pairs: "Odd"
   alg: U' R' D BL' D' R' D BL D' R'
   scramble: R' L F' R' D R D' F L' R U R B' R' B U'
-  showcase_alg: '[U''] {R,F} U'' R D'' R'' U'' R D R'' U'''
+  showcase_alg: "(U') {R,F} U' R D' R' U' R D R' U'"
   showcase_label: EIF
 - id: 1ll3t-WS
   name: WS
@@ -590,30 +590,30 @@ cases:
   pairs: "Even"
   alg: U (L R' L' R) U (R B' R' B) U' (B L' B' L)
   scramble: U' F' D' BL' BR' R' L' R BR R L R' BL B D B' F U
-  showcase_alg: '[U] S'' U H U'' {U,BL} S'''
+  showcase_alg: "(U) S' U H U' {U,BL} S'"
 - id: 1ll3t-WS+
   name: WS+
   family: W
   pairs: "Even"
   alg: U BR' R' BR' R L R' BR R L' BR
   scramble: U BR' F' D' B D F' D' B' D F' BR U'
-  showcase_alg: '[U] {BR,U} U'' R'' U'' R D R'' U R D'' U'
-  eif_alg: '[U] {B,U} BR'' R'' U'' R D R'' U R D'' BR'
+  showcase_alg: "(U) {BR,U} U' R' U' R D R' U R D' U"
+  eif_alg: "(U) {B,U} BR' R' U' R D R' U R D' BR"
 - id: 1ll3t-WS-
   name: WS-
   family: W
   pairs: "Even"
   alg: U' BL L BL L' R' L BL' L' BL' R
   scramble: U' L U D R' D' BL D R D' BL' U' L' U
-  showcase_alg: '[U''] {BL,F} U R U R'' D'' R U'' R'' U'' D'
-  eif_alg: '[U''] {B,BL} F R U R'' D'' R U'' R'' D F'''
+  showcase_alg: "(U') {BL,F} U R U R' D' R U' R' U' D"
+  eif_alg: "(U') {B,BL} F R U R' D' R U' R' D F'"
 - id: 1ll3t-WC
   name: WC
   family: W
   pairs: "Even"
   alg: U' R B' R' B R B' BR' R' B R B' BR R' B
   scramble: U' B' R BR' L B' D B D' BR L' D B' D' B R' B U
-  showcase_alg: '[U''] {B,U} R U'' R'' U R U'' BR'' R'' U R U'' BR R'' U'
+  showcase_alg: "(U') {B,U} R U' R' U R U' BR' R' U R U' BR R' U"
   showcase_label: EIF
 - id: 1ll3t-WC+
   name: WC+
@@ -621,22 +621,22 @@ cases:
   pairs: "Even"
   alg: U' (R' L R L') U' (L R' L' R) U (R' L R L')
   scramble: U F D' B L' D L D' BL' L' D L D' BL B' D F' U'
-  showcase_alg: '[U''] S U'' S'' U S'
+  showcase_alg: "(U') S U' S' U S"
 - id: 1ll3t-WC-
   name: WC-
   family: W
   pairs: "Even"
   alg: U' Rw' L R L' U' B' R B R' U Rw R'
   scramble: U F' L U D B' R B R' U' L' B L B' D' L' F U'
-  showcase_alg: '[U''] Rw'' L R L'' U'' B'' R B R'' U Rw R'''
-  eif_alg: '[U''] {L,U} R U'' BR R'' U R U'' BR'' Rw'' R U R'' U'' Rw R'' U'
+  showcase_alg: "(U') Rw' L R L' U' B' R B R' U Rw R'"
+  eif_alg: "(U') {L,U} R U' BR R' U R U' BR' Rw' R U R' U' Rw R' U"
 - id: 1ll3t-WA
   name: WA
   family: W
   pairs: "Even"
   alg: U L R' L' R L R' F L' R L R' F' L' R
   scramble: U' R B' R' B F' R D' BL' D' B D B' BL D R' F U
-  showcase_alg: '[U] {R,U} R U'' R'' U R U'' BR R'' U R U'' BR'' R'' U'
+  showcase_alg: "(U) {R,U} R U' R' U R U' BR R' U R U' BR' R' U"
   showcase_label: EIF
 - id: 1ll3t-WA+
   name: WA+
@@ -644,44 +644,44 @@ cases:
   pairs: "Even"
   alg: U Lw R' L' R U (B L' B' L) U' (Lw' L)
   scramble: U' F R' U' B L' B' L U D' R B' R' B D R F' U
-  showcase_alg: '[U] {U,BL} Rw B'' R'' B U S'' U'' Rs'''
+  showcase_alg: "(U) {U,BL} Rw B' R' B U S' U' Rs'"
 - id: 1ll3t-WA-
   name: WA-
   family: W
   pairs: "Even"
   alg: U (L R' L' R) U (R' L R L') U' (L R' L' R)
   scramble: U B L' BL' B' BL L' F R' B R B' F' L' B' U B U
-  showcase_alg: '[U] S'' U S U'' S'''
+  showcase_alg: "(U) S' U S U' S'"
 - id: 1ll3t-WB
   name: WB
   family: W
   pairs: "Odd"
   alg: U' (B' R B R') U (R' L R L') U (R' L R L')
   scramble: R F L R' L F' R' D R D' F R L F' R'
-  showcase_alg: '[U''] H'' U S U S'
+  showcase_alg: "(U') H' U S U S"
 - id: 1ll3t-WB+
   name: WB+
   family: W
   pairs: "Odd"
   alg: U' BL' B U' (R B' R' B) U B' BL
   scramble: B' R B R' U' B' F L' R' L B L' R L F' U
-  showcase_alg: '[U''] {U,BR} BR'' R U'' S'' U R'' BR'
-  eif_alg: '[U''] {R,BR} D'' R BR'' U R'' U'' R BR R'' D'
+  showcase_alg: "(U') {U,BR} BR' R U' S' U R' BR"
+  eif_alg: "(U') {R,BR} D' R BR' U R' U' R BR R' D"
 - id: 1ll3t-WB-
   name: WB-
   family: W
   pairs: "Odd"
   alg: U BR B' U (L' B L B') U' B BR'
   scramble: R' BR' B' L R' L' R B BR R U R B' R' B U'
-  showcase_alg: '[U] {U,BL} BL L'' U S U'' L BL'''
-  eif_alg: '[U] {R,U} Rw U'' BR R'' U R U'' BR'' U Rw'''
+  showcase_alg: "(U) {U,BL} BL L' U S U' L BL'"
+  eif_alg: "(U) {R,U} Rw U' BR R' U R U' BR' U Rw'"
 - id: 1ll3t-WR
   name: WR
   family: W
   pairs: "Odd"
   alg: U B' Rw' R' B R F' R B' R' F Rw B
   scramble: B F D B D' B' F' L' BL' B' L B L' BL L B'
-  showcase_alg: '[U] {B,U} U'' Rw'' R'' U R D'' R U'' R'' D Rw U'
+  showcase_alg: "(U) {B,U} U' Rw' R' U R D' R U' R' D Rw U"
   showcase_label: EIF
 - id: 1ll3t-WR+
   name: WR+
@@ -689,30 +689,30 @@ cases:
   pairs: "Odd"
   alg: (Lw' L) U (B L' B' L) U' B L' B' Lw
   scramble: B U B U' B' R B BL B' R' B BL' U B' U' B'
-  showcase_alg: '{U,BL} Rs'' U S'' U'' L R'' L'' Rw'
-  eif_alg: '[U] {L,BL} U R'' U R U Rw'' D'' U R'' U'' R D'
+  showcase_alg: "{U,BL} Rs' U S' U' L R' L' Rw"
+  eif_alg: "(U) {L,BL} U R' U R U Rw' D' U R' U' R D"
 - id: 1ll3t-WR-
   name: WR-
   family: W
   pairs: "Odd"
   alg: U (B' R B R') U' (R B' R' B) U' (R B' R' B)
   scramble: U D' R' U L R L' D B' D' R' U' R U D B U
-  showcase_alg: '[U] {U,BR} S U'' S'' U'' S'''
+  showcase_alg: "(U) {U,BR} S U' S' U' S'"
 - id: 1ll3t-WL
   name: WL
   family: W
   pairs: "Odd"
   alg: U (Rw' R) L R' L' Rw U' Rw' L R L' (Rw R')
   scramble: D R' F R BL L' R' BR R' L R BR' BL' F' R D'
-  showcase_alg: '[U] Rs'' L R'' L'' Rw U'' Rw'' L R L'' Rs'
-  eif_alg: '[U] {L,F} Rw'' R U R'' U'' Rw BR'' Rw'' U R U'' Rw R'''
+  showcase_alg: "(U) Rs' L R' L' Rw U' Rw' L R L' Rs"
+  eif_alg: "(U) {L,F} Rw' R U R' U' Rw BR' Rw' U R U' Rw R'"
 - id: 1ll3t-WL+
   name: WL+
   family: W
   pairs: "Odd"
   alg: U' (B L' B' L) U (L' B L B') U (L' B L B')
   scramble: U' L U' R' L' R D' B D L U L' U' D' B' U' D
-  showcase_alg: '[U''] {U,BL} S'' U S U S'
+  showcase_alg: "(U') {U,BL} S' U S U S"
 - id: 1ll3t-WL-
   name: WL-
   family: W
@@ -726,63 +726,63 @@ cases:
   pairs: "Even"
   alg: U (R B' R' B) U (R B' R' B) U' (R' L R L') U' (R' L R L')
   scramble: D L B L' D' B BR D B' D' B BR' D B U' D' U
-  showcase_alg: '[U] H U H U'' S U'' S'
+  showcase_alg: "(U) H U H U' S U' S"
 - id: 1ll3t-BS+
   name: BS+
   family: B
   pairs: "Even"
   alg: U (L' B L B') U (L' B L B') U (L R' L' R)
   scramble: U' B R' B' F L U' L' B L B' U L' B F' R B' U
-  showcase_alg: '[U] {U,BL} S U S U H'
+  showcase_alg: "(U) {U,BL} S U S U H"
 - id: 1ll3t-BS-
   name: BS-
   family: B
   pairs: "Even"
   alg: U' (R B' R' B) U' (R B' R' B) U' (R' L R L')
   scramble: F' BL' B R B' R' BL U' R BL B R' B' BL' U F
-  showcase_alg: '[U''] H U'' H U'' S'
+  showcase_alg: "(U') H U' H U' S"
 - id: 1ll3t-BC
   name: BC
   family: B
   pairs: "Even"
   alg: U' (R B' R' B) U' (R B' R' B) U' (R B' R' B)
   scramble: U L F R' D BR R' BR' D' R F' L' R U'
-  showcase_alg: '[U''] {U,BR} S'' U'' S'' U'' S'''
+  showcase_alg: "(U') {U,BR} S' U' S' U' S'"
 - id: 1ll3t-BC+
   name: BC+
   family: B
   pairs: "Even"
   alg: U F' BRw' F' L R L' R' F BRw F
   scramble: U' D BL L U L' R' L R U' L' BL' D' U
-  showcase_alg: '[U] {F,U} U'' BLw'' U'' R L R'' L'' U BLw U'
+  showcase_alg: "(U) {F,U} U' BLw' U' R L R' L' U BLw U"
 - id: 1ll3t-BC-
   name: BC-
   family: B
   pairs: "Even"
   alg: U (L' B L B') U (L R' L' R) U (B L' B' L)
   scramble: U' B' F BL F' U' F R' B' R B F' U F BL' B F' U
-  showcase_alg: '[U] {U,BL} S U H U S'''
+  showcase_alg: "(U) {U,BL} S U H U S'"
 - id: 1ll3t-BA
   name: BA
   family: B
   pairs: "Even"
   alg: U (L' B L B') U (L' B L B') U (L' B L B')
   scramble: U D' R' BR B' R B R' BR' R U B' R B R' U D
-  showcase_alg: '[U] {U,BL} S U S U S'
+  showcase_alg: "(U) {U,BL} S U S U S"
 - id: 1ll3t-BA+
   name: BA+
   family: B
   pairs: "Even"
   alg: U (L R' L' R) U Rw R' L R' L' Rw' R'
   scramble: U' F' U' BR' F BR U' L' B L B' U BR' F' BR U F U
-  showcase_alg: '[U] S'' U Rw R'' L R'' L'' Rw'' R'''
+  showcase_alg: "(U) S' U Rw R' L R' L' Rw' R'"
 - id: 1ll3t-BA-
   name: BA-
   family: B
   pairs: "Even"
   alg: U BR' BLw' BR' B R B' R' BR BLw BR
   scramble: U' D F R U B' R' B R U' R' F' D' U
-  showcase_alg: '[U] {BR,U} U'' BLw'' U'' L R L'' R'' U BLw U'
+  showcase_alg: "(U) {BR,U} U' BLw' U' L R L' R' U BLw U"
 - id: 1ll3t-BB
   name: BB
   family: B
@@ -796,7 +796,7 @@ cases:
   pairs: "Odd"
   alg: U F' L' U' Lw B L' B' L Lw' U L F
   scramble: U' L' B' D' B' D BL L B' L' B BL' B' L U
-  showcase_alg: '[U] {U,BL} BR'' R'' U'' Rw L R'' L'' R Rw'' U R BR'
+  showcase_alg: "(U) {U,BL} BR' R' U' Rw L R' L' R Rw' U R BR"
 - id: 1ll3t-BB-
   name: BB-
   family: B
@@ -810,21 +810,21 @@ cases:
   pairs: "Odd"
   alg: U' BLw L' U B L' B' L U' BLw' B
   scramble: U' D' B' R BR B' D B D' BR' B R' D U
-  showcase_alg: '[U''] BLw L'' U B L'' B'' L U'' BLw'' B'
+  showcase_alg: "(U') BLw L' U B L' B' L U' BLw' B"
 - id: 1ll3t-BR+
   name: BR+
   family: B
   pairs: "Odd"
   alg: R' BRw U (B L' B' L) U' BRw' R
   scramble: U' B BL L' U BL U' D' B D B' U BL' U' L BL' B' U
-  showcase_alg: '{U,BL} B'' BLw U S'' U'' BLw'' B'
+  showcase_alg: "{U,BL} B' BLw U S' U' BLw' B"
 - id: 1ll3t-BR-
   name: BR-
   family: B
   pairs: "Odd"
   alg: U (R B' R' B) U' (R B' R' B) U (B' R B R')
   scramble: U' R B' R' BR L' D' L' D BR L' R L R' BR L' B U
-  showcase_alg: '[U] {U,BR} S'' U'' S'' U S'
+  showcase_alg: "(U) {U,BR} S' U' S' U S"
 - id: 1ll3t-BL
   name: BL
   family: B
@@ -845,14 +845,14 @@ cases:
   pairs: "Odd"
   alg: U' L' Fw U (B' R B R') U' Fw' L
   scramble: U' L' B BL L B' L' B BL L B' U L' B BL' L B' U'
-  showcase_alg: '[U''] {U,BR} B'' BLw U S U'' BLw'' B'
+  showcase_alg: "(U') {U,BR} B' BLw U S U' BLw' B"
 - id: 1ll3t-ZS
   name: ZS
   family: Z
   pairs: "Even"
   alg: U' L' B L B BR' B L' B' BR B L
   scramble: F U' F' U R' L R L' B L' B' L U' F U F'
-  showcase_alg: '[U''] {L,U} U'' R U R D'' R U'' R'' D R U'
+  showcase_alg: "(U') {L,U} U' R U R D' R U' R' D R U"
   showcase_label: EIF
 - id: 1ll3t-ZS+
   name: ZS+
@@ -860,7 +860,7 @@ cases:
   pairs: "Even"
   alg: U R B BR R BR' B BR R' BR' R' B
   scramble: F BR B' R' L' BL L B' L' B BL' L R B BR' F'
-  showcase_alg: '[U] {B,U} R U BR R BR'' U BR R'' BR'' R'' U'
+  showcase_alg: "(U) {B,U} R U BR R BR' U BR R' BR' R' U"
   showcase_label: EIF
 - id: 1ll3t-ZS-
   name: ZS-
@@ -868,15 +868,15 @@ cases:
   pairs: "Even"
   alg: U (B L' B' L) U' (R B' R' B) U (B' R B R')
   scramble: F L' D BR B' BR' D' BR L B R B R' B' BR' F'
-  showcase_alg: '[U] {U,BR} H U'' S'' U S'
-  eif_alg: '[U''] {L,BL} U'' D R U R Rw'' U R'' U'' R'' Rw D'''
+  showcase_alg: "(U) {U,BR} H U' S' U S"
+  eif_alg: "(U') {L,BL} U' D R U R Rw' U R' U' R' Rw D'"
 - id: 1ll3t-ZC
   name: ZC
   family: Z
   pairs: "Even"
   alg: B' R BR B R' U' R B' BR B R'
   scramble: R B R' BL' BR' R F R D R' D' F' R' BR BL B'
-  showcase_alg: '{B,U} U'' R BR U R'' F'' R U'' BR U R'''
+  showcase_alg: "{B,U} U' R BR U R' F' R U' BR U R'"
   showcase_label: EIF
 - id: 1ll3t-ZC+
   name: ZC+
@@ -884,14 +884,14 @@ cases:
   pairs: "Even"
   alg: U B BR' U (B L' B' L) U' BR B'
   scramble: U' D B U' R BR D' R D R' BR' R' U B' U D'
-  showcase_alg: '[U] {U,BL} L BL'' U S'' U'' BL L'''
+  showcase_alg: "(U) {U,BL} L BL' U S' U' BL L'"
 - id: 1ll3t-ZC-
   name: ZC-
   family: Z
   pairs: "Even"
   alg: U' R B' BR R' B R B' BR' B R'
   scramble: U' L' D BR B' D B D' BR' B' D' L D B U' D' U'
-  showcase_alg: '[U''] {B,U} R U'' BR R'' U R U'' BR'' U R'''
+  showcase_alg: "(U') {B,U} R U' BR R' U R U' BR' U R'"
   showcase_label: EIF
 - id: 1ll3t-ZA
   name: ZA
@@ -899,29 +899,29 @@ cases:
   pairs: "Even"
   alg: U L R' F' (D R' D' R) F L' R
   scramble: B' R B R' U' R BL' B R' B' BL U
-  showcase_alg: '[U] {F,BR} B R'' U'' S'' U B'' R'
-  eif_alg: '[U] {B,BL} U'' R'' BR'' U'' BR U R'' U'' R BR'' R'' U R BR R U'
+  showcase_alg: "(U) {F,BR} B R' U' S' U B' R"
+  eif_alg: "(U) {B,BL} U' R' BR' U' BR U R' U' R BR' R' U R BR R U"
 - id: 1ll3t-ZA+
   name: ZA+
   family: Z
   pairs: "Even"
   alg: U' B' U' R Uw' B' U' B' Uw R U' B
   scramble: F BR' F' L' D' B' D L B F BR B R' B' R F'
-  showcase_alg: '[U''] {B,L} U'' R'' BR Rw'' U'' R'' U'' Rw BR R'' U'
+  showcase_alg: "(U') {B,L} U' R' BR Rw' U' R' U' Rw BR R' U"
 - id: 1ll3t-ZA-
   name: ZA-
   family: Z
   pairs: "Even"
   alg: U' B L' BL' B' BL L B' U B
   scramble: B D' B D B' D' B' U B' U D' L D' L' U' B U'
-  showcase_alg: '[U''] {U,BR} R B'' BR'' R'' BR B R'' U R'
+  showcase_alg: "(U') {U,BR} R B' BR' R' BR B R' U R"
 - id: 1ll3t-ZB
   name: ZB
   family: Z
   pairs: "Odd"
   alg: R' L F' L' R L R' F R L'
   scramble: U B D' R L BL' U B L' B' L U' R' BL L' D B' U'
-  showcase_alg: '{R,U} U'' R BR'' R'' U R U'' BR U R'''
+  showcase_alg: "{R,U} U' R BR' R' U R U' BR U R'"
   showcase_label: EIF
 - id: 1ll3t-ZB+
   name: ZB+
@@ -929,65 +929,65 @@ cases:
   pairs: "Odd"
   alg: U' L' D' BL' B' D' B D BL D L
   scramble: R' L R L' B D' R U' L' B L B' U R' D B'
-  showcase_alg: '[U''] {BL,BR} B'' R'' U'' L'' R'' L R U R B'
-  eif_alg: '[U''] {B,U} R U'' R'' U'' Rw'' U'' R'' U'' R U'' Rw U'''
+  showcase_alg: "(U') {BL,BR} B' R' U' L' R' L R U R B"
+  eif_alg: "(U') {B,U} R U' R' U' Rw' U' R' U' R U' Rw U'"
 - id: 1ll3t-ZB-
   name: ZB-
   family: Z
   pairs: "Odd"
   alg: U' (R' L R L') U (R' L R L')
   scramble: F BR D B L B' L' D' BR' F'
-  showcase_alg: '[U''] S U S'
+  showcase_alg: "(U') S U S"
 - id: 1ll3t-ZR
   name: ZR
   family: Z
   pairs: "Odd"
   alg: U' (B' R B R') U (B' R B R') U' (B' R B R')
   scramble: U' L' R' BL' B' L' B L R BL L' R' L' R U
-  showcase_alg: '[U''] {U,BR} S U S U'' S'
-  eif_alg: '[U''] {L,U} L'' U L Rw'' U'' R'' U'' R U'' Rw U'''
+  showcase_alg: "(U') {U,BR} S U S U' S"
+  eif_alg: "(U') {L,U} L' U L Rw' U' R' U' R U' Rw U'"
 - id: 1ll3t-ZR+
   name: ZR+
   family: Z
   pairs: "Odd"
   alg: U' (R B' R' B) U (L R' L' R)
   scramble: U' L' B' BL B' L U B' U B L' B' BL L B' U B U'
-  showcase_alg: '[U''] H U S'''
+  showcase_alg: "(U') H U S'"
 - id: 1ll3t-ZR-
   name: ZR-
   family: Z
   pairs: "Odd"
   alg: U' (Lw L') B L' B' Lw2 L'
   scramble: F' L R B' BR' B' D B D' BR B R' L' F
-  showcase_alg: '[U''] {U,BL} Rs L R'' L'' Rw2 R'''
+  showcase_alg: "(U') {U,BL} Rs L R' L' Rw2 R'"
 - id: 1ll3t-ZL
   name: ZL
   family: Z
   pairs: "Odd"
   alg: U' (R' L R L') U (R B' R' B)
   scramble: U' D' B L' D' B BR R D' R' D BR' D B L U' D U'
-  showcase_alg: '[U''] S U H'
+  showcase_alg: "(U') S U H"
 - id: 1ll3t-ZL+
   name: ZL+
   family: Z
   pairs: "Odd"
   alg: B BRw' U' (B L' B' L) U BRw B'
   scramble: U' R' L U' D' B' D' B U D' R L' U
-  showcase_alg: '{U,BL} L BLw'' U'' S'' U BLw L'''
+  showcase_alg: "{U,BL} L BLw' U' S' U BLw L'"
 - id: 1ll3t-ZL-
   name: ZL-
   family: Z
   pairs: "Odd"
   alg: U' BR R BR' R' B' R B BR R' BR'
   scramble: B F R' D B BL D' B D B' BL' B' D' R B' F'
-  showcase_alg: '[U''] {BR,U} U R U'' R'' L'' R L U R'' U'''
+  showcase_alg: "(U') {BR,U} U R U' R' L' R L U R' U'"
 - id: 1ll3t-SS
   name: SS
   family: S
   pairs: "Even"
   alg: U R B' R' B' BL B' R B BL' B' R'
   scramble: F D' B F L' B' L U R' L R L' U' F' D F'
-  showcase_alg: '[U] {R,BR} U R'' U'' R'' D R'' U R D'' R'' U'''
+  showcase_alg: "(U) {R,BR} U R' U' R' D R' U R D' R' U'"
   showcase_label: EIF
 - id: 1ll3t-SS+
   name: SS+
@@ -995,43 +995,43 @@ cases:
   pairs: "Even"
   alg: U' (B' R B R') U (L R' L' R) U' (R' L R L')
   scramble: F D' F' D' B BL L B' L' B BL' B' D F D F'
-  showcase_alg: '[U''] H'' U S'' U'' S'
-  eif_alg: '{R,F} D'' U R'' U'' R'' Rw U'' R U R Rw'' D'
+  showcase_alg: "(U') H' U S' U' S"
+  eif_alg: "{R,F} D' U R' U' R' Rw U' R U R Rw' D"
 - id: 1ll3t-SS-
   name: SS-
   family: S
   pairs: "Even"
   alg: Rw' D R' BR R' B' R B BR' R D' Rw
   scramble: R' B' F' U' B L B' L' U B F R
-  showcase_alg: '{BR,U} Rw'' B R'' U R'' L'' R L U'' R B'' Rw'
+  showcase_alg: "{BR,U} Rw' B R' U R' L' R L U' R B' Rw"
 - id: 1ll3t-SC
   name: SC
   family: S
   pairs: "Even"
   alg: U BRw' R U' (L' B L B') U BRw B'
   scramble: U D B L' BL' D L' D' L BL B' L D' U'
-  showcase_alg: '[U] {U,BL} BLw'' B U'' S U BLw L'''
+  showcase_alg: "(U) {U,BL} BLw' B U' S U BLw L'"
 - id: 1ll3t-SC+
   name: SC+
   family: S
   pairs: "Even"
   alg: U Fw' L U B U' L' Fw U' B'
   scramble: U' B U' D' B D BL' L D L' D' BL D' B' U D B' U
-  showcase_alg: '[U] {U,BR} BLw'' B U R U'' B'' BLw U'' R'''
+  showcase_alg: "(U) {U,BR} BLw' B U R U' B' BLw U' R'"
 - id: 1ll3t-SC-
   name: SC-
   family: S
   pairs: "Even"
   alg: U BL' B' L' BL (L B' L' B) BL' L B BL
   scramble: U D BR B U D' L D' L D L U' D B' BR' U' D'
-  showcase_alg: '[U] {BL,U} U'' R'' L'' U S'' U'' L R U'
+  showcase_alg: "(U) {BL,U} U' R' L' U S' U' L R U"
 - id: 1ll3t-SA
   name: SA
   family: S
   pairs: "Even"
   alg: B L' BL' B' L U L' B BL' B' L
   scramble: U' R B R B' U B' R BL' B R' B' BL U' R U B
-  showcase_alg: '{L,U} R U'' BR'' R'' U F U'' R BR'' R'' U'
+  showcase_alg: "{L,U} R U' BR' R' U F U' R BR' R' U"
   showcase_label: EIF
 - id: 1ll3t-SA+
   name: SA+
@@ -1039,7 +1039,7 @@ cases:
   pairs: "Even"
   alg: U L' B BL' L B' L' B BL B' L
   scramble: B' F U' F' U' B L' B L B U F U B F'
-  showcase_alg: '[U] {L,U} U'' R BR'' U R'' U'' R BR R'' U'
+  showcase_alg: "(U) {L,U} U' R BR' U R' U' R BR R' U"
   showcase_label: EIF
 - id: 1ll3t-SA-
   name: SA-
@@ -1047,43 +1047,43 @@ cases:
   pairs: "Even"
   alg: U' B' BL U' (B' R B R') U BL' B
   scramble: U' L' R' L F L R L' R' F' R U' L B L' B' U'
-  showcase_alg: '[U''] {U,BR} R'' BR U'' S U BR'' R'
+  showcase_alg: "(U') {U,BR} R' BR U' S U BR' R"
 - id: 1ll3t-SB
   name: SB
   family: S
   pairs: "Odd"
   alg: BRw B' U (B L' B' L) U' BRw' R
   scramble: U' B L' BL' BR D' L' D BR' L BL D' B D B' L B' U
-  showcase_alg: '{U,BL} BLw L'' U S'' U'' BLw'' B'
+  showcase_alg: "{U,BL} BLw L' U S' U' BLw' B"
 - id: 1ll3t-SB+
   name: SB+
   family: S
   pairs: "Odd"
   alg: U (L R' L' R) U' (L R' L' R)
   scramble: U' BR U D B L B' L' U' D' BR' U
-  showcase_alg: '[U] S'' U'' S'''
+  showcase_alg: "(U) S' U' S'"
 - id: 1ll3t-SB-
   name: SB-
   family: S
   pairs: "Odd"
   alg: U R D BR B D B' D' BR' D' R'
   scramble: F U' F' U D F' R B' R' B F U' D' F U F'
-  showcase_alg: '[U] {BR,F} L R U B R B'' R'' U'' R'' L'''
-  eif_alg: '[U] {L,F} U R'' U'' R BR'' U R D'' R U'' R'' D R'''
+  showcase_alg: "(U) {BR,F} L R U B R B' R' U' R' L'"
+  eif_alg: "(U) {L,F} U R' U' R BR' U R D' R U' R' D R'"
 - id: 1ll3t-SR
   name: SR
   family: S
   pairs: "Odd"
   alg: (L' B L B') U' (R B' R' B)
   scramble: U' L' B BR L R' BR' BL L' D' L D BL' BR R BR' B' U
-  showcase_alg: '{U,BR} H'' U'' S'''
+  showcase_alg: "{U,BR} H' U' S'"
 - id: 1ll3t-SR+
   name: SR+
   family: S
   pairs: "Odd"
   alg: U BL' L' BL L B L' B' BL' L BL
   scramble: F' L U' R B' R' B U L' B L' D L D' B' F
-  showcase_alg: '[U] {BL,F} U'' R'' U R B R'' B'' U'' R U'
+  showcase_alg: "(U) {BL,F} U' R' U R B R' B' U' R U"
 - id: 1ll3t-SR-
   name: SR-
   family: S
@@ -1097,14 +1097,14 @@ cases:
   pairs: "Odd"
   alg: U (B L' B' L) U' (B L' B' L) U (B L' B' L)
   scramble: U R BR L B R B' R' BR' L' R L R L' U'
-  showcase_alg: '[U] {U,BL} S'' U'' S'' U S'''
+  showcase_alg: "(U) {U,BL} S' U' S' U S'"
 - id: 1ll3t-SL+
   name: SL+
   family: S
   pairs: "Odd"
   alg: U Rw' R B' R B Rw R2'
   scramble: F L B' D' F D R' D' R F' D B L' F'
-  showcase_alg: '[U] {B,U} Rw'' R U'' R U Rw R2'''
+  showcase_alg: "(U) {B,U} Rw' R U' R U Rw R2'"
   showcase_label: EIF
 - id: 1ll3t-SL-
   name: SL-
@@ -1112,7 +1112,7 @@ cases:
   pairs: "Odd"
   alg: U (L' B L B') U' (R' L R L')
   scramble: U' D' B D F BR' B D' R' D R B' BR D B' D' F' U
-  showcase_alg: '[U] {U,BL} S U'' H'''
+  showcase_alg: "(U) {U,BL} S U' H'"
 - id: 1ll3t-TS
   name: TS
   family: T
@@ -1126,7 +1126,7 @@ cases:
   pairs: "Even"
   alg: B' R' Bw' B R' B R Bw B' R
   scramble: U D L' B' L U' L' B' L B U L' B L D' U'
-  showcase_alg: '{R,BR} R'' U'' Rw'' R U'' R U Rw R'' U'
+  showcase_alg: "{R,BR} R' U' Rw' R U' R U Rw R' U"
   showcase_label: EIF
 - id: 1ll3t-TS-
   name: TS-
@@ -1134,7 +1134,7 @@ cases:
   pairs: "Even"
   alg: B L Bw B' L B' L' Bw' B L'
   scramble: U' B' L' B R BR B' R' B R BR' R' B' L B U
-  showcase_alg: '{L,U} R U Rw R'' U R'' U'' Rw'' R U'''
+  showcase_alg: "{L,U} R U Rw R' U R' U' Rw' R U'"
   showcase_label: EIF
 - id: 1ll3t-TC
   name: TC
@@ -1142,7 +1142,7 @@ cases:
   pairs: "Even"
   alg: B' R' F R' B R F' R
   scramble: U' R L U F' U' D R' D' R U F U' R' L' U
-  showcase_alg: '{B,U} U'' R'' D R'' U R D'' R'
+  showcase_alg: "{B,U} U' R' D R' U R D' R"
   showcase_label: EIF
 - id: 1ll3t-TC+
   name: TC+
@@ -1157,7 +1157,7 @@ cases:
   pairs: "Even"
   alg: B' R B R F R' B' R F' R' B R'
   scramble: U L D' R' D' R L' U' D B D B D' B' D B'
-  showcase_alg: '{B,U} U'' R U R D R'' U'' R D'' R'' U R'''
+  showcase_alg: "{B,U} U' R U R D R' U' R D' R' U R'"
   showcase_label: EIF
 - id: 1ll3t-TA
   name: TA
@@ -1165,7 +1165,7 @@ cases:
   pairs: "Even"
   alg: B L F' L B' L' F L'
   scramble: U' D BR L D' BR D' L D BR' D BR' L U' D' U'
-  showcase_alg: '{B,BL} U R D'' R U'' R'' D R'''
+  showcase_alg: "{B,BL} U R D' R U' R' D R'"
   showcase_label: EIF
 - id: 1ll3t-TA+
   name: TA+
@@ -1173,7 +1173,7 @@ cases:
   pairs: "Even"
   alg: B L' B' L' F' L B L' F L B' L
   scramble: U' D R' L D' L' D' R U B D B D' B' D B'
-  showcase_alg: '{B,BL} U R'' U'' R'' D'' R U R'' D R U'' R'
+  showcase_alg: "{B,BL} U R' U' R' D' R U R' D R U' R"
   showcase_label: EIF
 - id: 1ll3t-TA-
   name: TA-
@@ -1181,14 +1181,14 @@ cases:
   pairs: "Even"
   alg: (B L' B' L)
   scramble: B' R B L' B L B' L R' L'
-  showcase_alg: '{U,BL} S'''
+  showcase_alg: "{U,BL} S'"
 - id: 1ll3t-TB
   name: TB
   family: T
   pairs: "Odd"
   alg: D' B' D F' D B' D' F D' B' D
   scramble: D B' F' D' F D' B' D F' D B' F U' D' U
-  showcase_alg: '{B,BR} R'' U'' R D'' R U'' R'' D R'' U'' R'
+  showcase_alg: "{B,BR} R' U' R D' R U' R' D R' U' R"
   showcase_label: EIF
 - id: 1ll3t-TB+
   name: TB+
@@ -1196,7 +1196,7 @@ cases:
   pairs: "Odd"
   alg: R Bw' R' B R Bw B2' R' B
   scramble: R BR D L' D' BR' D' L D R'
-  showcase_alg: '{R,BR} U Rw'' U'' R U Rw R2'' U'' R'
+  showcase_alg: "{R,BR} U Rw' U' R U Rw R2' U' R"
   showcase_label: EIF
 - id: 1ll3t-TB-
   name: TB-
@@ -1204,7 +1204,7 @@ cases:
   pairs: "Odd"
   alg: L' Bw L B' L' Bw' B' L B'
   scramble: R D' BR' L' D' L D BR D R'
-  showcase_alg: '{L,U} U'' Rw U R'' U'' Rw'' R'' U R'''
+  showcase_alg: "{L,U} U' Rw U R' U' Rw' R' U R'"
   showcase_label: EIF
 - id: 1ll3t-TR
   name: TR
@@ -1212,7 +1212,7 @@ cases:
   pairs: "Odd"
   alg: U L F L' B L F' L B' L
   scramble: U' D L R L' U D L D B L' B' U' B' R' B U
-  showcase_alg: '[U] {B,BL} R D R'' U R D'' R U'' R'
+  showcase_alg: "(U) {B,BL} R D R' U R D' R U' R"
   showcase_label: EIF
 - id: 1ll3t-TR+
   name: TR+
@@ -1220,7 +1220,7 @@ cases:
   pairs: "Odd"
   alg: U L F L' B L F L B' L' F L2
   scramble: U' B D L' B' F' L B L' B' F L B' D' B U
-  showcase_alg: '[U] {B,BL} R D R'' U R D R U'' R'' D R2'
+  showcase_alg: "(U) {B,BL} R D R' U R D R U' R' D R2"
   showcase_label: EIF
 - id: 1ll3t-TR-
   name: TR-
@@ -1228,8 +1228,8 @@ cases:
   pairs: "Odd"
   alg: U L BLw' U' (R' L R L') U BLw L'
   scramble: U L' B L D' B' L' D' L U L' D L B D B' U
-  showcase_alg: '[U] L BLw'' U'' S U BLw L'''
-  eif_alg: '{L,U} U'' D R'' U R D'' {L,D} R'' U R U'''
+  showcase_alg: "(U) L BLw' U' S U BLw L'"
+  eif_alg: "{L,U} U' D R' U R D' {L,D} R' U R U'"
   eif_label: EIF
 - id: 1ll3t-TL
   name: TL
@@ -1237,7 +1237,7 @@ cases:
   pairs: "Odd"
   alg: U' R' F' R B' R' F R2 B R'
   scramble: U L B L' U B' R L' D' L D BR B' BR' R' B U
-  showcase_alg: '[U''] {B,U} R'' D'' R U'' R'' D R2 U R'''
+  showcase_alg: "(U') {B,U} R' D' R U' R' D R2 U R'"
   showcase_label: EIF
 - id: 1ll3t-TL+
   name: TL+
@@ -1245,8 +1245,8 @@ cases:
   pairs: "Odd"
   alg: U' B BRw' U (B L' B' L) U' BRw B'
   scramble: U' R D' R' B' D' B U' B' D B R D B' R' B U'
-  showcase_alg: '[U''] {U,BL} L BLw'' U S'' U'' BLw L'''
-  eif_alg: '{R,BR} U D'' R U'' R'' D {BR,F} R B'' R'' B'
+  showcase_alg: "(U') {U,BL} L BLw' U S' U' BLw L'"
+  eif_alg: "{R,BR} U D' R U' R' D {BR,F} R B' R' B"
   eif_label: EIF
 - id: 1ll3t-TL-
   name: TL-
@@ -1254,7 +1254,7 @@ cases:
   pairs: "Odd"
   alg: U' R' F' R B' R' F' R' B R F' R
   scramble: U D' B U B' D' R' D B' R B D B U' B' U'
-  showcase_alg: '[U''] {B,U} R'' D'' R U'' R'' D'' R'' U R D'' R'
+  showcase_alg: "(U') {B,U} R' D' R U' R' D' R' U R D' R"
   showcase_label: EIF
 - id: 1ll3t-XS
   name: XS
@@ -1269,14 +1269,14 @@ cases:
   pairs: "Even"
   alg: U' (L R' L' R) U' (L R' L' R) U' (R' L R L') U (L R' L' R)
   scramble: BR L' D' L R' L' B' D B BR' L B' BR R BR' B
-  showcase_alg: '[U''] S'' U'' S'' U'' S U S'''
+  showcase_alg: "(U') S' U' S' U' S U S'"
 - id: 1ll3t-XS-
   name: XS-
   family: X
   pairs: "Even"
   alg: U (R' L R L') U (R' L R L') U (L R' L' R) U' (R' L R L')
   scramble: BL' BR' D' L D BR' D' L' D BR' BL U' L R' L' R U
-  showcase_alg: '[U] S U S U S'' U'' S'
+  showcase_alg: "(U) S U S U S' U' S"
 - id: 1ll3t-XB
   name: XB
   family: X
@@ -1290,53 +1290,53 @@ cases:
   pairs: "Odd"
   alg: U' (L R' L' R) U (R' L R L') U' (L R' L' R) U' (L R' L' R)
   scramble: Uv BL' B U B' R B R' U' R B' R' BL L R' L' R Uv'
-  showcase_alg: '[U''] S'' U S U'' S'' U'' S'''
+  showcase_alg: "(U') S' U S U' S' U' S'"
 - id: 1ll3t-XB-
   name: XB-
   family: X
   pairs: "Odd"
   alg: (R' L R L') U' (L R' L' R) U (R' L R L') U (R' L R L')
   scramble: R' U' F D' B D' B' D' F L' B L B' F U R
-  showcase_alg: '[U] S U'' S'' U S U S'
+  showcase_alg: "(U) S U' S' U S U S"
 - id: 1ll3t-YS
   name: YS
   family: Y
   pairs: "Even"
   alg: U' (L R' L' R) U (R B' R' B) U (R B' R' B)
   scramble: U' L' B L D L' D' BL' B' F' L B L' F BL L B' U
-  showcase_alg: '[U''] S'' U H U H'
+  showcase_alg: "(U') S' U H U H"
 - id: 1ll3t-YS+
   name: YS+
   family: Y
   pairs: "Even"
   alg: (B L' B' L) U' (L' B L B') U' (L' B L B')
   scramble: U R' L F' L F' R' F L' F' R F' R L' U'
-  showcase_alg: '{U,BL} S'' U'' S U'' S'
+  showcase_alg: "{U,BL} S' U' S U' S"
 - id: 1ll3t-YS-
   name: YS-
   family: Y
   pairs: "Even"
   alg: (B' R B R') U (R B' R' B) U (R B' R' B)
   scramble: U' L R' F R' F L F' R F L' F L' R U
-  showcase_alg: '{U,BR} S U S'' U S'''
+  showcase_alg: "{U,BR} S U S' U S'"
 - id: 1ll3t-YB
   name: YB
   family: Y
   pairs: "Odd"
   alg: U' (B L' B' L) U (B L' B' L) U (L R' L' R)
   scramble: F D' B F' L B' L' F BL' B R B' R' BL D F'
-  showcase_alg: '[U''] {U,BL} S'' U S'' U H'
+  showcase_alg: "(U') {U,BL} S' U S' U H"
 - id: 1ll3t-YB+
   name: YB+
   family: Y
   pairs: "Odd"
   alg: (L' B L B') U' (L' B L B') U' (B L' B' L)
   scramble: U' D' R' BR U L R' L' R U' BR' R D L' B L B' U
-  showcase_alg: '{U,BL} S U'' S U'' S'''
+  showcase_alg: "{U,BL} S U' S U' S'"
 - id: 1ll3t-YB-
   name: YB-
   family: Y
   pairs: "Odd"
   alg: (R B' R' B) U (R B' R' B) U (B' R B R')
   scramble: U B' F D' L' U' B L' B' L U L R' D R B F' U'
-  showcase_alg: '{U,BR} S'' U S'' U S'
+  showcase_alg: "{U,BR} S' U S' U S"
