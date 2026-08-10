@@ -76,3 +76,21 @@ a[aria-current="page"] .case-learned-badge {
 	color: #fff;
 	background-color: rgb(255 255 255 / 0.25);
 }
+
+@media (min-width: 64rem) {
+	.alg-density-root[data-density='2'] .alg-table {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.alg-density-root[data-density='4'] .alg-table {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+
+.alg-density-root[data-density='2'] .case-card {
+	zoom: 1.15;
+}
+
+.alg-density-root[data-density='4'] .case-card {
+	zoom: 0.9;
+}
