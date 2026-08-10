@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @import '@astrojs/starlight-tailwind';
 
+html {
+	scroll-behavior: smooth;
+}
+
 .sl-link-button.minimal {
 	border-color: var(--sl-color-text-accent);
 	padding-inline: 1.125rem;

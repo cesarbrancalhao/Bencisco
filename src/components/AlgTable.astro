@@ -46,16 +46,29 @@ const grouped = sections
 
 {
 	grouped ? (
-		Object.entries(grouped).map(([family, cases]) => (
-			<section>
-				<h2 class="not-content text-lg font-semibold">{family}</h2>
-				<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
-					{cases.map((c) => (
-						<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
+		<div class="relative">
+			<nav class="not-content fixed right-4 top-32 z-40 hidden xl:block">
+				<ul class="flex flex-col gap-0.5 rounded-lg border border-gray-200 bg-white/90 p-1.5 shadow-sm backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/90">
+					{Object.keys(grouped).map((family) => (
+						<li>
+							<a href={`#family-${family}`} class="block rounded px-2.5 py-1 text-center text-sm font-semibold text-gray-500 transition-colors hover:bg-indigo-50 hover:text-indigo-600 dark:text-gray-400 dark:hover:bg-indigo-950 dark:hover:text-indigo-400">
+								{family}
+							</a>
+						</li>
 					))}
-				</div>
-			</section>
-		))
+				</ul>
+			</nav>
+			{Object.entries(grouped).map(([family, cases]) => (
+				<section id={`family-${family}`}>
+					<h2 class="not-content text-lg font-semibold">{family}</h2>
+					<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
+						{cases.map((c) => (
+							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
+						))}
+					</div>
+				</section>
+			))}
+		</div>
 	) : (
 		<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 			{entry.data.cases.map((c) => (
