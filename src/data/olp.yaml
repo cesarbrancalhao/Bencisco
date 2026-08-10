@@ -28,7 +28,7 @@ cases:
   - id: olp-03
     name: "Q"
     family: OLP
-    alg: "U' (R B' R' B) U'"
+    alg: "U' (B' R B R') U'"
     even_scramble: "U' BL' B R B' BR' R D' R' D BR R' BL U"
     odd_scramble: "BR B' R B R' BR' D' R D R' U' R D' R' D U"
     showcase_alg: "(U') H' U'"
