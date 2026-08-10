@@ -1,11 +1,16 @@
 ---
 /**
  * Dice-button toggle for cases-per-row density on alg pages (2 / 3 / 4).
- * Selected density is persisted in localStorage and applied via the
- * `data-density` attribute on `.alg-density-root` (see global.css).
- * 2 = magnified cards, 3 = default, 4 = compact cards.
+ * Selected density is persisted per-page in localStorage (keyed by `pageId`)
+ * and applied via the `data-density` attribute on `.alg-density-root`
+ * (see global.css). 2 = magnified cards, 3 = default, 4 = compact cards.
  * Only affects `.case-card` contents; the rest of the page is untouched.
  */
+interface Props {
+	pageId: string;
+}
+
+const { pageId } = Astro.props;
 
 const DIE_OUTLINE =
 	'M13 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zM3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3z';
@@ -33,7 +38,7 @@ const btnSelected = `${btnBase} border-indigo-500 bg-indigo-50 text-indigo-700 d
 const btnUnselected = `${btnBase} border-transparent text-gray-500 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400`;
 ---
 
-<div class="case-density-toggle not-content mb-3 flex flex-col items-center gap-1.5">
+<div class="case-density-toggle not-content mb-3 flex flex-col items-center gap-1.5" data-page-id={pageId}>
 	<div class="flex gap-1" role="group" aria-label="Cases per row">
 		{
 			dice.map(({ n, pips, fill }) => (
@@ -58,16 +63,14 @@ const btnUnselected = `${btnBase} border-transparent text-gray-500 hover:text-in
 </div>
 
 <script>
-	const DENSITY_KEY = 'fto-case-density';
 	const BTN_BASE = 'density-btn cursor-pointer rounded-md border-2 p-1.5';
 	const BTN_SELECTED = `${BTN_BASE} border-indigo-500 bg-indigo-50 text-indigo-700 dark:border-indigo-400 dark:bg-indigo-950 dark:text-indigo-300`;
 	const BTN_UNSELECTED = `${BTN_BASE} border-transparent text-gray-500 hover:text-indigo-500 dark:text-gray-400 dark:hover:text-indigo-400`;
 
-	function applyDensity(density: string): void {
-		document.querySelectorAll<HTMLElement>('.alg-density-root').forEach((root) => {
-			root.dataset.density = density;
-		});
-		document.querySelectorAll<HTMLButtonElement>('.density-btn').forEach((btn) => {
+	function applyDensity(toggle: HTMLElement, density: string): void {
+		const root = toggle.closest<HTMLElement>('.alg-density-root');
+		if (root) root.dataset.density = density;
+		toggle.querySelectorAll<HTMLButtonElement>('.density-btn').forEach((btn) => {
 			const active = btn.dataset.density === density;
 			btn.className = active ? BTN_SELECTED : BTN_UNSELECTED;
 			btn.setAttribute('aria-pressed', String(active));
@@ -76,13 +79,20 @@ const btnUnselected = `${btnBase} border-transparent text-gray-500 hover:text-in
 		});
 	}
 
-	const stored = localStorage.getItem(DENSITY_KEY);
-	applyDensity(stored === '2' || stored === '4' ? stored : '3');
+	document.querySelectorAll<HTMLElement>('.case-density-toggle').forEach((toggle) => {
+		const pageId = toggle.dataset.pageId;
+		if (!pageId) return;
+		const stored = localStorage.getItem(`fto-case-density-${pageId}`);
+		applyDensity(toggle, stored === '2' || stored === '4' ? stored : '3');
+	});
 
 	document.addEventListener('click', (e) => {
 		const btn = (e.target as Element).closest<HTMLButtonElement>('.density-btn');
 		if (!btn?.dataset.density) return;
-		localStorage.setItem(DENSITY_KEY, btn.dataset.density);
-		applyDensity(btn.dataset.density);
+		const toggle = btn.closest<HTMLElement>('.case-density-toggle');
+		const pageId = toggle?.dataset.pageId;
+		if (!toggle || !pageId) return;
+		localStorage.setItem(`fto-case-density-${pageId}`, btn.dataset.density);
+		applyDensity(toggle, btn.dataset.density);
 	});
 </script>
