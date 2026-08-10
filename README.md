@@ -1,6 +1,6 @@
 # Bencisco
 
-FTO documentation - Bencisco method: alg database + step-by-step tutorial. Built with [Astro](https://astro.build) + [Starlight](https://starlight.astro.build).
+Bencisco method documentation: alg database + step-by-step tutorial. Built with [Astro](https://astro.build) + [Starlight](https://starlight.astro.build).
 
 ## Commands
 
