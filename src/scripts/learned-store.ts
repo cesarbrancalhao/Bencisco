@@ -105,21 +105,78 @@ function initButtonStates(collectionId: string): void {
 	});
 }
 
+function getScopeCaseIds(scope: ParentNode): string[] {
+	return Array.from(scope.querySelectorAll<HTMLElement>('.case-learned-btn[data-case-id]'))
+		.map((b) => b.dataset.caseId ?? '')
+		.filter(Boolean);
+}
+
+function updateGroupButtons(collectionId: string): void {
+	const learned = getLearned(collectionId);
+	document.querySelectorAll<HTMLElement>('.family-learned-btn[data-family]').forEach((btn) => {
+		const section = document.getElementById(`family-${btn.dataset.family}`);
+		if (!section) return;
+		const ids = getScopeCaseIds(section);
+		updateButtonIcon(btn, ids.length > 0 && ids.every((id) => learned.has(id)));
+	});
+	document.querySelectorAll<HTMLElement>('.page-learned-btn').forEach((btn) => {
+		const ids = getScopeCaseIds(document);
+		updateButtonIcon(btn, ids.length > 0 && ids.every((id) => learned.has(id)));
+	});
+}
+
+function toggleScope(collectionId: string, scope: ParentNode): void {
+	const ids = getScopeCaseIds(scope);
+	if (ids.length === 0) return;
+	const learned = getLearned(collectionId);
+	const allLearned = ids.every((id) => learned.has(id));
+	for (const id of ids) {
+		if (allLearned) learned.delete(id);
+		else learned.add(id);
+	}
+	setLearned(collectionId, learned);
+	const nowLearned = !allLearned;
+	scope.querySelectorAll<HTMLElement>('.case-learned-btn').forEach((b) => updateButtonIcon(b, nowLearned));
+}
+
 function initLearnedStore(): void {
 	updateAllBadges();
 
 	const collectionId = getCollectionId();
 	if (collectionId) {
 		initButtonStates(collectionId);
+		updateGroupButtons(collectionId);
 
 		document.addEventListener('click', (e) => {
-			const btn = (e.target as Element).closest('.case-learned-btn') as HTMLElement | null;
+			const target = e.target as Element;
+
+			const pageBtn = target.closest('.page-learned-btn') as HTMLElement | null;
+			if (pageBtn) {
+				toggleScope(collectionId, document);
+				updateGroupButtons(collectionId);
+				updateSidebarBadge(collectionId);
+				return;
+			}
+
+			const famBtn = target.closest('.family-learned-btn') as HTMLElement | null;
+			if (famBtn) {
+				const section = document.getElementById(`family-${famBtn.dataset.family}`);
+				if (section) {
+					toggleScope(collectionId, section);
+					updateGroupButtons(collectionId);
+					updateSidebarBadge(collectionId);
+				}
+				return;
+			}
+
+			const btn = target.closest('.case-learned-btn') as HTMLElement | null;
 			if (!btn) return;
 			const caseId = btn.dataset.caseId;
 			if (!caseId) return;
 
 			const learned = toggleLearned(collectionId, caseId);
 			updateButtonIcon(btn, learned);
+			updateGroupButtons(collectionId);
 			updateSidebarBadge(collectionId);
 		});
 	}

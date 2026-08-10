@@ -65,6 +65,7 @@ export default defineConfig({
 			components: {
 				SiteTitle: './src/components/SiteTitle.astro',
 				Footer: './src/components/Footer.astro',
+				PageTitle: './src/components/PageTitle.astro',
 			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/cesarbrancalhao/Bencisco' },
