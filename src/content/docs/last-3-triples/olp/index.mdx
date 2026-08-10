@@ -8,6 +8,7 @@ sidebar:
 ---
 
 import AlgTable from '../../../../components/AlgTable.astro';
+import CaseModal from '../../../../components/CaseModal.astro';
 
 **OLP (One-Look Pair Formation)** completes pair formation in a single look, setting up [TCP](../tcp/). In these cases the triangles have symmetry about the vertical.
 
@@ -15,12 +16,15 @@ Two solutions are given per case, for even and odd permutation states, it is rec
 
 All algs are CIF. Specific notation on [Notation](../../introduction/notation).
 
+<CaseModal />
+
 <AlgTable
   src="olp"
   textAlign="left"
-  columns={2}
+  columns={3}
   caseNotes={{
     'olp-01': 'The Even alg is recommended every time.',
     'olp-04a': 'The Odd alg is recommended every time.',
   }}
+  collectionId="olp"
 />

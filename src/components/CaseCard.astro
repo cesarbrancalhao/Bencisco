@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PuzzleViewer from './PuzzleViewer.astro';
+import { Alg } from 'cubing/alg';
+import { cifToTwizzle } from '../scripts/fto-notation';
 
 type AlgCase = CollectionEntry<'algs'>['data']['cases'][number];
 
@@ -15,11 +17,10 @@ interface Props {
 	hintFacelets?: boolean;
 	textAlign?: 'center' | 'left';
 	note?: string;
+	showButtons?: boolean;
 }
 
-const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false, textAlign = 'center', note } = Astro.props;
-// Per-case thumbnails are generated into public/thumbnails/<id>.webp by
-// `npm run thumbnails`. Fall back to the placeholder if missing.
+const { case: c, setupPrefix, setupSuffix, algPrefix, cameraLongitude, stickeringMask, showViewer = true, hintFacelets = false, textAlign = 'center', note, showButtons = false } = Astro.props;
 import { existsSync } from 'node:fs';
 const generated = `/Bencisco/thumbnails/${c.id}.webp`;
 const placeholder = '/Bencisco/thumbnails/placeholder.svg';
@@ -41,9 +42,6 @@ const oddScramble = c.odd_scramble;
 const evenAlg = c.even_alg ?? c.alg;
 const oddAlg = c.odd_alg ?? c.alg;
 
-// Collect showcase algs with per-alg orientation labels.
-// showcase_label applies to showcase_alg; variants without their own label
-// (showcase_label1, showcase_label2, ...) inherit the case-level label.
 interface ShowcaseAlg {
 	alg: string;
 	label: string | null;
@@ -66,7 +64,6 @@ for (let i = 1; ; i++) {
 	}
 }
 
-// Display logic: group by orientation label.
 const uniqueLabels = new Set(showcaseAlgs.map((a) => a.label));
 const allSameOrientation = uniqueLabels.size <= 1;
 
@@ -95,15 +92,12 @@ if (allSameOrientation && showcaseAlgs.length > 1) {
 	hiddenAlgs = [];
 }
 
-// In OLP mode, the Even/Odd algs become clickable parity buttons — exclude
-// them from the normal visible/hidden alg rendering.
 const nonParityVisibleAlgs = hasOlpParity
 	? visibleAlgs.filter((a) => a.label !== 'Even' && a.label !== 'Odd')
 	: visibleAlgs;
 
 const showOtherVariants = hiddenAlgs.length > 0 && !hasOlpParity;
 
-// For OLP, even = first alg (label "Even"), odd = second alg (label "Odd")
 const olpEvenAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Even') : undefined;
 const olpOddAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Odd') : undefined;
 
@@ -113,6 +107,7 @@ const shorterIsOdd = hasOlpParity && olpEvenAlg && olpOddAlg
 
 const eifLabel = `(${c.eif_label ?? 'EIF'})`;
 const caseId = c.id.replace(/[^a-zA-Z0-9-]/g, '');
+const isSolved = c.showcase_alg === 'solved' || c.alg === '';
 
 function renderAlg(alg: string): string {
 	return alg.replace(
@@ -120,9 +115,75 @@ function renderAlg(alg: string): string {
 		'<span class="text-red-500 dark:text-red-400">$1</span>',
 	);
 }
+
+// --- Precompute twizzle-mapped algs & setup-algs for the modal JSON ---
+function computeEffectiveAlg(alg: string, suffix?: string): string {
+	const twizzle = cifToTwizzle(alg);
+	if (suffix) {
+		try { return new Alg(`${twizzle} ${suffix}`).toString(); } catch { return twizzle; }
+	}
+	return twizzle;
+}
+
+function computeSetupAlg(alg: string, scrambleStr: string | undefined, prefix?: string, suffix?: string, algPfx?: string): string | undefined {
+	try {
+		const twizzle = cifToTwizzle(alg);
+		const pre = prefix ? `${prefix} ` : '';
+		const suf = suffix ? ` ${suffix}` : '';
+		const pfx = algPfx ? ` ${algPfx}` : '';
+		const scr = scrambleStr ?? new Alg(twizzle).invert().toString();
+		return new Alg(`${pre}${scr}${suf}${pfx}`).toString();
+	} catch {
+		return undefined;
+	}
+}
+
+const modalEffectiveAlg = computeEffectiveAlg(c.alg, setupSuffix);
+const modalSetupAlg = computeSetupAlg(c.alg, c.scramble, setupPrefix, setupSuffix, algPrefix);
+
+let modalEvenEffectiveAlg: string | undefined;
+let modalEvenSetupAlg: string | undefined;
+let modalOddEffectiveAlg: string | undefined;
+let modalOddSetupAlg: string | undefined;
+
+if (hasOlpParity) {
+	modalEvenEffectiveAlg = computeEffectiveAlg(evenAlg, setupSuffix);
+	modalEvenSetupAlg = computeSetupAlg(evenAlg, evenScramble, setupPrefix, setupSuffix, algPrefix);
+	modalOddEffectiveAlg = computeEffectiveAlg(oddAlg, setupSuffix);
+	modalOddSetupAlg = computeSetupAlg(oddAlg, oddScramble, setupPrefix, setupSuffix, algPrefix);
+}
+
+const caseData = {
+	id: c.id,
+	name: c.name ?? null,
+	family: c.family ?? null,
+	pairs: c.pairs ?? null,
+	scramble: c.scramble ?? null,
+	evenScramble: c.even_scramble ?? null,
+	oddScramble: c.odd_scramble ?? null,
+	effectiveAlg: modalEffectiveAlg,
+	setupAlg: modalSetupAlg ?? null,
+	showcaseAlgs,
+	eifAlg: c.eif_alg ?? null,
+	eifLabel: c.eif_label ?? null,
+	hasOlpParity,
+	evenAlg: c.even_alg ?? null,
+	evenEffectiveAlg: modalEvenEffectiveAlg ?? null,
+	evenSetupAlg: modalEvenSetupAlg ?? null,
+	evenThumbnail: hasOlpParity ? evenThumbnail : null,
+	oddAlg: c.odd_alg ?? null,
+	oddEffectiveAlg: modalOddEffectiveAlg ?? null,
+	oddSetupAlg: modalOddSetupAlg ?? null,
+	oddThumbnail: hasOlpParity ? oddThumbnail : null,
+	cameraLongitude: cameraLongitude ?? null,
+	stickeringMask: stickeringMask ?? null,
+	hintFacelets,
+	thumbnail,
+	shorterIsOdd,
+};
 ---
 
-<div class="case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700">
+<div class={`case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700${showButtons ? ' relative' : ''}`} data-case-id={c.id}>
 	{
 		hasOlpParity ? (
 			<>
@@ -214,6 +275,39 @@ function renderAlg(alg: string): string {
 		)}
 		{note && <div class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">{note}</div>}
 	</div>
+	{
+		showButtons && (
+			<>
+				<button
+					type="button"
+					class="case-expand-btn absolute top-1 left-1 z-10 cursor-pointer rounded-md bg-white/80 p-1 text-gray-500 opacity-50 shadow-sm transition-opacity hover:opacity-100 dark:bg-gray-900/80 dark:text-gray-300"
+					title="Expand"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"/>
+					</svg>
+				</button>
+				{!isSolved && (
+					<button
+						type="button"
+						class="case-learned-btn absolute top-1 right-1 z-10 cursor-pointer rounded-md bg-white/80 p-1 text-gray-500 opacity-50 shadow-sm transition-opacity hover:opacity-100 dark:bg-gray-900/80 dark:text-gray-300"
+						title="Mark as learned"
+						data-case-id={c.id}
+					>
+						<svg class="icon-outline" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
+							<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
+						</svg>
+						<svg class="icon-fill hidden" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+							<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+						</svg>
+					</button>
+				)}
+				<div class="hidden case-data" set:html={JSON.stringify(caseData)}></div>
+			</>
+		)
+	}
 </div>
 
 <script>

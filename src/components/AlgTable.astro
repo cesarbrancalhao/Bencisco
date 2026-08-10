@@ -15,9 +15,10 @@ interface Props {
 	textAlign?: 'center' | 'left';
 	columns?: 2 | 3;
 	caseNotes?: Record<string, string>;
+	collectionId?: string;
 }
 
-const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes } = Astro.props;
+const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes, collectionId } = Astro.props;
 const entry = await getEntry('algs', src);
 if (!entry) throw new Error(`AlgTable: no data file found at src/data/${src}.yaml`);
 
@@ -34,6 +35,10 @@ const gridClass = columns === 2
 	? 'grid-cols-1 sm:grid-cols-2'
 	: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
+const totalCases = entry.data.cases.filter(
+	(c) => c.showcase_alg !== 'solved' && c.alg !== '',
+).length;
+
 const grouped = sections
 	? entry.data.cases.reduce<Record<string, typeof entry.data.cases>>((acc, c) => {
 			const family = c.family ?? '';
@@ -46,7 +51,7 @@ const grouped = sections
 
 {
 	grouped ? (
-		<div class="relative">
+		<div class="relative" data-collection={collectionId} data-total-cases={totalCases}>
 			<nav class="not-content fixed right-4 top-32 z-40 hidden xl:block">
 				<ul class="flex flex-col gap-0.5 rounded-lg border border-gray-200 bg-white/90 p-1.5 shadow-sm backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/90">
 					{Object.keys(grouped).map((family) => (
@@ -63,16 +68,16 @@ const grouped = sections
 					<h2 class="not-content text-lg font-semibold">{family}</h2>
 					<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 						{cases.map((c) => (
-							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
+							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
 						))}
 					</div>
 				</section>
 			))}
 		</div>
 	) : (
-		<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
+		<div class={`alg-table not-content grid gap-4 ${gridClass}`} data-collection={collectionId} data-total-cases={totalCases}>
 			{entry.data.cases.map((c) => (
-				<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
+				<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
 			))}
 		</div>
 	)

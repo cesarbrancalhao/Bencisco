@@ -3,14 +3,14 @@ setup_prefix: LBLv
 cases:
   - id: 2ltcp-01
     name: 2 Triangle Swap
-    family: TCP
+    family: Odd
     alg: "U BR' U' (BRw BR') U BR U' (BRw' BR)"
     scramble: "F' f U F' U' F f' U F U'"
     showcase_alg: "U F' U' Fs U F U' Fs'"
     eif_alg: "{BL, D} U R' U' Rs' U R U' Rs"
   - id: 2ltcp-02
     name: 3 Triangle CW
-    family: TCP
+    family: Even
     alg: "T' U (BRw BR') U BR U' (BRw' BR) U BR' U"
     scramble: "U' F U' F' f U F' U' F f' U' T"
     preset: "Rv"
@@ -18,7 +18,7 @@ cases:
     eif_alg: "U' R U' Rs U R' U' Rs' U'"
   - id: 2ltcp-03
     name: 3 Triangle CCW
-    family: TCP
+    family: Even
     alg: "T' U' BR U' (BRw BR') U BR' U' (BRw' BR) U'"
     scramble: "U F' f U F U' F f' U F' U T"
     preset: "Rv"

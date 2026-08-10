@@ -13,6 +13,19 @@ function read1LL3TCaseIds() {
 	return (/** @type {Array<{id: string}>} */ (doc.cases || [])).map((c) => c.id).filter(Boolean);
 }
 
+function caseTotalsScript() {
+	const totals = /** @type {Record<string, number>} */ ({});
+	for (const id of ['tcp', 'olp', '1ll3t', '2ltcp']) {
+		const yamlPath = fileURLToPath(new URL(`./src/data/${id}.yaml`, import.meta.url));
+		if (!existsSync(yamlPath)) continue;
+		const doc = parseYaml(readFileSync(yamlPath, 'utf-8'));
+		totals[id] = (/** @type {Array<{id: string, showcase_alg?: string, alg?: string}>} */ (doc.cases || [])).filter(
+			(c) => c.showcase_alg !== 'solved' && c.alg !== '',
+		).length;
+	}
+	return `window.__benciscoCaseTotals=${JSON.stringify(totals)};`;
+}
+
 function randomIconScript() {
 	const ids = read1LL3TCaseIds();
 	if (ids.length === 0) return '';
@@ -43,6 +56,10 @@ export default defineConfig({
 				{
 					tag: 'script',
 					content: randomIconScript(),
+				},
+				{
+					tag: 'script',
+					content: caseTotalsScript(),
 				},
 			],
 			components: {

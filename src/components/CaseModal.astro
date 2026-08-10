@@ -1,0 +1,50 @@
+---
+// Shared modal overlay for expanded case view.
+// Populated client-side by case-modal.ts.
+---
+
+<div
+	id="case-modal-overlay"
+	class="not-content fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+>
+	<div
+		id="case-modal-content"
+		class="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-gray-900"
+	>
+		<button
+			id="case-modal-close"
+			type="button"
+			class="absolute top-3 right-3 z-10 cursor-pointer rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+			aria-label="Close"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+			</svg>
+		</button>
+
+		<div id="case-modal-puzzle" class="flex flex-col items-center gap-3 px-6 pt-6"></div>
+
+		<div id="case-modal-info" class="flex flex-col gap-3 px-6 pb-4"></div>
+
+		<div class="border-t border-gray-200 px-6 py-3 text-center dark:border-gray-700">
+			<a
+				href="/Bencisco/credits"
+				class="text-xs text-gray-400 transition-colors hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+			>
+				Credits
+			</a>
+		</div>
+	</div>
+</div>
+
+<style>
+	#case-modal-overlay:not(.hidden) {
+		display: flex;
+	}
+
+	#case-modal-overlay [data-puzzle-activate] {
+		display: revert !important;
+	}
+</style>
+
+<script src="../scripts/case-modal.ts"></script>
