@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import CaseCard from './CaseCard.astro';
+import CaseDensityToggle from './CaseDensityToggle.astro';
 
 /**
  * Renders a grid of cases from a YAML data file in src/data/.
@@ -15,9 +16,10 @@ interface Props {
 	textAlign?: 'center' | 'left';
 	columns?: 2 | 3;
 	caseNotes?: Record<string, string>;
+	collectionId?: string;
 }
 
-const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes } = Astro.props;
+const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes, collectionId } = Astro.props;
 const entry = await getEntry('algs', src);
 if (!entry) throw new Error(`AlgTable: no data file found at src/data/${src}.yaml`);
 
@@ -34,6 +36,10 @@ const gridClass = columns === 2
 	? 'grid-cols-1 sm:grid-cols-2'
 	: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
+const totalCases = entry.data.cases.filter(
+	(c) => c.showcase_alg !== 'solved' && c.alg !== '',
+).length;
+
 const grouped = sections
 	? entry.data.cases.reduce<Record<string, typeof entry.data.cases>>((acc, c) => {
 			const family = c.family ?? '';
@@ -46,7 +52,8 @@ const grouped = sections
 
 {
 	grouped ? (
-		<div class="relative">
+		<div class="alg-density-root relative" data-density="3" data-collection={collectionId} data-total-cases={totalCases}>
+			<CaseDensityToggle pageId={src} />
 			<nav class="not-content fixed right-4 top-32 z-40 hidden xl:block">
 				<ul class="flex flex-col gap-0.5 rounded-lg border border-gray-200 bg-white/90 p-1.5 shadow-sm backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/90">
 					{Object.keys(grouped).map((family) => (
@@ -60,20 +67,42 @@ const grouped = sections
 			</nav>
 			{Object.entries(grouped).map(([family, cases]) => (
 				<section id={`family-${family}`}>
-					<h2 class="not-content text-lg font-semibold">{family}</h2>
+					<h2 class="not-content flex items-center gap-2 text-lg font-semibold">
+						{family}
+						{collectionId && (
+							<button
+								type="button"
+								class="family-learned-btn cursor-pointer rounded-md p-1 text-gray-500 opacity-50 transition-opacity hover:opacity-100 dark:text-gray-300"
+								title={`Mark all ${family} cases as learned`}
+								data-family={family}
+							>
+								<svg class="icon-outline" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
+									<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>
+								</svg>
+								<svg class="icon-fill hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+									<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+								</svg>
+							</button>
+						)}
+					</h2>
 					<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 						{cases.map((c) => (
-							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
+							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
 						))}
 					</div>
 				</section>
 			))}
 		</div>
 	) : (
-		<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
-			{entry.data.cases.map((c) => (
-				<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} />
-			))}
+		<div class="alg-density-root" data-density="3">
+			<CaseDensityToggle pageId={src} />
+			<div class={`alg-table not-content grid gap-4 ${gridClass}`} data-collection={collectionId} data-total-cases={totalCases}>
+				{entry.data.cases.map((c) => (
+					<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
+				))}
+			</div>
 		</div>
 	)
 }

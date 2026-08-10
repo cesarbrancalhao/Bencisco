@@ -9,6 +9,7 @@ sidebar:
 
 import AlgTable from '../../../../components/AlgTable.astro';
 import InteractiveToggle from '../../../../components/InteractiveToggle.astro';
+import CaseModal from '../../../../components/CaseModal.astro';
 
 **1LL3T = 1-Look Last 3 Triples.** Similar to 1LLL, finishes last layer with only one algorithm.
 
@@ -16,6 +17,8 @@ import InteractiveToggle from '../../../../components/InteractiveToggle.astro';
 
 Specific notation on [Notation](../../introduction/notation).
 
+<CaseModal />
+
 <div id="alg-container">
-  <AlgTable src="1ll3t" showViewer sections />
+  <AlgTable src="1ll3t" showViewer sections collectionId="1ll3t" />
 </div>
