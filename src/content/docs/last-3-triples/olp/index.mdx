@@ -12,7 +12,7 @@ import CaseModal from '../../../../components/CaseModal.astro';
 
 **OLP (One-Look Pair Formation)** completes pair formation in a single look, setting up [TCP](../tcp/). In these cases the triangles have symmetry about the vertical.
 
-Two solutions are given per case, for even and odd permutation states, it is recommended to choose the shortest. <strong class="text-yellow-500">Click the Even or Odd solution to swap views.</strong> Odd solutions will always flip the pair parity, while even solutions will preserve it.
+Two solutions are given per case, for even and odd permutation states, it is recommended to just learn the shortest, but I've kept both solutions for reference. <strong class="text-yellow-500">Click the Even or Odd solution to swap views.</strong> Odd solutions will always flip the pair parity, while even solutions will preserve it.
 
 All algs are CIF. Specific notation on [Notation](../../introduction/notation).
 
@@ -23,7 +23,7 @@ All algs are CIF. Specific notation on [Notation](../../introduction/notation).
   textAlign="left"
   columns={3}
   caseNotes={{
-    'olp-01': 'The Even alg is recommended every time.',
+    'olp-01': 'Solving this with 2LTCP is generally faster.',
     'olp-04a': 'The Odd alg is recommended every time.',
   }}
   collectionId="olp"
