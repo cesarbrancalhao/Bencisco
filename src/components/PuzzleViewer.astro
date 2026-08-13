@@ -14,7 +14,7 @@
  *   (for notation demos, etc.).
  */
 import { Alg } from 'cubing/alg';
-import { cifToTwizzle } from '../scripts/fto-notation';
+import { resolveCif } from '../scripts/fto-notation';
 
 interface Props {
 	alg: string;
@@ -52,9 +52,9 @@ const {
 	hintFacelets = false,
 } = Astro.props;
 
-// `alg` is CIF community notation; cubing.js needs the π face map applied.
-// `scramble` is already cubing-frame — used as-is.
-const twizzleAlg = cifToTwizzle(alg);
+// `alg` and `scramble` are CIF community notation; cubing.js FTO uses the same
+// face names, so resolveCif only normalizes community-only tokens (Xw/Xs/H/S).
+const resolvedAlg = resolveCif(alg);
 
 let setupAlg: string | undefined;
 if (startState === 'case') {
@@ -62,14 +62,14 @@ if (startState === 'case') {
 		const prefix = setupPrefix ? `${setupPrefix} ` : '';
 		const suffix = setupSuffix ? ` ${setupSuffix}` : '';
 		const postfix = algPrefix ? ` ${algPrefix}` : '';
-		const scrambleAlg = scramble ?? new Alg(twizzleAlg).invert().toString();
+		const scrambleAlg = scramble ? resolveCif(scramble) : new Alg(resolvedAlg).invert().toString();
 		setupAlg = new Alg(`${prefix}${scrambleAlg}${suffix}${postfix}`).toString();
 	} catch {
 		setupAlg = undefined;
 	}
 }
 
-let effectiveAlg = twizzleAlg;
+let effectiveAlg = resolvedAlg;
 if (setupSuffix) {
 	try {
 		effectiveAlg = new Alg(`${effectiveAlg} ${setupSuffix}`).toString();

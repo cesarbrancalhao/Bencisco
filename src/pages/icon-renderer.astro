@@ -6,7 +6,12 @@
  */
 import { getCollection } from 'astro:content';
 import { Alg } from 'cubing/alg';
-import { cifToTwizzle } from '../scripts/fto-notation';
+import { resolveCif } from '../scripts/fto-notation';
+
+// Icons keep the legacy π frame so existing public/icons/*.webp stay
+// pixel-identical: the old π face map was exactly conjugation by Uv
+// (π(x) = Uv'·x·Uv), so conjugating the resolved alg reproduces it.
+const legacyFrame = (alg: string) => `Uv' ${resolveCif(alg)} Uv`;
 
 const algs = await getCollection('algs');
 const cases = algs.flatMap((entry) => {
@@ -15,8 +20,8 @@ const cases = algs.flatMap((entry) => {
 	return entry.data.cases.map((c) => {
 		const setupPrefix = c.preset ?? entry.data.family_prefixes?.[c.family ?? ''] ?? entry.data.setup_prefix;
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
-		const twizzleAlg = cifToTwizzle(c.alg); // data algs are CIF; cubing.js needs π applied
-		const scrambleAlg = c.scramble ? cifToTwizzle(c.scramble) : new Alg(twizzleAlg).invert().toString();
+		const twizzleAlg = legacyFrame(c.alg);
+		const scrambleAlg = c.scramble ? legacyFrame(c.scramble) : new Alg(twizzleAlg).invert().toString();
 
 		let setupAlg: string | undefined;
 		try {

@@ -4,14 +4,14 @@ cases:
   - id: 2ltcp-01
     name: 2 Triangle Swap
     family: Odd
-    alg: "U BR' U' (BRw BR') U BR U' (BRw' BR)"
+    alg: "U F' U' Fs U F U' Fs'"
     scramble: "F' f U F' U' F f' U F U'"
     showcase_alg: "U F' U' Fs U F U' Fs'"
     eif_alg: "{BL, D} U R' U' Rs' U R U' Rs"
   - id: 2ltcp-02
     name: 3 Triangle CW
     family: Even
-    alg: "T' U (BRw BR') U BR U' (BRw' BR) U BR' U"
+    alg: "T' U Fs U F U' Fs' U F' U"
     scramble: "U' F U' F' f U F' U' F f' U' T"
     preset: "Rv"
     showcase_alg: "{R, L} U Fs U F U' Fs' U F' U"
@@ -19,7 +19,7 @@ cases:
   - id: 2ltcp-03
     name: 3 Triangle CCW
     family: Even
-    alg: "T' U' BR U' (BRw BR') U BR' U' (BRw' BR) U'"
+    alg: "T' U' F U' Fs U F' U' Fs' U'"
     scramble: "U F' f U F U' F f' U F' U T"
     preset: "Rv"
     showcase_alg: "{R, L} U' F U' Fs U F' U' Fs' U'"

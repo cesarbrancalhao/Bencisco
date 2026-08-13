@@ -8,7 +8,8 @@ import { docsSchema } from '@astrojs/starlight/schema';
  * A single alg case.
  *
  * - `alg` - CIF community notation (brackets/slices resolved); what <twisty-player> animates
- *   after applying the π face map at render time.
+ *   after resolveCif normalizes community-only tokens (Xw/Xs/H/S) at render time.
+ *   cubing.js FTO uses the same face names, so moves play exactly as written.
  * - `scramble` - inverse of `alg` in CIF community notation; precomputed so the
  *   user can inspect/correct it. Used as the twisty-player's setup-alg.
  * - `showcase_alg` - the written alg shown to the user (community notation;
@@ -61,25 +62,20 @@ const algs = defineCollection({
 		// Overrides `setup_suffix` for cases in that family.
 		// A case-level `postset` still takes precedence over both.
 		family_suffixes: z.record(z.string(), z.string()).optional(),
-		// Prepended to the interactive solving alg only (not the setup-alg).
-		// Use when algs assume a different base orientation than the setup provides.
-		// NOT applied in the thumbnail renderer — safe to change without
-		// regenerating webp thumbnails.
+		// Appended to every case's setup-alg, after the scramble (legacy frame
+		// compensation — the last-layer files used it together with a -120°
+		// camera_longitude before the π face map was removed; currently unused).
+		// NOT applied in the thumbnail renderer.
 		alg_prefix: z.string().optional(),
 		// Per-family alg_prefix overrides (family name -> prefix).
 		family_alg_prefixes: z.record(z.string(), z.string()).optional(),
-		// Camera longitude in degrees for the interactive twisty-player.
-		// Compensates for alg_prefix rotation applied to the setup.
+		// Camera longitude in degrees for the interactive twisty-player
+		// (default 0). Legacy files paired -120 with a `Uv` alg_prefix to
+		// compensate the removed π face map.
 		camera_longitude: z.number().optional(),
 		// Render thumbnails from a raised top-down camera angle (shows the top
 		// face plus all sides) instead of the default flat face-on view.
 		top_down: z.boolean().optional(),
-		// Set when the file's scrambles are stored in CIF community notation and
-		// must be π-mapped (cifToTwizzle) at render time, exactly like `alg`.
-		// Unset (1ll3t/tcp/olp convention): scrambles are handed to cubing.js
-		// unmapped and the `alg_prefix` (Uv) compensates the frame offset.
-		// Used by samples/ (example solves), which have no frame compensation.
-		map_scramble: z.boolean().optional(),
 		// Serialized cubing.js stickering mask (experimental-stickering-mask-orbits,
 		// e.g. "C4RNER:-I-I-I,...") applied to every case of the file — interactive
 		// player and thumbnails. Hides everything but the recognition stickers

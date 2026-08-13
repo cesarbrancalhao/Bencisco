@@ -1,7 +1,5 @@
 setup_prefix: LBLv
 top_down: true
-alg_prefix: Uv
-camera_longitude: -120
 cases:
 - id: 1ll3t-OS
   name: OS

@@ -11,7 +11,7 @@
  */
 import { getCollection } from 'astro:content';
 import { Alg } from 'cubing/alg';
-import { cifToTwizzle } from '../scripts/fto-notation';
+import { resolveCif } from '../scripts/fto-notation';
 
 const algs = await getCollection('algs');
 
@@ -31,13 +31,14 @@ for (const entry of algs) {
 		const setupSuffix = c.postset ?? entry.data.family_suffixes?.[c.family ?? ''] ?? entry.data.setup_suffix;
 		const topDown = entry.data.top_down ?? false;
 		const stickeringMask = entry.data.stickering_mask;
-		const mapScramble = entry.data.map_scramble ?? false;
 
 		function buildSetupAlg(scramble: string | undefined, fallbackAlg: string): string | undefined {
 			try {
 				const prefix = setupPrefix ? `${setupPrefix} ` : '';
 				const suffix = setupSuffix ? ` ${setupSuffix}` : '';
-				const scrambleAlg = scramble !== undefined ? (mapScramble ? cifToTwizzle(scramble) : scramble) : new Alg(cifToTwizzle(fallbackAlg)).invert().toString();
+				// Fallback keeps the legacy π frame (π(x) = Uv'·x·Uv) so thumbnails
+				// for scramble-less cases stay pixel-identical to before.
+				const scrambleAlg = scramble !== undefined ? resolveCif(scramble) : new Alg(`Uv' ${resolveCif(fallbackAlg)} Uv`).invert().toString();
 				return new Alg(`${prefix}${scrambleAlg}${suffix}`).toString();
 			} catch {
 				return undefined;
@@ -45,7 +46,7 @@ for (const entry of algs) {
 		}
 
 		function buildEffectiveAlg(cifAlg: string): string {
-			let effectiveAlg = cifToTwizzle(cifAlg);
+			let effectiveAlg = resolveCif(cifAlg);
 			if (setupSuffix) {
 				try {
 					effectiveAlg = new Alg(`${effectiveAlg} ${setupSuffix}`).toString();

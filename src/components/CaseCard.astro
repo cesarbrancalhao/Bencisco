@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import PuzzleViewer from './PuzzleViewer.astro';
 import { Alg } from 'cubing/alg';
-import { cifToTwizzle } from '../scripts/fto-notation';
+import { resolveCif } from '../scripts/fto-notation';
 
 type AlgCase = CollectionEntry<'algs'>['data']['cases'][number];
 
@@ -116,22 +116,22 @@ function renderAlg(alg: string): string {
 	);
 }
 
-// --- Precompute twizzle-mapped algs & setup-algs for the modal JSON ---
+// --- Precompute resolved algs & setup-algs for the modal JSON ---
 function computeEffectiveAlg(alg: string, suffix?: string): string {
-	const twizzle = cifToTwizzle(alg);
+	const resolved = resolveCif(alg);
 	if (suffix) {
-		try { return new Alg(`${twizzle} ${suffix}`).toString(); } catch { return twizzle; }
+		try { return new Alg(`${resolved} ${suffix}`).toString(); } catch { return resolved; }
 	}
-	return twizzle;
+	return resolved;
 }
 
 function computeSetupAlg(alg: string, scrambleStr: string | undefined, prefix?: string, suffix?: string, algPfx?: string): string | undefined {
 	try {
-		const twizzle = cifToTwizzle(alg);
+		const resolved = resolveCif(alg);
 		const pre = prefix ? `${prefix} ` : '';
 		const suf = suffix ? ` ${suffix}` : '';
 		const pfx = algPfx ? ` ${algPfx}` : '';
-		const scr = scrambleStr ?? new Alg(twizzle).invert().toString();
+		const scr = scrambleStr ? resolveCif(scrambleStr) : new Alg(resolved).invert().toString();
 		return new Alg(`${pre}${scr}${suf}${pfx}`).toString();
 	} catch {
 		return undefined;
