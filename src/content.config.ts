@@ -45,7 +45,7 @@ const algCase = z.object({
 }).passthrough(); // allows showcase_alg1, showcase_alg2, ... for multi-alg cases
 
 const algs = defineCollection({
-	loader: glob({ pattern: '*.yaml', base: './src/data' }),
+	loader: glob({ pattern: '**/*.yaml', base: './src/data' }),
 	schema: z.object({
 		// Prepended to every case's setup-alg, e.g. "Rv T" to put yellow on
 		// top for last-layer cases. Drives both the applet and the thumbnails.
@@ -74,6 +74,12 @@ const algs = defineCollection({
 		// Render thumbnails from a raised top-down camera angle (shows the top
 		// face plus all sides) instead of the default flat face-on view.
 		top_down: z.boolean().optional(),
+		// Set when the file's scrambles are stored in CIF community notation and
+		// must be π-mapped (cifToTwizzle) at render time, exactly like `alg`.
+		// Unset (1ll3t/tcp/olp convention): scrambles are handed to cubing.js
+		// unmapped and the `alg_prefix` (Uv) compensates the frame offset.
+		// Used by samples/ (example solves), which have no frame compensation.
+		map_scramble: z.boolean().optional(),
 		// Serialized cubing.js stickering mask (experimental-stickering-mask-orbits,
 		// e.g. "C4RNER:-I-I-I,...") applied to every case of the file — interactive
 		// player and thumbnails. Hides everything but the recognition stickers

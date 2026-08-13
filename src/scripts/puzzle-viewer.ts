@@ -38,6 +38,8 @@ export function activate(host: HTMLElement): void {
 	const alg = host.dataset.alg ?? '';
 	const setupAlg = host.dataset.setupAlg;
 	const cameraLongitude = host.dataset.cameraLongitude;
+	const cameraLatitude = host.dataset.cameraLatitude;
+	const cameraLatitudeLimit = host.dataset.cameraLatitudeLimit;
 	const stickeringMask = host.dataset.stickeringMask;
 	const hintFacelets = host.dataset.hintFacelets;
 
@@ -51,6 +53,8 @@ export function activate(host: HTMLElement): void {
 			player.setAttribute('alg', alg);
 		if (setupAlg) player.setAttribute('experimental-setup-alg', setupAlg);
 		if (cameraLongitude) player.setAttribute('camera-longitude', cameraLongitude);
+		if (cameraLatitude) player.setAttribute('camera-latitude', cameraLatitude);
+		if (cameraLatitudeLimit) player.setAttribute('camera-latitude-limit', cameraLatitudeLimit);
 		if (stickeringMask) player.setAttribute('experimental-stickering-mask-orbits', stickeringMask);
 			player.setAttribute('hint-facelets', hintFacelets ?? 'none');
 			player.setAttribute('background', 'none');

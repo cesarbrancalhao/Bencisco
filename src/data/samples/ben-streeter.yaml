@@ -1,0 +1,39 @@
+map_scramble: true
+camera_longitude: -120
+
+cases:
+  - id: ben-01
+    name: "Inspection & First Center"
+    family: "6/6"
+    alg: "Uv' Rw U R' D U R"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL"
+  - id: ben-02
+    name: "First Triple"
+    family: "2/8"
+    alg: "Bv' U BR"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R"
+  - id: ben-03
+    name: "F2T"
+    family: "4/12"
+    alg: "Rw U R U'"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R Bv' U BR"
+  - id: ben-04
+    name: "Second Center"
+    family: "7+1/19"
+    alg: "BL' U' Rw' Rw' U' R U' R"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R Bv' U BR Rw U R U'"
+  - id: ben-05
+    name: "L2C"
+    family: "18/37"
+    alg: "Rw R U R' Rw R' U' R U R' U' R U' Rw' U R U' R'"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R Bv' U BR Rw U R U' BL' U' Rw' Rw' U' R U' R"
+  - id: ben-06
+    name: "LBT"
+    family: "10/47"
+    alg: "(F' U F U') R' BL U F U' F'"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R Bv' U BR Rw U R U' BL' U' Rw' Rw' U' R U' R Rw R U R' Rw R' U' R U R' U' R U' Rw' U R U' R'"
+  - id: ben-07
+    name: "L3T"
+    family: "9/56"
+    alg: "(F' U F U') R Lv (U F' U' F)"
+    scramble: "Uv B L D R B R' L B F' R' F D L F D R L R' L' F L' F' BL BR' F' U' R BL Uv' Rw U R' D U R Bv' U BR Rw U R U' BL' U' Rw' Rw' U' R U' R Rw R U R' Rw R' U' R U R' U' R U' Rw' U R U' R' (F' U F U') R' BL U F U' F'"

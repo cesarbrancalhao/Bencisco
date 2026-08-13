@@ -27,6 +27,8 @@ interface Props {
 	setupSuffix?: string;
 	algPrefix?: string;
 	cameraLongitude?: number;
+	cameraLatitude?: number;
+	cameraLatitudeLimit?: number;
 	stickeringMask?: string;
 	interactive?: boolean;
 	hintFacelets?: boolean;
@@ -43,6 +45,8 @@ const {
 	setupSuffix,
 	algPrefix,
 	cameraLongitude,
+	cameraLatitude,
+	cameraLatitudeLimit,
 	stickeringMask,
 	interactive = true,
 	hintFacelets = false,
@@ -85,6 +89,8 @@ if (setupSuffix) {
 			data-alg={effectiveAlg}
 			data-setup-alg={setupAlg}
 			data-camera-longitude={cameraLongitude}
+			data-camera-latitude={cameraLatitude}
+			data-camera-latitude-limit={cameraLatitudeLimit}
 			data-stickering-mask={stickeringMask}
 			data-hint-facelets={hintFacelets ? undefined : 'none'}
 		>
@@ -113,6 +119,8 @@ if (setupSuffix) {
 				alg={effectiveAlg}
 				experimental-setup-alg={setupAlg}
 				camera-longitude={cameraLongitude}
+				camera-latitude={cameraLatitude}
+				camera-latitude-limit={cameraLatitudeLimit}
 				experimental-stickering-mask-orbits={stickeringMask}
 				hint-facelets={hintFacelets ? undefined : 'none'}
 				background="none"

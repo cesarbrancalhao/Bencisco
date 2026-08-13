@@ -1,0 +1,38 @@
+---
+/**
+ * Renders one step of an example solve from a YAML data file in src/data/
+ * (e.g. src="samples/ben-streeter", id="ben-01") as a directly embedded
+ * interactive player — example-solve pages are low-density, so no thumbnail.
+ *
+ * When the data file sets `map_scramble: true`, the case's `scramble` is
+ * stored in CIF community notation and is π-mapped (cifToTwizzle) here before
+ * being handed to PuzzleViewer, which expects a cubing-frame scramble.
+ */
+import { getEntry } from 'astro:content';
+import PuzzleViewer from './PuzzleViewer.astro';
+import { cifToTwizzle } from '../scripts/fto-notation';
+
+interface Props {
+	src: string;
+	id: string;
+	cameraLongitude?: number;
+	cameraLatitude?: number;
+}
+
+const { src, id, cameraLongitude, cameraLatitude } = Astro.props;
+const entry = await getEntry('algs', src);
+if (!entry) throw new Error(`SolveStep: no data file found at src/data/${src}.yaml`);
+const step = entry.data.cases.find((c) => c.id === id);
+if (!step) throw new Error(`SolveStep: no case '${id}' in src/data/${src}.yaml`);
+
+const scramble =
+	step.scramble && entry.data.map_scramble ? cifToTwizzle(step.scramble) : step.scramble;
+---
+
+<PuzzleViewer
+	alg={step.alg}
+	scramble={scramble}
+	caption={step.name ?? step.id}
+	cameraLongitude={cameraLongitude ?? entry.data.camera_longitude}
+	cameraLatitude={cameraLatitude}
+/>
