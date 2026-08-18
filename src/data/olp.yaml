@@ -26,7 +26,7 @@ cases:
   - id: olp-03
     name: "Q"
     family: OLP
-    alg: "H U"
+    alg: "H U Uv'"
     even_scramble: "U' Uv' U' BL' B R B' BR' R D' R' D BR R' BL U Uv U"
     odd_scramble: "BR B' R B R' BR' D' R D R' U' R D' R' D U"
     showcase_alg: "H U"
