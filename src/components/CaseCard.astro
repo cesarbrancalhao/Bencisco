@@ -93,7 +93,7 @@ if (allSameOrientation && showcaseAlgs.length > 1) {
 }
 
 const nonParityVisibleAlgs = hasOlpParity
-	? visibleAlgs.filter((a) => a.label !== 'Even' && a.label !== 'Odd')
+	? visibleAlgs.filter((a) => a.label !== 'Even' && a.label !== 'Odd' && a.alg.toLowerCase() !== 'solved')
 	: visibleAlgs;
 
 const showOtherVariants = hiddenAlgs.length > 0 && !hasOlpParity;

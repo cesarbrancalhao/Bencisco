@@ -1,17 +1,6 @@
 setup_prefix: LBLv
 top_down: true
 cases:
-  - id: olp-01
-    name: "O"
-    family: OLP
-    alg: "(R B' R' B)"
-    even_scramble: "F' L' R' L' R BR B' L' B BR' F"
-    odd_scramble: "U D' R' D BR' L' B L B' BR D' R U' D"
-    showcase_alg: "H"
-    showcase_label: "Even"
-    showcase_alg1: "H U' S U' S U' H (U)"
-    showcase_label1: "Odd"
-    odd_alg: "(R B' R' B) U' (R' L R L') U' (R' L R L') U' (R B' R' B) U"
   - id: olp-02
     name: "V"
     family: OLP
@@ -100,15 +89,6 @@ cases:
     showcase_alg1: "H (U')"
     showcase_label1: "Odd"
     odd_alg: "H U' Uv'"
-  - id: olp-06c
-    name: "T"
-    family: OLP
-    alg: "U (R B' R' B) U (L R' L' R) U (R B' R' B) U"
-    even_scramble: "U' R L U F' U' D R' D' R U F U' R' L' U"
-    odd_scramble: "L R' L D B D' L R D B' U D' U'"
-    showcase_alg: "Solved"
-    showcase_label: ""
-    even_alg: ""
   - id: olp-07
     name: "X"
     family: OLP
@@ -131,3 +111,19 @@ cases:
     showcase_alg1: "H U H (U)"
     showcase_label1: "Odd"
     odd_alg: "(R B' R' B) U (R B' R' B) U"
+  - id: olp-06c
+    name: "T"
+    family: OLP
+    alg: "U (R B' R' B) U (L R' L' R) U (R B' R' B) U"
+    even_scramble: "U' R L U F' U' D R' D' R U F U' R' L' U"
+    odd_scramble: "L R' L D B D' L R D B' U D' U'"
+    showcase_alg: "Solved"
+    showcase_label: ""
+  - id: olp-01
+    name: "O"
+    family: OLP
+    alg: "(R B' R' B)"
+    even_scramble: "F' L' R' L' R BR B' L' B BR' F"
+    odd_scramble: "U D' R' D BR' L' B L B' BR D' R U' D"
+    showcase_alg: "Solved"
+    showcase_label: "2LTCP"
