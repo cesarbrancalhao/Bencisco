@@ -1,5 +1,6 @@
 setup_prefix: LBLv
 top_down: true
+thumbnail_dir: Low/OLP
 cases:
   - id: olp-02
     name: "V"

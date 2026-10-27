@@ -91,6 +91,15 @@ a[aria-current="page"] .case-learned-badge {
 	zoom: 1.15;
 }
 
+.alg-density-root[data-density='3'] .case-card {
+	zoom: 1.05;
+}
+
 .alg-density-root[data-density='4'] .case-card {
 	zoom: 0.9;
+}
+
+/* OLP: low-information thumbnails don't need the inner image frame. */
+[data-collection='olp'] .puzzle-viewer img {
+	border: none;
 }

@@ -4,6 +4,8 @@
  *
  * - With `thumbnail`: renders a static image + "View interactive" button.
  *   cubing.js is fetched only on click (singleton - one player at a time).
+ *   With `viewMore`: the button reads "View more" and opens the fullscreen
+ *   case modal instead of activating the inline player.
  * - Without `thumbnail`: embeds <twisty-player> directly (use only on
  *   low-density pages: tutorials, example solves).
  *
@@ -32,6 +34,7 @@ interface Props {
 	stickeringMask?: string;
 	interactive?: boolean;
 	hintFacelets?: boolean;
+	viewMore?: boolean;
 }
 
 const {
@@ -50,6 +53,7 @@ const {
 	stickeringMask,
 	interactive = true,
 	hintFacelets = false,
+	viewMore = false,
 } = Astro.props;
 
 // `alg` and `scramble` are CIF community notation; cubing.js FTO uses the same
@@ -105,10 +109,12 @@ if (setupSuffix) {
 			{interactive && (
 				<button
 					type="button"
-					data-puzzle-activate
-					class="cursor-pointer rounded-md bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
+					data-puzzle-activate={viewMore ? undefined : ''}
+					class={viewMore
+						? 'case-expand-btn cursor-pointer rounded-md bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700'
+						: 'cursor-pointer rounded-md bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700'}
 				>
-					View interactive
+					{viewMore ? 'View more' : 'View interactive'}
 				</button>
 			)}
 		</div>

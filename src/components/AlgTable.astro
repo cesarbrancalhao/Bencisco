@@ -17,9 +17,10 @@ interface Props {
 	columns?: 2 | 3;
 	caseNotes?: Record<string, string>;
 	collectionId?: string;
+	viewMore?: boolean;
 }
 
-const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes, collectionId } = Astro.props;
+const { src, showViewer = true, sections = false, hintFacelets = false, textAlign = 'center', columns, caseNotes, collectionId, viewMore = false } = Astro.props;
 const entry = await getEntry('algs', src);
 if (!entry) throw new Error(`AlgTable: no data file found at src/data/${src}.yaml`);
 
@@ -31,6 +32,7 @@ const familyAlgPrefixes = entry.data.family_alg_prefixes;
 const algPrefix = entry.data.alg_prefix;
 const cameraLongitude = entry.data.camera_longitude;
 const stickeringMask = entry.data.stickering_mask;
+const thumbnailDir = entry.data.thumbnail_dir;
 
 const gridClass = columns === 2
 	? 'grid-cols-1 sm:grid-cols-2'
@@ -89,7 +91,7 @@ const grouped = sections
 					</h2>
 					<div class={`alg-table not-content grid gap-4 ${gridClass}`}>
 						{cases.map((c) => (
-							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
+							<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} thumbnailDir={thumbnailDir} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} viewMore={viewMore} />
 						))}
 					</div>
 				</section>
@@ -100,7 +102,7 @@ const grouped = sections
 			<CaseDensityToggle pageId={src} />
 			<div class={`alg-table not-content grid gap-4 ${gridClass}`} data-collection={collectionId} data-total-cases={totalCases}>
 				{entry.data.cases.map((c) => (
-					<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} />
+					<CaseCard case={c} setupPrefix={c.preset ?? familyPrefixes?.[c.family ?? ''] ?? setupPrefix} setupSuffix={c.postset ?? familySuffixes?.[c.family ?? ''] ?? setupSuffix} algPrefix={c.alg_prefix ?? familyAlgPrefixes?.[c.family ?? ''] ?? algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} thumbnailDir={thumbnailDir} showViewer={showViewer} hintFacelets={hintFacelets} textAlign={textAlign} note={caseNotes?.[c.id]} showButtons={!!collectionId} viewMore={viewMore} />
 				))}
 			</div>
 		</div>

@@ -76,6 +76,10 @@ const algs = defineCollection({
 		// Render thumbnails from a raised top-down camera angle (shows the top
 		// face plus all sides) instead of the default flat face-on view.
 		top_down: z.boolean().optional(),
+		// Directory (relative to public/thumbnails/) holding low-information
+		// list-view thumbnails keyed by case `name` (used by olp.yaml). Cases
+		// without a matching file fall back to the regular thumbnails.
+		thumbnail_dir: z.string().optional(),
 		// Serialized cubing.js stickering mask (experimental-stickering-mask-orbits,
 		// e.g. "C4RNER:-I-I-I,...") applied to every case of the file — interactive
 		// player and thumbnails. Hides everything but the recognition stickers
