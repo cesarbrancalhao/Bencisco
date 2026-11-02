@@ -99,6 +99,14 @@ a[aria-current="page"] .case-learned-badge {
 	zoom: 0.9;
 }
 
+.content-panel:has(.alg-density-root[data-density='3']) .sl-container {
+	--sl-content-width: 49rem;
+}
+
+.content-panel:has(.alg-density-root[data-density='4']) .sl-container {
+	--sl-content-width: 61rem;
+}
+
 /* OLP: low-information thumbnails don't need the inner image frame. */
 [data-collection='olp'] .puzzle-viewer img {
 	border: none;
