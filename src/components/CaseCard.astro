@@ -109,8 +109,8 @@ const showOtherVariants = hiddenAlgs.length > 0 && !hasOlpParity;
 const olpEvenAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Even') : undefined;
 const olpOddAlg = hasOlpParity ? showcaseAlgs.find((a) => a.label === 'Odd') : undefined;
 
-const shorterIsOdd = hasOlpParity && olpEvenAlg && olpOddAlg
-	? olpOddAlg.alg.length < olpEvenAlg.alg.length
+const showOdd = hasOlpParity && olpEvenAlg && olpOddAlg
+	? c.default_parity ? c.default_parity === 'odd' : olpOddAlg.alg.length < olpEvenAlg.alg.length
 	: false;
 
 const eifLabel = `(${c.eif_label ?? 'EIF'})`;
@@ -187,14 +187,14 @@ const caseData = {
 	stickeringMask: stickeringMask ?? null,
 	hintFacelets,
 	thumbnail,
-	shorterIsOdd,
+	showOdd,
 };
 ---
 
 <div class={`case-card flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3 dark:border-gray-700${showButtons ? ' relative' : ''}`} data-case-id={c.id}>
 	{
 		hasOlpParity ? (
-			<PuzzleViewer alg={shorterIsOdd ? oddAlg : evenAlg} scramble={shorterIsOdd ? oddScramble : evenScramble} thumbnail={listThumbnail ?? (shorterIsOdd ? oddThumbnail : evenThumbnail)} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} viewMore={viewMore} />
+			<PuzzleViewer alg={showOdd ? oddAlg : evenAlg} scramble={showOdd ? oddScramble : evenScramble} thumbnail={listThumbnail ?? (showOdd ? oddThumbnail : evenThumbnail)} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} viewMore={viewMore} />
 		) : (
 			<PuzzleViewer alg={c.alg} scramble={c.scramble} thumbnail={listThumbnail ?? thumbnail} caption={c.name ?? c.id} setupPrefix={setupPrefix} setupSuffix={setupSuffix} algPrefix={algPrefix} cameraLongitude={cameraLongitude} stickeringMask={stickeringMask} interactive={showViewer} hintFacelets={hintFacelets} viewMore={viewMore} />
 		)
@@ -206,7 +206,7 @@ const caseData = {
 	<div class={`flex flex-1 flex-col gap-2 ${textAlign === 'left' ? 'items-start text-left' : 'items-center text-center'}`}>
 		{hasOlpParity && olpEvenAlg && olpOddAlg ? (
 			<code class="text-sm font-bold">
-				<Fragment set:html={renderAlg(shorterIsOdd ? olpOddAlg.alg : olpEvenAlg.alg)} />
+				<Fragment set:html={renderAlg(showOdd ? olpOddAlg.alg : olpEvenAlg.alg)} />
 			</code>
 		) : (
 			visibleAlgs.map(({ alg, label }) => (

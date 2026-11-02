@@ -28,7 +28,7 @@ interface CaseData {
 	stickeringMask?: string;
 	hintFacelets: boolean;
 	thumbnail: string;
-	shorterIsOdd: boolean;
+	showOdd: boolean;
 }
 
 let currentCaseData: CaseData | null = null;
@@ -174,7 +174,7 @@ function openModal(data: CaseData): void {
 	infoContainer.innerHTML = '';
 
 	currentCaseData = data;
-	currentParity = data.shorterIsOdd ? 'odd' : 'even';
+	currentParity = data.showOdd ? 'odd' : 'even';
 
 	const initParity = data.hasOlpParity ? currentParity : 'even';
 
@@ -220,7 +220,7 @@ function openModal(data: CaseData): void {
 		btnsDiv.id = 'case-modal-parity-btns';
 		btnsDiv.className = 'flex flex-col items-center gap-1.5';
 
-		const ordered: ('even' | 'odd')[] = data.shorterIsOdd ? ['odd', 'even'] : ['even', 'odd'];
+		const ordered: ('even' | 'odd')[] = data.showOdd ? ['odd', 'even'] : ['even', 'odd'];
 		for (const parity of ordered) {
 			const sa = data.showcaseAlgs.find(
 				(a) => a.label === (parity === 'even' ? 'Even' : 'Odd'),

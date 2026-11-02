@@ -37,6 +37,10 @@ const algCase = z.object({
 	even_alg: z.string().optional(),
 	showcase_alg: z.string().optional(),
 	showcase_label: z.string().optional(),
+	// OLP only: which parity variant to feature on the card and open by
+	// default in the modal ("even" = showcase_alg, "odd" = showcase_alg1).
+	// Falls back to the shorter showcase alg when unset.
+	default_parity: z.enum(['even', 'odd']).optional(),
 	eif_alg: z.string().optional(),
 	eif_label: z.string().optional(),
 	preset: z.string().optional(),

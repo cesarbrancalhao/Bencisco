@@ -8,11 +8,12 @@ cases:
     alg: "(R B' R' B) U' (R B' R' B) U Uv"
     even_scramble: "L B R BL D L' D' L BL' L B L' B' R' L' B'"
     odd_scramble: "Uv' U F' L' F L' B L F' L' B' L' F U' Uv"
-    showcase_alg: "H U' H U (Uo)"
+    showcase_alg: "H U' H (U)"
     showcase_label: "Even"
     showcase_alg1: "S' U' S' (U)"
     showcase_label1: "Odd"
     odd_alg: "(L R' L' R) U' (L R' L' R) U"
+    default_parity: even
   - id: olp-03
     name: "Q"
     family: OLP
@@ -21,20 +22,22 @@ cases:
     odd_scramble: "BR B' R B R' BR' D' R D R' U' R D' R' D U"
     showcase_alg: "H (U)"
     showcase_label: "Even"
-    showcase_alg1: "(Uo) S' U' H U'"
+    showcase_alg1: "S' U' H U'"
     showcase_label1: "Odd"
     odd_alg: "Uv (L R' L' R) U' (R B' R' B) U'"
+    default_parity: even
   - id: olp-04a
     name: "J"
     family: OLP
     alg: "Uv' U' (R B' R' B) U (R B' R' B) U Uv"
     even_scramble: "U' B' F R' BR U' BR B R' B' R BR' U BR' B R F' U"
     odd_scramble: "U' D BL B' D F D R' D' R F' D' B BL' U' D' U'"
-    showcase_alg: "(Uo') U' H U H U (Uo)"
+    showcase_alg: "U' H U H U"
     showcase_label: "Even"
     showcase_alg1: "H (U)"
     showcase_label1: "Odd"
     odd_alg: "H U"
+    default_parity: odd
   - id: olp-04b
     name: "L"
     family: OLP
@@ -46,17 +49,19 @@ cases:
     showcase_alg1: "H (U')"
     showcase_label1: "Odd"
     odd_alg: "H U'"
+    default_parity: odd
   - id: olp-04c
     name: "W"
     family: OLP
     alg: "(L R' L' R) U' (R B' R' B) U"
     even_scramble: "Uv' U' F D' B L' D L D' BL' L' D L D' BL B' D F' U Uv"
-    odd_scramble: "U D' R' U L R L' D B' D' R' U' R U D B U"
+    odd_scramble: "U D' R' U L R L' D B' D' R' U' R U D B U Uv' U"
     showcase_alg: "S' U' H (U)"
     showcase_label: "Even"
-    showcase_alg1: "(Uo') U S' U' S (U')"
+    showcase_alg1: "S' U' S (U')"
     showcase_label1: "Odd"
-    odd_alg: "(Uv') U (L R' L' R) U' (R' L R L') U'"
+    odd_alg: "(L R' L' R) U' (R' L R L') U'"
+    default_parity: odd
   - id: olp-05
     name: "B"
     family: OLP
@@ -65,9 +70,10 @@ cases:
     odd_scramble: "U' R B' R' BR L' D' L' D BR L' R L R' BR L' B U"
     showcase_alg: "S' U' S' (U')"
     showcase_label: "Even"
-    showcase_alg1: "S' U' S U (Uo')"
+    showcase_alg1: "S' U' S (U)"
     showcase_label1: "Odd"
     odd_alg: "(L R' L' R) U' (R' L R L') U Uv'"
+    default_parity: odd
   - id: olp-06a
     name: "Z"
     family: OLP
@@ -79,6 +85,7 @@ cases:
     showcase_alg1: "H (U)"
     showcase_label1: "Odd"
     odd_alg: "H U Uv"
+    default_parity: odd
   - id: olp-06b
     name: "S"
     family: OLP
@@ -90,6 +97,7 @@ cases:
     showcase_alg1: "H (U')"
     showcase_label1: "Odd"
     odd_alg: "H U' Uv'"
+    default_parity: odd
   - id: olp-07
     name: "X"
     family: OLP
@@ -98,9 +106,10 @@ cases:
     odd_scramble: "Uv' L R' F L' R L R' F' R F L' B L F' L' B' Uv"
     showcase_alg: "S' U' S' U' S (U)"
     showcase_label: "Even"
-    showcase_alg1: "(U) S U S' U' S U'"
+    showcase_alg1: "S U S' U' S U'"
     showcase_label1: "Odd"
-    odd_alg: "(U) S U S' U' S U'"
+    odd_alg: "S U S' U' S U'"
+    default_parity: even
   - id: olp-08
     name: "Y"
     family: OLP
@@ -112,6 +121,7 @@ cases:
     showcase_alg1: "H U H (U)"
     showcase_label1: "Odd"
     odd_alg: "(R B' R' B) U (R B' R' B) U"
+    default_parity: odd
   - id: olp-06c
     name: "T"
     family: OLP
