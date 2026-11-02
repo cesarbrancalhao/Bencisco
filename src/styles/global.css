@@ -92,11 +92,11 @@ a[aria-current="page"] .case-learned-badge {
 }
 
 .alg-density-root[data-density='3'] .case-card {
-	zoom: 1.05;
+	zoom: 1.155;
 }
 
 .alg-density-root[data-density='4'] .case-card {
-	zoom: 0.9;
+	zoom: 1.26;
 }
 
 /* OLP: low-information thumbnails don't need the inner image frame. */
