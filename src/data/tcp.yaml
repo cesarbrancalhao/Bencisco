@@ -7,9 +7,7 @@ cases:
     family: "Even"
     alg: "B' R B R'"
     scramble: "D L' B' D' B' D L B' U D' U'"
-    showcase_alg: "B' R B R'"
-    showcase_alg1: "{B,U} U' R U R'"
-    showcase_label1: "EIF"
+    showcase_alg: "H'"
   - id: tcp-02
     name: "TC-"
     family: "Even"
@@ -110,10 +108,7 @@ cases:
     family: "2-Flip"
     alg: "R B' R' B R' L R L'"
     scramble: "L R' L D B D' L R D B' U D' U'"
-    showcase_alg: "{B,U} R U' R' U {L,D} R' U R U'"
-    showcase_label: "EIF"
-    showcase_alg1: "{R,U} U' R U R' {L,D} U R' U' R"
-    showcase_alg2: "{R,BR} R' U' R {B,BR} U' R U R' L"
+    showcase_alg: "H S"
   - id: tcp-16
     name: "TB+"
     family: "2-Flip"
