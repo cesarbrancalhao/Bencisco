@@ -92,18 +92,35 @@ a[aria-current="page"] .case-learned-badge {
 }
 
 .alg-density-root[data-density='3'] .case-card {
-	zoom: 1.05;
+	zoom: 1.2;
 }
 
 .alg-density-root[data-density='4'] .case-card {
-	zoom: 0.9;
+	zoom: 1.15;
 }
 
 .content-panel:has(.alg-density-root[data-density='3']) .sl-container {
-	--sl-content-width: 49rem;
+	--sl-content-width: 58rem;
 }
 
 .content-panel:has(.alg-density-root[data-density='4']) .sl-container {
+	--sl-content-width: 79rem;
+}
+
+/* OLP keeps the previous, smaller density sizing. */
+.alg-density-root[data-density='3']:has([data-collection='olp']) .case-card {
+	zoom: 1.05;
+}
+
+.alg-density-root[data-density='4']:has([data-collection='olp']) .case-card {
+	zoom: 0.9;
+}
+
+.content-panel:has(.alg-density-root[data-density='3']):has([data-collection='olp']) .sl-container {
+	--sl-content-width: 49rem;
+}
+
+.content-panel:has(.alg-density-root[data-density='4']):has([data-collection='olp']) .sl-container {
 	--sl-content-width: 61rem;
 }
 
