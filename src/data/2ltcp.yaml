@@ -6,21 +6,21 @@ cases:
     family: Odd
     alg: "U F' U' Fs U F U' Fs'"
     scramble: "F' f U F' U' F f' U F U'"
-    showcase_alg: "U F' U' Fs U F U' Fs'"
-    eif_alg: "{BL, D} U R' U' Rs' U R U' Rs"
+    showcase_alg: "{BL, D} U R' U' Rs' U R U' Rs"
+    showcase_label: "EIF"
   - id: 2ltcp-02
     name: 3 Triangle CW
     family: Even
     alg: "T' U Fs U F U' Fs' U F' U"
     scramble: "U' F U' F' f U F' U' F f' U' T"
     preset: "Rv"
-    showcase_alg: "{R, L} U Fs U F U' Fs' U F' U"
-    eif_alg: "U' R U' Rs U R' U' Rs' U'"
+    showcase_alg: "{B, U} U' R U' Rs U R' U' Rs' U'"
+    showcase_label: "EIF"
   - id: 2ltcp-03
     name: 3 Triangle CCW
     family: Even
     alg: "T' U' F U' Fs U F' U' Fs' U'"
     scramble: "U F' f U F U' F f' U F' U T"
     preset: "Rv"
-    showcase_alg: "{R, L} U' F U' Fs U F' U' Fs' U'"
-    eif_alg: "U Rs U R U' Rs' U R' U"
+    showcase_alg: "{B, U} U Rs U R U' Rs' U R' U"
+    showcase_label: "EIF"
