@@ -82,6 +82,12 @@ cases:
     scramble: "U' D L R L' U D L D B L' B' U' B' R' B U"
     showcase_alg: "(U) {B,BL} R D R' U R D' R U' R"
     showcase_label: "EIF"
+  - id: tcp-15
+    name: "TS"
+    family: "2-Flip"
+    alg: "R B' R' B R' L R L'"
+    scramble: "L R' L D B D' L R D B' U D' U'"
+    showcase_alg: "H S"
   - id: tcp-13
     name: "TS+"
     family: "2-Flip"
@@ -94,12 +100,13 @@ cases:
     alg: "U Uv' R' L R L' Rw' R B' R B R' Rw R' U'"
     scramble: "U' B' L' B R BR B' R' B R BR' R' B' L B U"
     showcase_alg: "(U) {U,BL} S Rs' H' Rs"
-  - id: tcp-15
-    name: "TS"
+  - id: tcp-18
+    name: "TB"
     family: "2-Flip"
-    alg: "R B' R' B R' L R L'"
-    scramble: "L R' L D B D' L R D B' U D' U'"
-    showcase_alg: "H S"
+    alg: "D' B' D F' D B' D' F D' B' D"
+    scramble: "D B' F' D' F D' B' D F' D B' F U' D' U"
+    showcase_alg: "{B,BR} R' U' R D' R U' R' D R' U' R"
+    showcase_label: "EIF"
   - id: tcp-16
     name: "TB+"
     family: "2-Flip"
@@ -113,11 +120,4 @@ cases:
     alg: "L' Bw L B' L' Bw' B' L B'"
     scramble: "R D' BR' L' D' L D BR D R'"
     showcase_alg: "{L,U} U' Rw U R' U' Rw' R' U R'"
-    showcase_label: "EIF"
-  - id: tcp-18
-    name: "TB"
-    family: "2-Flip"
-    alg: "D' B' D F' D B' D' F D' B' D"
-    scramble: "D B' F' D' F D' B' D F' D B' F U' D' U"
-    showcase_alg: "{B,BR} R' U' R D' R U' R' D R' U' R"
     showcase_label: "EIF"
